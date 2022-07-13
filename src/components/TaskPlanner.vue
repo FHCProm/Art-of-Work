@@ -35,6 +35,8 @@
 </template>
 
 <script>
+import moment from "moment";
+import { collection, addDoc } from "firebase/firestore";
 export default {
   data() {
     return {
@@ -49,7 +51,7 @@ export default {
         this.numberOfHours = this.numberOfHours + change;
       }
     },
-    addTask() {
+    async addTask() {
       if (this.numberOfHours == 0) {
         alert("please consider the amount of hours for this task");
         return;
@@ -59,8 +61,15 @@ export default {
         alert("please write your task");
         return;
       }
+
+      const docRef = await addDoc(collection(this.db, "task"), {
+        date: moment().format("X"),
+        taskDescription: this.task,
+        duration: `${this.numberOfHours} hour(s)`,
+      });
+
       this.$emit("startTimer", {
-        time: this.numberOfHours * 60 * 60,
+        duration: this.numberOfHours * 60 * 60,
         text: this.task,
       });
     },

@@ -6,8 +6,11 @@
     </div>
   </header>
   <div class="relative flex flex-col items-center justify-center w-full h-full">
-    <timer-display :time="seconds" class="mt-2"></timer-display>
-
+    <timer-display
+      :time="seconds"
+      :message="originalBackgroundText"
+      class="mt-2"
+    ></timer-display>
     <div
       class="
         absolute
@@ -22,27 +25,32 @@
         lg:text-8xl
       "
     >
-      {{ backgroundText }}
+      {{ editedBackgroundText }}
     </div>
   </div>
   <task-planner @startTimer="counting" class="mt-2"></task-planner>
+
+  <task-list></task-list>
 </template>
 
 <script>
 import TimerDisplay from "./components/TimerDisplay.vue";
 import TaskPlanner from "./components/TaskPlanner.vue";
+import TaskList from "./components/TaskList.vue";
 export default {
   name: "App",
   components: {
     TimerDisplay,
     TaskPlanner,
+    TaskList,
   },
   data() {
     return {
       seconds: 0,
       timerStatus: "off",
       restartTimer: false,
-      backgroundText: "",
+      editedBackgroundText: "",
+      originalBackgroundText: "",
     };
   },
   methods: {
@@ -51,8 +59,9 @@ export default {
         alert("timer is currently running");
         return;
       }
-      this.backgroundText = this.truncate(object.text, 15);
-      this.seconds = object.time;
+      this.originalBackgroundText = object.text;
+      this.editedBackgroundText = this.truncate(object.text, 15);
+      this.seconds = object.duration;
       while (this.seconds != 0 && this.restartTimer == false) {
         await this.wait1second();
         this.timerStatus = "on";
