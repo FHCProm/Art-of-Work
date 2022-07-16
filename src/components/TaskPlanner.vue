@@ -2,16 +2,40 @@
   <form class="" @submit.prevent="addTask">
     <div class="flex flex-col items-center">
       <div class="flex">
-        <button @click="setHour(-1)" type="button" class="p-2 text-lg">
+        <button
+          class="rounded-md px-2 py-0.5 border border-gray-600 mx-0.5"
+          type="button"
+        >
+          15min
+        </button>
+        <button
+          class="rounded-md px-2 py-0.5 border border-gray-600 mx-0.5"
+          type="button"
+        >
+          30min
+        </button>
+        <button
+          class="rounded-md px-2 py-0.5 border border-gray-600 mx-0.5"
+          type="button"
+        >
+          1 hour
+        </button>
+        <button
+          class="rounded-md px-2 py-0.5 border border-gray-600 mx-0.5"
+          type="button"
+        >
+          2 hour
+        </button>
+        <!-- <button @click="setHour(-1)" type="button" class="p-2 text-lg">
           -
         </button>
         <div class="p-2 text-lg">
           <div class="inline p-2">{{ numberOfHours }}</div>
           <span>hours</span>
         </div>
-        <button @click="setHour(1)" type="button" class="p-2 text-lg">+</button>
+        <button @click="setHour(1)" type="button" class="p-2 text-lg">+</button> -->
       </div>
-      <div class="flex items-center">
+      <div class="flex items-center mt-2">
         <input
           class="
             sm:w-96

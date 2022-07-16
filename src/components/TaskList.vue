@@ -23,7 +23,6 @@
 
 
 <script>
-import { collection, getDocs } from "firebase/firestore";
 import TaskRow from "./TaskRow.vue";
 export default {
   components: {
@@ -31,20 +30,18 @@ export default {
   },
   data() {
     return {
-      tasks: [
-        // {
-        //   date: "11-7-2022",
-        //   taskDescription: "Add task table",
-        //   duration: "12 minutes",
-        // },
-      ],
+      tasks: [], //[
+      //   {
+      //     date: "11-7-2022",
+      //     taskDescription: "Add task table",
+      //     duration: "12 minutes",
+      //   },
+      // ],
     };
   },
   async created() {
-    const querySnapshot = await getDocs(collection(this.db, "task"));
-    querySnapshot.forEach((doc) => {
-      this.tasks.push({ id: doc.id, ...doc.data() });
-    });
+    await this.$store.dispatch("fetchTasks");
+    this.tasks = this.$store.state.tasks;
   },
 };
 </script>

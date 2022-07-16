@@ -53,6 +53,11 @@ export default {
       originalBackgroundText: "",
     };
   },
+  created() {
+    if (this.$store.state.db == undefined) {
+      this.$store.state.db = this.db;
+    }
+  },
   methods: {
     async counting(object) {
       if (this.timerStatus == "on") {
@@ -87,10 +92,12 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Dancing+Script&display=swap");
+$primary-color: #734eed;
 .timer {
   font-family: "Audiowide", cursive;
+  background-color: $primary-color;
 }
 .title {
   font-family: "Dancing Script", cursive;
