@@ -1,0 +1,27 @@
+
+:root {
+    --primary-light: #8abdff;
+    --primary: #6d5dfc;
+    --primary-dark: #5b0eeb;
+  
+    --white: rgb(44, 201, 188);
+    --greyLight-1: #e4ebf5;
+    --greyLight-2: rgb(8, 116, 107);
+    --greyLight-3: #bec8e4;
+    --greyDark: #9baacf;
+  }
+  
+  $shadow: .3rem .3rem .6rem var(--greyLight-2), 
+  -.2rem -.2rem .5rem var(--white);
+
+  $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2), 
+inset -.2rem -.2rem .5rem var(--white);
+
+.colorPrimary{
+    background-color: #bec0d9;
+}
+
+@mixin transition-ease($duration) {
+    transition: all $duration ease-in;
+
+}

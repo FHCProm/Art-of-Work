@@ -1,55 +1,43 @@
 <template>
-  <div class="relative rounded-xl mx-10 pt-8 pb-4 mt-4 text-gray-100">
-    <div class="absolute inset-0 rounded-xl -z-10 table-background"></div>
-    <div v-if="tasks" class="table w-full">
-      <div class="table-header-group">
-        <div class="table-row font-bold">
-          <div class="table-cell text-left px-2">Date</div>
-          <div class="table-cell text-left">Task</div>
-          <div class="table-cell text-left">Duration</div>
-        </div>
-      </div>
-      <div class="table-row-group">
-        <task-row
-          v-for="task in tasks"
-          :key="task.date"
-          :taskInfo="task"
-        ></task-row>
-      </div>
-    </div>
+  <div class="tasks" v-for="task in tasks" :key="task.id">
+    <my-task :task="task"></my-task>
   </div>
 </template>
 
-
-
 <script>
-import TaskRow from "./TaskRow.vue";
+import MyTask from "@/components/MyTask.vue";
 export default {
   components: {
-    TaskRow,
+    MyTask,
   },
   data() {
     return {
-      tasks: [], //[
-      //   {
-      //     date: "11-7-2022",
-      //     taskDescription: "Add task table",
-      //     duration: "12 minutes",
-      //   },
-      // ],
+      tasks: [
+        {
+          id: 232322323,
+          timeStarted: 1662210000,
+          goal: "Make a design draf for art of breaking",
+          taskDescription: "Figure out the magic for trading bot",
+        },
+        {
+          id: 555999,
+          timeStarted: 1662200000,
+          goal: "Figure out the rough plan for art of breaking firebase database",
+          taskDescription:
+            "Create a sample data for art of breaking Create a sample data for art of breaking Create a sample data for art of breaking  art of breaking Create a sample data for art of breaking art of breaking Create a sample data for art of breaking",
+        },
+      ],
     };
   },
-  async created() {
-    await this.$store.dispatch("fetchTasks");
-    this.tasks = this.$store.state.tasks;
-  },
+
+  computed: {},
 };
 </script>
 
-<style>
-.table-background {
-  background-image: url(@/assets/TimerView/flipped-diamonds.svg);
-  background-color: rgb(65, 69, 78);
-  background-size: 20px;
+<style lang="scss">
+.tasks {
+  display: flex;
+  padding: 0 0.5rem 0 0.5rem;
+  justify-content: center;
 }
 </style>

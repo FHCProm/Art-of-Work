@@ -1,0 +1,7 @@
+
+
+primary-color: bg-yellow-500
+secondary-color:bg-orange-400
+accent-color:bg-orange-600
+background-color: bg-teal-900
+background-color2:bg-teal-600
