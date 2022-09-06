@@ -78,7 +78,16 @@ export default {
       }
     }
   },
-  methods: {},
+  methods: {
+    sleep(milliseconds) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, milliseconds);
+      });
+    },
+  },
+
   computed: {
     formattedTimeStarted() {
       let momentObject = moment.unix(this.task.timeStarted);
@@ -86,10 +95,52 @@ export default {
     },
   },
   watch: {
-    hover(newValue) {
-      if (newValue == true) {
-        let removedTripleDot = this.displayText.split("...");
-        let formattedDisplayText = removedTripleDot[0];
+    async hover(newValue) {
+      if (this.letterArray.length > 80) {
+        if (newValue == true) {
+          let removedTripleDot = this.displayText.split("...");
+          this.displayText = removedTripleDot[0];
+
+          for (
+            let x = this.displayText.length;
+            x < this.letterArray.length && this.hover == true;
+            x = x + 2
+          ) {
+            if (this.letterArray.length - x > 1) {
+              this.displayText = `${this.displayText}${this.letterArray[x]}${
+                this.letterArray[x + 1]
+              }`;
+            } else {
+              this.displayText = `${this.displayText}${this.letterArray[x]}`;
+            }
+
+            await this.sleep(1);
+          }
+        }
+        if (newValue == false) {
+          for (
+            let x = this.displayText.length;
+            x > 80 && this.hover == false;
+            x = x - 2
+          ) {
+            if (this.displayText.length - x > 1) {
+              this.displayText = this.displayText.slice(
+                0,
+                this.displayText.length - 2
+              );
+            } else {
+              this.displayText = this.displayText.slice(
+                0,
+                this.displayText.length - 1
+              );
+            }
+
+            await this.sleep(1);
+            if (x == 81) {
+              this.displayText = `${this.displayText}...`;
+            }
+          }
+        }
       }
     },
   },
@@ -109,9 +160,7 @@ export default {
   &-title {
     grid-column: 1/3;
     grid-row: 1/2;
-    border-left: 1px solid rgb(234, 179, 8);
-    border-right: 1px solid rgb(234, 179, 8);
-    border-top: 1px solid rgb(234, 179, 8);
+
     padding: 0 0.5rem 0 0.5rem;
     background: rgb(234, 88, 12);
   }
@@ -127,27 +176,8 @@ export default {
     grid-column: 1/2;
     grid-row: 3/4;
     padding: 0.3rem 0.5rem 0 0.5rem;
-    height: 2rem;
-    overflow: hidden;
-  }
-
-  &:hover .description {
     height: 100%;
-    white-space: normal;
-  }
-
-  &::after {
-    content: "";
-    top: 60%;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: absolute;
-    background: linear-gradient(rgba(13, 148, 136, 0), rgba(13, 148, 136, 1));
-  }
-
-  &:hover:after {
-    background: rgba(13, 148, 136, 0);
+    overflow: hidden;
   }
 
   .buttons {

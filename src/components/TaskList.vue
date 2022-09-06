@@ -1,6 +1,6 @@
 <template>
-  <div class="tasks" v-for="task in tasks" :key="task.id">
-    <my-task :task="task"></my-task>
+  <div class="tasks">
+    <my-task v-for="task in tasks" :key="task.id" :task="task"></my-task>
   </div>
 </template>
 
@@ -36,8 +36,8 @@ export default {
 
 <style lang="scss">
 .tasks {
-  display: flex;
-  padding: 0 0.5rem 0 0.5rem;
-  justify-content: center;
+  width: 100%;
+  display: grid;
+  justify-items: center;
 }
 </style>

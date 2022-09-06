@@ -12,7 +12,13 @@
       <p class="digital-timer-label"></p>
       <p class="digital-timer-label">second</p>
     </div>
-    <rectangle-button class="mt-2 text-xl"></rectangle-button>
+    <rectangle-button
+      digitalTimer="true"
+      width="100%"
+      padding="10px 25px"
+      label="Break Time!"
+      class="mt-2 text-xl"
+    ></rectangle-button>
   </div>
 </template>
 
