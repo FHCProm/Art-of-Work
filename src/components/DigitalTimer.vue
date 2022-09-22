@@ -279,14 +279,30 @@ const lowerDoor = ref(null);
 const upperDoorY = ref(0);
 const lowerDoorY = ref(0);
 
-function openDoors() {}
+function openDoors(pixel) {
+  const intervalID = setInterval(() => {
+    upperDoorY.value += -pixel;
+    lowerDoorY.value += pixel;
+    let widthOfDoor = (62 / pixel / 2 - 1) * pixel;
+    upperDoor.value.style.transform = `translateY(${upperDoorY.value}px)`;
+    lowerDoor.value.style.transform = `translateY(${lowerDoorY.value}px)`;
+    if (upperDoorY.value == -widthOfDoor) {
+      clearInterval(intervalID);
+    }
+  }, 20);
+}
 
-onMounted(() => {
-  upperDoor.value.style.transform = "translate(0px,0px)";
-  console.log(upperDoor.value.style);
-  // upperDoor.value.classList.add("upper-door-selected");
-  // lowerDoor.value.classList.add("lower-door-selected");
-});
+function closeDoors(pixel) {
+  const intervalID = setInterval(() => {
+    upperDoorY.value += pixel;
+    lowerDoorY.value += -pixel;
+    upperDoor.value.style.transform = `translateY(${upperDoorY.value}px)`;
+    lowerDoor.value.style.transform = `translateY(${lowerDoorY.value}px)`;
+    if (upperDoorY.value == 0) {
+      clearInterval(intervalID);
+    }
+  }, 20);
+}
 </script>
 
 <style scoped lang="scss">

@@ -33,7 +33,6 @@ export default {
   display: grid;
   grid-template-columns: 450px 1fr;
   min-height: 100vh;
-
   background: rgba(13, 148, 136, 1);
 }
 </style>
