@@ -156,7 +156,8 @@ export default {
   grid-template-columns: 80% 20%;
   margin-top: 1rem;
   color: white;
-  border: 1px solid rgb(234, 179, 8);
+  // border: 1px solid rgb(234, 179, 8);
+  box-shadow: $container-shadow;
   &-title {
     grid-column: 1/3;
     grid-row: 1/2;

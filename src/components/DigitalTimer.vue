@@ -1,6 +1,6 @@
 <template>
   <div class="digital-timer-container">
-    <div class="digital-timer-doors">
+    <!-- <div class="digital-timer-doors">
       <svg
         viewBox="0 0 95.063232 58.56778"
         version="1.1"
@@ -235,30 +235,30 @@
           </g>
         </g>
       </svg>
-    </div>
+    </div> -->
 
-    <div v-if="timerStarted" class="w-full h-full">
-      <div class="digital-timer mt-4">
+    <div v-if="timerStarted" class="flex-container">
+      <div class="grid-container sm:mt-4">
         <p class="digital-timer-word">00</p>
-        <p class="digital-timer-word">:</p>
+        <p class="digital-timer-colon">:</p>
         <p class="digital-timer-word">23</p>
-        <p class="digital-timer-word">:</p>
+        <p class="digital-timer-colon">:</p>
         <p class="digital-timer-word">12</p>
         <p class="digital-timer-label">hour</p>
-        <p class="digital-timer-label"></p>
+        <p class="digital-timer-label-empty"></p>
         <p class="digital-timer-label">minute</p>
-        <p class="digital-timer-label"></p>
+        <p class="digital-timer-label-empty"></p>
         <p class="digital-timer-label">second</p>
       </div>
       <rectangle-button
         :digitalTimer="true"
         :containSVG="false"
-        label="Gimme a break!"
-        class="mt-2 text-lg"
+        label="Gimme a Break!"
+        class="digital-timer-btn"
       ></rectangle-button>
     </div>
 
-    <div class="timer-task-creator">
+    <div v-if="!timerStarted" class="timer-task-creator">
       <rectangle-button
         :digitalTimer2="true"
         :containSVG="false"
@@ -273,7 +273,7 @@ import { ref } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
 import RectangleButton from "./buttons/RectangleButton.vue";
 
-const timerStarted = ref(false);
+const timerStarted = ref(true);
 const upperDoor = ref(null);
 const lowerDoor = ref(null);
 const upperDoorY = ref(0);
@@ -303,6 +303,10 @@ function closeDoors(pixel) {
     }
   }, 20);
 }
+
+onMounted(() => {
+  //openDoors(0.5);
+});
 </script>
 
 <style scoped lang="scss">
@@ -311,7 +315,8 @@ function closeDoors(pixel) {
   height: 250px;
   position: relative;
   background: transparent;
-  border: 1px solid white;
+  // border: 1px solid white;
+  box-shadow: $container-shadow;
 }
 
 .digital-timer-doors {
@@ -360,8 +365,7 @@ function closeDoors(pixel) {
   }
 }
 
-.digital-timer {
-  margin-top: 20px;
+.grid-container {
   display: grid;
   align-items: center;
   justify-items: center;
@@ -374,10 +378,91 @@ function closeDoors(pixel) {
   color: white;
   font-family: "OCR_A_Extended";
 }
+.digital-timer-colon {
+  font-size: 60px;
+  color: white;
+  font-family: "OCR_A_Extended";
+}
 
 .digital-timer-label {
   font-size: 20px;
   font-family: "Italiana", serif;
   color: white;
+}
+
+.digital-timer-btn {
+  font-size: 1rem;
+}
+
+@media screen and (max-width: $breakpoint-small) {
+  .digital-timer-container {
+    width: 90%;
+    height: 4rem;
+  }
+
+  .flex-container {
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .grid-container {
+    flex-basis: 60%;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 1fr 0.5fr 1fr 0.5fr 1fr 0.5fr;
+    grid-template-rows: 1fr 0px;
+  }
+
+  .digital-timer-word {
+    font-size: 1rem;
+    color: white;
+    font-family: "OCR_A_Extended";
+
+    &:nth-child(1) {
+      grid-column: 1/2;
+      grid-row: 1/2;
+      justify-self: end;
+    }
+    &:nth-child(3) {
+      grid-column: 3/4;
+      grid-row: 1/2;
+      justify-self: end;
+    }
+    &:nth-child(5) {
+      justify-self: end;
+      grid-column: 5/6;
+      grid-row: 1/2;
+    }
+  }
+  .digital-timer-colon {
+    display: none;
+  }
+
+  .digital-timer-label-empty {
+    display: none;
+  }
+
+  .digital-timer-label {
+    font-size: 0.5rem;
+    font-family: "Italiana", serif;
+    color: white;
+
+    &:nth-child(6) {
+      grid-column: 2/3;
+      grid-row: 1/2;
+    }
+    &:nth-child(8) {
+      grid-column: 4/5;
+      grid-row: 1/2;
+    }
+    &:nth-child(10) {
+      grid-column: 6/7;
+      grid-row: 1/2;
+    }
+  }
 }
 </style>

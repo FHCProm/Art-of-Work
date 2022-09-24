@@ -129,7 +129,7 @@ export default {
   },
   data() {
     return {
-      taskIsSet: false,
+      taskIsSet: true,
     };
   },
   methods: {
@@ -170,10 +170,11 @@ $leaves: (
 
 .task-banner {
   position: relative;
-  border: 1px solid white;
+  // border: 1px solid white;
+  box-shadow: $container-shadow;
   min-width: 600px;
   width: 90%;
-  min-height: 940px;
+  height: 900px;
   display: flex;
   flex-direction: column;
   align-items: center;

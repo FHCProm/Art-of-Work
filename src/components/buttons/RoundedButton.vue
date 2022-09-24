@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full">
+  <div class="">
     <div v-if="containSVG" class="banner-btn-goal-not-set">
       <svg
         class="w-10 h-10"
@@ -95,7 +95,7 @@ const classes = computed(() => ({
   margin-top: 1rem;
   border: 1px solid white;
   background: transparent;
-  padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+  padding: 0.25rem 2rem 0.25rem 2rem;
 
   &:hover {
     background: rgba(255, 255, 255, 0.3);

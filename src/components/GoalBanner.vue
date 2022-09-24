@@ -6,21 +6,21 @@
         <div class="current-goal text-xl mt-4">
           Make a design draf for Art of Breaking
         </div>
-        <div class="flex flex-row">
+        <div class="goal-set-btn">
           <rounded-button
             :goalBannerWithGoalSet="true"
             text="completed"
-            class="basis-1/2 ml-4 mr-2"
+            class="goal-btn"
           ></rounded-button>
           <rounded-button
             :goalBannerWithGoalSet="true"
             text="abandon"
-            class="basis-1/2 ml-2 mr-4"
+            class="goal-btn"
           ></rounded-button>
         </div>
       </div>
       <div v-if="!goalSet">
-        <div class="goal-not-set">
+        <div class="goal-not-set-btn">
           <rounded-button
             text="set a goal"
             :containSVG="true"
@@ -29,15 +29,16 @@
         </div>
       </div>
       <div class="achievement-label mt-5 text-xl">Achievements</div>
-
-      <row-goal
-        v-for="history in goalHistory"
-        :key="history.title"
-        v-bind="history"
-      ></row-goal>
+      <div class="history-goal-container">
+        <row-goal
+          v-for="history in goalHistory"
+          :key="history.title"
+          v-bind="history"
+        ></row-goal>
+      </div>
     </div>
 
-    <div v-if="goalSet" ： class="banner-goal-not-set">
+    <!-- <div v-if="goalSet" ： class="banner-goal-not-set">
       <div class="banner-goal-not-set-content">
         <svg
           class="w-10 h-10"
@@ -101,7 +102,7 @@
           class="mt-2 text-lg"
         ></rectangle-button>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -111,7 +112,7 @@ import RowGoal from "@/components/RowGoal.vue";
 import RectangleButton from "@/components/buttons/RectangleButton.vue";
 import { ref } from "@vue/reactivity";
 
-const goalSet = ref(false);
+const goalSet = ref(true);
 const goalHistory = ref({
   123: {
     title: "Learn Reactivity",
@@ -128,14 +129,30 @@ const goalHistory = ref({
     startedAt: 1662547612,
     duration: 7200,
   },
+  777: {
+    title: "Learn Reactivity",
+    startedAt: 1662547612,
+    duration: 7200,
+  },
+  888: {
+    title: "Learn Reactivity",
+    startedAt: 1662547612,
+    duration: 7200,
+  },
+  999: {
+    title: "Learn Reactivity",
+    startedAt: 1662547612,
+    duration: 7200,
+  },
 });
 </script>
 
 <style scoped lang="scss">
 .banner {
   width: 400px;
-  min-height: 650px;
-  border: 1px solid white;
+  max-height: 650px;
+  // border: 1px solid white;
+  box-shadow: $container-shadow;
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -143,10 +160,25 @@ const goalHistory = ref({
   margin-bottom: 1rem;
 }
 
-.goal-not-set {
+.goal-not-set-btn {
   display: grid;
   align-content: center;
   justify-content: center;
+}
+
+.goal-set-btn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0 1rem 0 1rem;
+
+  .goal-btn {
+    &:first-child {
+      justify-self: start;
+    }
+    &:last-child {
+      justify-self: flex-end;
+    }
+  }
 }
 
 .goal-label {
@@ -182,5 +214,10 @@ const goalHistory = ref({
   color: white;
   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
     7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.history-goal-container {
+  height: 270px;
+  overflow-y: scroll;
 }
 </style>

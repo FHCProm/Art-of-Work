@@ -139,10 +139,16 @@ function isClicked() {
       15px 15px 20px 0px rgba(0, 0, 0, 0.1),
       10px 10px 5px 0px rgba(0, 0, 0, 0.1);
   }
+
+  @media screen and (max-width: $breakpoint-small) {
+    flex-basis: 40%;
+    text-align: center;
+    margin: 0 1rem 0 1rem;
+  }
 }
 
 .digital-clock-btn-empty {
-  padding: 0 1.5rem;
+  padding: 0.5rem 1.5rem;
   background: rgba(234, 179, 8, 1);
   background: linear-gradient(
     0deg,
