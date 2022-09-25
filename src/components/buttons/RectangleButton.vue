@@ -115,6 +115,9 @@ function isClicked() {
 }
 
 .digital-clock-btn {
+  flex-basis: 40%;
+  text-align: center;
+  margin: 0 1rem;
   width: 100%;
   padding: 10px 25px;
   background: rgba(234, 179, 8, 1);
@@ -138,12 +141,6 @@ function isClicked() {
     box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
       15px 15px 20px 0px rgba(0, 0, 0, 0.1),
       10px 10px 5px 0px rgba(0, 0, 0, 0.1);
-  }
-
-  @media screen and (max-width: $breakpoint-small) {
-    flex-basis: 40%;
-    text-align: center;
-    margin: 0 1rem 0 1rem;
   }
 }
 
@@ -204,6 +201,13 @@ function isClicked() {
 
   &:hover {
     color: black;
+  }
+}
+
+@media screen and (min-width: $breakpoint-small) {
+  .digital-clock-btn {
+    flex-basis: unset;
+    margin: 1rem 0;
   }
 }
 </style>

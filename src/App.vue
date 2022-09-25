@@ -32,12 +32,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  // overflow-y: auto;
-  // overflow-x: hidden;
-}
-
-body {
+html {
+  font-size: 12px;
 }
 
 *::-webkit-scrollbar {
@@ -47,5 +43,11 @@ body {
 @font-face {
   font-family: OCR_A_Extended;
   src: url("../src/assets/Fonts/OCRAEXT.TTF");
+}
+
+@media screen and (min-width: $breakpoint-small) {
+  html {
+    font-size: 16px;
+  }
 }
 </style>

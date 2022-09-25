@@ -1,6 +1,6 @@
 <template>
   <header class="navbar text-white">
-    <span class="title pl-4 text-xl">Art of Breaking</span>
+    <span class="title pl-4">Art of Breaking</span>
     <div class="navbar-buttons">
       <span class="">Login</span>
       <span class="">Register</span>
@@ -30,6 +30,7 @@ export default {};
   justify-content: end;
 }
 .title {
+  font-size: 2rem;
   font-family: "Dancing Script", cursive;
 }
 </style>
