@@ -13,12 +13,9 @@
         <p class="digital-timer-label-empty"></p>
         <p class="digital-timer-label">second</p>
       </div>
-      <rectangle-button
-        :digitalTimer="true"
-        :containSVG="false"
-        label="Gimme a Break!"
-        class="digital-timer-btn"
-      ></rectangle-button>
+      <div class="digital-timer-btn">
+        <rounded-button :digitalTimerPause="true"></rounded-button>
+      </div>
     </div>
 
     <div v-if="!timerStarted" class="timer-task-creator">
@@ -35,6 +32,7 @@
 import { ref } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
 import RectangleButton from "./buttons/RectangleButton.vue";
+import RoundedButton from "./buttons/RoundedButton.vue";
 
 const timerStarted = ref(true);
 
@@ -43,11 +41,12 @@ onMounted(() => {});
 
 <style scoped lang="scss">
 .digital-timer-container {
-  width: 90%;
+  width: 100%;
   height: 4rem;
-  position: relative;
+  position: sticky;
+  top: 0;
   background: transparent;
-  // border: 1px solid white;
+
   box-shadow: $container-shadow;
 }
 
@@ -130,13 +129,16 @@ onMounted(() => {});
 }
 
 .digital-timer-btn {
-  font-size: 1rem;
+  flex-basis: 40%;
+  display: grid;
+  align-items: center;
+  justify-items: center;
 }
 
 @media screen and (min-width: $breakpoint-small) {
   .digital-timer-container {
-    width: 400px;
-    height: auto;
+    width: 95%;
+    height: 90%;
     position: relative;
     background: transparent;
     // border: 1px solid white;
@@ -144,20 +146,23 @@ onMounted(() => {});
   }
 
   .grid-container {
-    flex-basis: unset;
+    flex-basis: 50%;
+    width: 100%;
     grid-template-columns: 1fr 20px 1fr 20px 1fr;
-    grid-template-rows: 1fr 50px;
+    grid-template-rows: 1fr 2rem;
     display: grid;
     align-items: center;
     justify-items: center;
   }
   .flex-container {
-    display: unset;
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-items: center;
   }
 
   .digital-timer-word {
-    font-size: 3rem;
+    font-size: 2rem;
     &:nth-child(1) {
       justify-self: center;
     }
@@ -195,6 +200,10 @@ onMounted(() => {});
   }
   .digital-timer-label-empty {
     display: unset;
+  }
+
+  .digital-timer-btn {
+    flex-basis: 50%;
   }
 }
 </style>

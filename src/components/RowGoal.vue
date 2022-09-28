@@ -1,13 +1,6 @@
 <template>
   <div class="row-goal flex flex-row">
-    <div class="flex flex-col basis-3/4 items-start">
-      <div>{{ title }}</div>
-      <div>by 23/8/2021</div>
-    </div>
-    <div class="flex flex-col basis-1/4 items-start justify-center">
-      <div>1 hr</div>
-      <div>23 min</div>
-    </div>
+    <div>{{ title }}</div>
   </div>
 </template>
 

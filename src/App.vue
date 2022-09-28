@@ -34,6 +34,9 @@ export default {
 
 html {
   font-size: 12px;
+  max-width: 80rem;
+  margin: 0 auto;
+  background: rgba(13, 148, 136, 1);
 }
 
 *::-webkit-scrollbar {

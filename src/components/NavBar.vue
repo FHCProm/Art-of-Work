@@ -17,9 +17,8 @@ export default {};
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-content: center;
-  width: 100vw;
+  width: 100%;
   height: 80px;
-  background: #86cac4;
 }
 
 .navbar-buttons {

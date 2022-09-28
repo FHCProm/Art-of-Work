@@ -14,7 +14,7 @@
         :containSVG="true"
         padding="1.5rem 0px"
         label="create new task"
-        class="mx-auto mt-4"
+        class="mx-auto mt-4 new-task-btn"
         @respond="openDialog"
       ></rectangle-button>
       <task-list></task-list>
@@ -172,19 +172,23 @@ $leaves: (
   position: relative;
   // border: 1px solid white;
   box-shadow: $container-shadow;
-  min-width: 600px;
-  width: 90%;
-  height: 900px;
+  width: 100%;
+  height: 97%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-items: center;
+  overflow-y: scroll;
 }
 .taskNavigation {
   display: grid;
   width: 95%;
   margin: 0 auto 0 auto;
   grid-template-columns: 1fr 1fr;
+}
+
+.new-task-btn {
+  display: none;
 }
 
 .messageBox {
@@ -265,6 +269,16 @@ $leaves: (
 
   100% {
     transform: rotate(0);
+  }
+}
+
+@media screen and (min-width: $breakpoint-small) {
+  .task-banner {
+    width: 95%;
+  }
+
+  .new-task-btn {
+    display: flex;
   }
 }
 </style>

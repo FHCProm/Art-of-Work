@@ -1,14 +1,14 @@
 <template>
   <div class="task" @mouseover="hover = true" @mouseleave="hover = false">
-    <div class="task-title text-xs">
-      {{ task.goal }}
+    <div class="task-title uppercase">
+      <!-- {{ task.goal }} -->
     </div>
 
-    <div class="time text-xs">
-      {{ formattedTimeStarted }}
+    <div class="time">
+      {{ formattedDaysAgo }}
     </div>
-    <div class="description text-xl">
-      {{ displayText }}
+    <div class="description font-bold">
+      {{ task.taskDescription }}
     </div>
     <div class="buttons">
       <div class="play-button inline-block mr-6 h-6 w-6">
@@ -44,6 +44,29 @@
         </svg>
       </div>
     </div>
+    <div class="details">
+      <div class="details-label">
+        <div>details</div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          class="w-5 h-5"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </div>
+      <div class="details-content">
+        <p>Task Duration</p>
+        <p>{{ formattedDuration }}</p>
+        <p>Goal</p>
+        <p>part of figuring the design of art of breaking</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -56,92 +79,50 @@ export default {
     },
   },
   data() {
-    return {
-      hover: false,
-      displayText: "",
-      letterArray: [],
-    };
+    return {};
   },
-  mounted() {
-    if (this.task.taskDescription != undefined) {
-      this.letterArray = this.task.taskDescription.split("");
-      let displayTextLength = 80;
-      if (this.letterArray.length < 80) {
-        displayTextLength = this.letterArray.length;
-      }
-
-      for (let x = 0; x < displayTextLength; x++) {
-        this.displayText = `${this.displayText}${this.letterArray[x]}`;
-        if (x == displayTextLength - 1 && displayTextLength == 80) {
-          this.displayText = `${this.displayText}...`;
-        }
-      }
-    }
-  },
+  mounted() {},
   methods: {
-    sleep(milliseconds) {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          resolve();
-        }, milliseconds);
-      });
+    StringPluralDeterminer(term, number) {
+      let output = number > 1 ? `${term}s` : term;
+      return output;
     },
   },
 
   computed: {
-    formattedTimeStarted() {
+    formattedDaysAgo() {
       let momentObject = moment.unix(this.task.timeStarted);
-      return `since ${momentObject.format("D/M/YYYY h:mm a")}`;
+      return momentObject.fromNow(false);
+      //return `since ${momentObject.format("D/M/YYYY h:mm a")}`;
     },
-  },
-  watch: {
-    async hover(newValue) {
-      if (this.letterArray.length > 80) {
-        if (newValue == true) {
-          let removedTripleDot = this.displayText.split("...");
-          this.displayText = removedTripleDot[0];
+    formattedDuration() {
+      let duration = this.task.duration;
+      let day = parseInt(duration / 86400);
+      let hour = parseInt(duration / 3600);
+      let minute = parseInt(duration / 60);
 
-          for (
-            let x = this.displayText.length;
-            x < this.letterArray.length && this.hover == true;
-            x = x + 2
-          ) {
-            if (this.letterArray.length - x > 1) {
-              this.displayText = `${this.displayText}${this.letterArray[x]}${
-                this.letterArray[x + 1]
-              }`;
-            } else {
-              this.displayText = `${this.displayText}${this.letterArray[x]}`;
-            }
-
-            await this.sleep(1);
-          }
-        }
-        if (newValue == false) {
-          for (
-            let x = this.displayText.length;
-            x > 80 && this.hover == false;
-            x = x - 2
-          ) {
-            if (this.displayText.length - x > 1) {
-              this.displayText = this.displayText.slice(
-                0,
-                this.displayText.length - 2
-              );
-            } else {
-              this.displayText = this.displayText.slice(
-                0,
-                this.displayText.length - 1
-              );
-            }
-
-            await this.sleep(1);
-            if (x == 81) {
-              this.displayText = `${this.displayText}...`;
-            }
-          }
-        }
+      if (day != 0) {
+        let hourPassed = parseInt((duration - 86400 * day) / 3600);
+        return `${day}${this.StringPluralDeterminer(
+          "day",
+          day
+        )} ${hourPassed}${this.StringPluralDeterminer("hour", hourPassed)}`;
       }
+      if (hour != 0) {
+        let minutesPassed = parseInt((duration - 3600 * hour) / 60);
+
+        return `${hour}${this.StringPluralDeterminer(
+          "hour",
+          hour
+        )} ${minutesPassed}${this.StringPluralDeterminer("minute", minute)}`;
+      }
+      if (minute != 0) {
+        return `${minute}${this.StringPluralDeterminer("minute", minute)}`;
+      }
+      if (duration != 0) {
+        return `${duration}${this.StringPluralDeterminer("second", duration)}`;
+      }
+      return "none";
     },
   },
 };
@@ -152,7 +133,8 @@ export default {
   width: 95%;
   position: relative;
   display: grid;
-  padding-bottom: 1rem;
+  padding: 0.3rem 0.5rem 1rem 0.5rem;
+
   grid-template-columns: 80% 20%;
   margin-top: 1rem;
   color: white;
@@ -161,24 +143,22 @@ export default {
   &-title {
     grid-column: 1/3;
     grid-row: 1/2;
+    height: 0.3rem;
 
-    padding: 0 0.5rem 0 0.5rem;
     background: rgb(234, 88, 12);
   }
 
   .time {
+    font-size: 0.7rem;
     grid-column: 1/3;
     grid-row: 2/3;
-    padding: 0.3rem 0.5rem 0 0.5rem;
   }
   .description {
     @include transition-ease(0.5s);
     position: relative;
     grid-column: 1/2;
     grid-row: 3/4;
-    padding: 0.3rem 0.5rem 0 0.5rem;
     height: 100%;
-    overflow: hidden;
   }
 
   .buttons {
@@ -189,6 +169,28 @@ export default {
 
     justify-self: end;
     align-self: flex-start;
+  }
+}
+
+.details {
+  font-size: 0.7rem;
+  padding-top: 0.2rem;
+  grid-column: 1/3;
+  grid-row: 4/5;
+  &-label {
+    display: flex;
+    align-items: center;
+  }
+
+  &-content {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2),
+      inset -0.2rem -0.2rem 0.5rem var(--greyLight-2);
+  }
+  svg {
+    transform: rotate(90deg);
   }
 }
 

@@ -1,11 +1,22 @@
 <template>
   <div class="page-layout pt-4">
     <digital-timer class="digital-timer"></digital-timer>
-    <goal-banner class="mt-5 goal-banner"></goal-banner>
+    <goal-banner class="goal-banner"></goal-banner>
 
     <task-banner class="task-banner"></task-banner>
-
-    <!-- <rectangle-button class="mt-20"></rectangle-button> -->
+    <div class="fixed-selection-btn">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M12 5.25a.75.75 0 01.75.75v5.25H18a.75.75 0 010 1.5h-5.25V18a.75.75 0 01-1.5 0v-5.25H6a.75.75 0 010-1.5h5.25V6a.75.75 0 01.75-.75z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </div>
   </div>
 </template>
 
@@ -28,11 +39,9 @@ export default {
 .page-layout {
   grid-template-columns: 1fr;
   grid-template-rows: 5rem 1fr;
-  position: relative;
   display: grid;
   justify-items: center;
   align-items: center;
-  background: rgba(13, 148, 136, 1);
 
   .digital-timer {
     grid-column: 1/2;
@@ -50,10 +59,21 @@ export default {
   }
 }
 
+.fixed-selection-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  color: gray;
+  background: rgb(119, 233, 142);
+  border-radius: 100%;
+}
+
 @media screen and (min-width: $breakpoint-small) {
   .page-layout {
-    grid-template-columns: 450px 1fr;
-    grid-template-rows: 230px 1fr;
+    grid-template-columns: 25% 75%;
+    grid-template-rows: 30% 70%;
 
     .digital-timer {
       grid-column: 1/2;
@@ -62,11 +82,12 @@ export default {
     }
     .goal-banner {
       align-self: flex-start;
+      justify-self: center;
       grid-column: 1/2;
       grid-row: 2/3;
     }
     .task-banner {
-      justify-self: start;
+      align-self: flex-start;
       grid-column: 2/3;
       grid-row: 1/3;
     }
