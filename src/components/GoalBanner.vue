@@ -4,8 +4,7 @@
     <div v-if="goalSet" class="goal-content">
       <div class="current-goal mt-4">
         Make a design draf for Art of Breaking Make a design draf for Art of
-        Breaking Make a design draf for Art of Breaking Make a design draf for
-        Art of Breaking
+        Breaking
       </div>
       <div class="goal-set-btn">
         <rounded-button

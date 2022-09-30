@@ -1,38 +1,61 @@
 <template>
-  <div class="page-layout pt-4">
-    <digital-timer class="digital-timer"></digital-timer>
-    <goal-banner class="goal-banner"></goal-banner>
+  <div class="page-layout pt-4" ref="refDashboard">
+    <digital-timer
+      class="digital-timer z-10"
+      @VisibleSectionUpdate="changeSection"
+    ></digital-timer>
 
-    <task-banner class="task-banner"></task-banner>
-    <div class="fixed-selection-btn">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M12 5.25a.75.75 0 01.75.75v5.25H18a.75.75 0 010 1.5h-5.25V18a.75.75 0 01-1.5 0v-5.25H6a.75.75 0 010-1.5h5.25V6a.75.75 0 01.75-.75z"
-          clip-rule="evenodd"
-        />
-      </svg>
-    </div>
+    <goal-banner
+      v-if="visibleSection == 'goalBanner' || mediumScreenOrAbove"
+      class="goal-banner animatePartialLayout"
+    ></goal-banner>
+
+    <task-banner
+      v-if="visibleSection == 'taskBanner' || mediumScreenOrAbove"
+      class="task-banner animatePartialLayout"
+    ></task-banner>
   </div>
 </template>
 
-<script>
+<script setup>
 import RectangleButton from "@/components/buttons/RectangleButton.vue";
 import DigitalTimer from "@/components/DigitalTimer.vue";
 import GoalBanner from "@/components/GoalBanner.vue";
 import TaskBanner from "@/components/TaskBanner.vue";
-export default {
-  components: {
-    RectangleButton,
-    DigitalTimer,
-    GoalBanner,
-    TaskBanner,
-  },
-};
+import { updateDoc } from "@firebase/firestore";
+import { ref } from "@vue/reactivity";
+import { onMounted, watch } from "@vue/runtime-core";
+
+let visibleSection = ref("taskBanner");
+let refDashboard = ref(null);
+let dashboardWidth = ref(null);
+let mediumScreenOrAbove = ref(false);
+
+function changeSection(section) {
+  visibleSection.value = section == "Go to Task" ? "taskBanner" : "goalBanner";
+}
+onMounted(() => {
+  if (screen.width > 640) {
+    mediumScreenOrAbove.value = true;
+  }
+  if (refDashboard.value.offsetWidth < 640) {
+    mediumScreenOrAbove.value = false;
+  }
+  window.addEventListener("resize", updatedashboardWidth);
+});
+function updatedashboardWidth() {
+  dashboardWidth.value = screen.width;
+}
+
+watch(dashboardWidth, (newWidth) => {
+  console.log("wather triggerd");
+  if (newWidth > 640) {
+    mediumScreenOrAbove.value = true;
+  }
+  if (newWidth < 640) {
+    mediumScreenOrAbove.value = false;
+  }
+});
 </script>
 
 <style scoped lang='scss'>
@@ -59,15 +82,29 @@ export default {
   }
 }
 
-.fixed-selection-btn {
-  position: fixed;
-  bottom: 1.5rem;
-  right: 1rem;
-  width: 3rem;
-  height: 3rem;
-  color: gray;
-  background: rgb(119, 233, 142);
-  border-radius: 100%;
+// .fadeUp-enter-active,
+// .fadeUp-leave-active {
+//   transition: all 0.5s ease;
+// }
+
+// .fadeUp-enter-from,
+// .fadeUp-leave-to {
+//   opacity: 0;
+
+//   transform: translateY(20px) scale(0.7);
+// }
+.animatePartialLayout {
+  animation: fadeUp 0.5s linear forwards;
+}
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
 }
 
 @media screen and (min-width: $breakpoint-small) {
@@ -91,6 +128,10 @@ export default {
       grid-column: 2/3;
       grid-row: 1/3;
     }
+  }
+
+  .animatePartialLayout {
+    animation: unset;
   }
 }
 </style>

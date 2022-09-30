@@ -1,5 +1,5 @@
 <template>
-  <div class="task-banner">
+  <div class="task-banner-layout">
     <div v-if="taskIsSet" class="w-full h-full">
       <div class="taskNavigation">
         <arrow-button direction="left"></arrow-button>
@@ -115,29 +115,18 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import ArrowButton from "@/components/buttons/ArrowButton.vue";
 import TaskList from "@/components/TaskList.vue";
 import RectangleButton from "@/components/buttons/RectangleButton.vue";
 import DashboardDialogs from "@/components/dialogs/DashboardDialogs.vue";
-export default {
-  components: {
-    ArrowButton,
-    TaskList,
-    RectangleButton,
-    DashboardDialogs,
-  },
-  data() {
-    return {
-      taskIsSet: true,
-    };
-  },
-  methods: {
-    openDialog() {
-      this.$refs.modal.isOpen = true;
-    },
-  },
-};
+import { ref } from "@vue/reactivity";
+
+const taskIsSet = ref(true);
+const modal = ref(null);
+function openDialog() {
+  modal.value.isOpen = true;
+}
 </script>
 
 <style scoped lang="scss">
@@ -168,7 +157,7 @@ $leaves: (
   ),
 );
 
-.task-banner {
+.task-banner-layout {
   position: relative;
   // border: 1px solid white;
   box-shadow: $container-shadow;
@@ -192,18 +181,16 @@ $leaves: (
 }
 
 .messageBox {
-  position: absolute;
   width: 100%;
-  height: 100%;
+  min-height: 50vh;
   display: grid;
   align-items: center;
   justify-items: center;
   color: white;
   font-size: 1rem;
   text-align: center;
-
   svg {
-    width: 500px;
+    width: 200px;
   }
 }
 
@@ -273,12 +260,19 @@ $leaves: (
 }
 
 @media screen and (min-width: $breakpoint-small) {
-  .task-banner {
+  .task-banner-layout {
     width: 95%;
   }
 
   .new-task-btn {
     display: flex;
+  }
+
+  .messageBox {
+    height: 100%;
+    svg {
+      width: 500px;
+    }
   }
 }
 </style>
