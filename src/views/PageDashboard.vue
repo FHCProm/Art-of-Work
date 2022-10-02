@@ -28,34 +28,25 @@ import { onMounted, watch } from "@vue/runtime-core";
 
 let visibleSection = ref("taskBanner");
 let refDashboard = ref(null);
-let dashboardWidth = ref(null);
 let mediumScreenOrAbove = ref(false);
 
 function changeSection(section) {
   visibleSection.value = section == "Go to Task" ? "taskBanner" : "goalBanner";
 }
+
+// the changing variable is called viewport or "innerwidth"
 onMounted(() => {
-  if (screen.width > 640) {
-    mediumScreenOrAbove.value = true;
-  }
-  if (refDashboard.value.offsetWidth < 640) {
-    mediumScreenOrAbove.value = false;
-  }
-  window.addEventListener("resize", updatedashboardWidth);
+  mediumScreenOrAbove.value=window.innerWidth>640?true:false;
+  window.visualViewport.addEventListener("resize", updatedashboardWidth);
 });
 function updatedashboardWidth() {
-  dashboardWidth.value = screen.width;
-}
-
-watch(dashboardWidth, (newWidth) => {
-  console.log("wather triggerd");
-  if (newWidth > 640) {
+  if (window.innerWidth > 640) {
     mediumScreenOrAbove.value = true;
   }
-  if (newWidth < 640) {
+  if (window.innerWidth < 640) {
     mediumScreenOrAbove.value = false;
   }
-});
+}
 </script>
 
 <style scoped lang='scss'>
