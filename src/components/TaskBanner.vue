@@ -2,11 +2,11 @@
   <div class="task-banner-layout">
     <div v-if="taskIsSet" class="w-full h-full">
       <div class="taskNavigation">
-        <arrow-button direction="left"></arrow-button>
-        <arrow-button
+        <ButtonChevronText direction="left"></ButtonChevronText>
+        <ButtonChevronText
           direction="right"
           style="justify-self: end"
-        ></arrow-button>
+        ></ButtonChevronText>
       </div>
       <rectangle-button
         :taskBanner="true"
@@ -116,11 +116,11 @@
 </template>
 
 <script setup>
-import ArrowButton from "@/components/buttons/ArrowButton.vue";
+import ButtonChevronText from "@/components/buttons/ButtonChevronText.vue";
 import TaskList from "@/components/TaskList.vue";
 import RectangleButton from "@/components/buttons/RectangleButton.vue";
 import DashboardDialogs from "@/components/dialogs/DashboardDialogs.vue";
-import { ref } from "@vue/reactivity";
+import { ref } from "vue";
 
 const taskIsSet = ref(true);
 const modal = ref(null);
@@ -172,6 +172,7 @@ $leaves: (
 .taskNavigation {
   display: grid;
   width: 95%;
+  padding-top: 0.5rem;
   margin: 0 auto 0 auto;
   grid-template-columns: 1fr 1fr;
 }
