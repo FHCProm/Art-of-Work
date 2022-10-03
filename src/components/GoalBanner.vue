@@ -43,7 +43,7 @@
 import RoundedButton from "@/components/buttons/RoundedButton.vue";
 import RowGoal from "@/components/RowGoal.vue";
 import RectangleButton from "@/components/buttons/RectangleButton.vue";
-import { ref } from "@vue/reactivity";
+import { ref } from "vue";
 
 const goalSet = ref(true);
 const goalHistory = ref({

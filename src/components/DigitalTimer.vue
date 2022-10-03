@@ -136,8 +136,8 @@
 </template>
 
 <script setup>
-import { ref } from "@vue/reactivity";
-import { computed, onMounted } from "@vue/runtime-core";
+import { ref } from "vue";
+import { computed, onMounted } from "vue";
 import RectangleButton from "./buttons/RectangleButton.vue";
 import RoundedButton from "./buttons/RoundedButton.vue";
 import SvgButton from "./buttons/SvgButton.vue";

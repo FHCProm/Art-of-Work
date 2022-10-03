@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-const { computed } = require("@vue/runtime-core");
+import { computed } from "vue";
 
 const props = defineProps({
   label: {
