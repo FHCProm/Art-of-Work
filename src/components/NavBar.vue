@@ -1,5 +1,5 @@
 <template>
-  <header class="navbar text-white">
+  <header class="navbar">
     <span class="title pl-4">Art of Breaking</span>
     <div class="navbar-buttons">
       <span class="">Login</span>
@@ -19,6 +19,7 @@ export default {};
   align-content: center;
   width: 100%;
   height: 80px;
+  color: var(--gray-900);
 }
 
 .navbar-buttons {

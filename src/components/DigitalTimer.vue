@@ -174,10 +174,9 @@ onMounted(() => {});
   width: 100%;
   height: 4rem;
   position: sticky;
-
+  color: var(--gray-900);
   top: 0;
-  background: transparent;
-
+  background: var(--gray-300);
   box-shadow: $container-shadow;
 }
 
@@ -208,7 +207,6 @@ onMounted(() => {});
 
 .digital-timer-word {
   font-size: 1rem;
-  color: white;
   font-family: "OCR_A_Extended";
 
   &:nth-child(1) {
@@ -235,7 +233,6 @@ onMounted(() => {});
 .digital-timer-label {
   font-size: 1rem;
   font-family: "Italiana", serif;
-  color: white;
 
   &:nth-child(6) {
     grid-column: 2/3;
@@ -264,7 +261,6 @@ onMounted(() => {});
   justify-items: center;
 }
 .digital-timer-next-section {
-  color: white;
   //align-self: flex-end;
 }
 
@@ -276,11 +272,9 @@ onMounted(() => {});
 
   height: 100%;
   &-back {
-    color: white;
   }
   &-section {
     display: flex;
-    color: white;
   }
 
   &-btn {
@@ -307,7 +301,7 @@ onMounted(() => {});
     width: 95%;
     height: 90%;
     position: relative;
-    background: transparent;
+    background: var(--gray-300);
     // border: 1px solid white;
     box-shadow: $container-shadow;
   }
@@ -344,7 +338,7 @@ onMounted(() => {});
   .digital-timer-colon {
     display: unset;
     font-size: 1rem;
-    color: white;
+
     font-family: "OCR_A_Extended";
   }
 

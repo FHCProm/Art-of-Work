@@ -18,13 +18,12 @@
 </template>
 
 <script setup>
-import RectangleButton from "@/components/buttons/RectangleButton.vue";
 import DigitalTimer from "@/components/DigitalTimer.vue";
 import GoalBanner from "@/components/GoalBanner.vue";
 import TaskBanner from "@/components/TaskBanner.vue";
-import { updateDoc } from "@firebase/firestore";
-import { ref } from "@vue/reactivity";
-import { onMounted, watch } from "@vue/runtime-core";
+
+import { ref } from "vue";
+import { onMounted } from "vue";
 
 let visibleSection = ref("taskBanner");
 let refDashboard = ref(null);
@@ -36,7 +35,7 @@ function changeSection(section) {
 
 // the changing variable is called viewport or "innerwidth"
 onMounted(() => {
-  mediumScreenOrAbove.value=window.innerWidth>640?true:false;
+  mediumScreenOrAbove.value = window.innerWidth > 640 ? true : false;
   window.visualViewport.addEventListener("resize", updatedashboardWidth);
 });
 function updatedashboardWidth() {
@@ -49,7 +48,7 @@ function updatedashboardWidth() {
 }
 </script>
 
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .page-layout {
   grid-template-columns: 1fr;
   grid-template-rows: 5rem 1fr;
