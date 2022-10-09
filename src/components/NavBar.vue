@@ -1,6 +1,6 @@
 <template>
-  <header class="navbar text-white">
-    <span class="title pl-4 text-4xl">Art of Breaking</span>
+  <header class="navbar">
+    <span class="title pl-4">Art of Breaking</span>
     <div class="navbar-buttons">
       <span class="">Login</span>
       <span class="">Register</span>
@@ -14,13 +14,12 @@ export default {};
 
 <style>
 .navbar {
-  position: absolute;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-content: center;
-  width: 100vw;
+  width: 100%;
   height: 80px;
-  background: rgba(255, 255, 255, 0.5);
+  color: var(--gray-900);
 }
 
 .navbar-buttons {
@@ -31,6 +30,7 @@ export default {};
   justify-content: end;
 }
 .title {
+  font-size: 2rem;
   font-family: "Dancing Script", cursive;
 }
 </style>

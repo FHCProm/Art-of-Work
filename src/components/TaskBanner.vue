@@ -1,12 +1,12 @@
 <template>
-  <div class="task-banner">
+  <div class="task-banner-layout">
     <div v-if="taskIsSet" class="w-full h-full">
       <div class="taskNavigation">
-        <arrow-button direction="left"></arrow-button>
-        <arrow-button
+        <ButtonChevronText direction="left"></ButtonChevronText>
+        <ButtonChevronText
           direction="right"
           style="justify-self: end"
-        ></arrow-button>
+        ></ButtonChevronText>
       </div>
       <rectangle-button
         :taskBanner="true"
@@ -14,7 +14,7 @@
         :containSVG="true"
         padding="1.5rem 0px"
         label="create new task"
-        class="mx-auto mt-4"
+        class="mx-auto mt-4 new-task-btn"
         @respond="openDialog"
       ></rectangle-button>
       <task-list></task-list>
@@ -115,29 +115,18 @@
   </div>
 </template>
 
-<script>
-import ArrowButton from "@/components/buttons/ArrowButton.vue";
+<script setup>
+import ButtonChevronText from "@/components/buttons/ButtonChevronText.vue";
 import TaskList from "@/components/TaskList.vue";
 import RectangleButton from "@/components/buttons/RectangleButton.vue";
 import DashboardDialogs from "@/components/dialogs/DashboardDialogs.vue";
-export default {
-  components: {
-    ArrowButton,
-    TaskList,
-    RectangleButton,
-    DashboardDialogs,
-  },
-  data() {
-    return {
-      taskIsSet: false,
-    };
-  },
-  methods: {
-    openDialog() {
-      this.$refs.modal.isOpen = true;
-    },
-  },
-};
+import { ref } from "vue";
+
+const taskIsSet = ref(true);
+const modal = ref(null);
+function openDialog() {
+  modal.value.isOpen = true;
+}
 </script>
 
 <style scoped lang="scss">
@@ -168,37 +157,41 @@ $leaves: (
   ),
 );
 
-.task-banner {
+.task-banner-layout {
   position: relative;
-  border: 1px solid white;
-  min-width: 600px;
-  width: 90%;
-  min-height: 940px;
+  // border: 1px solid white;
+  box-shadow: $container-shadow;
+  width: 100%;
+  height: 97%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-items: center;
+  overflow-y: scroll;
 }
 .taskNavigation {
   display: grid;
   width: 95%;
+  padding-top: 0.5rem;
   margin: 0 auto 0 auto;
   grid-template-columns: 1fr 1fr;
 }
 
+.new-task-btn {
+  display: none;
+}
+
 .messageBox {
-  position: absolute;
   width: 100%;
-  height: 100%;
+  min-height: 50vh;
   display: grid;
   align-items: center;
   justify-items: center;
   color: white;
   font-size: 1rem;
   text-align: center;
-
   svg {
-    width: 500px;
+    width: 200px;
   }
 }
 
@@ -264,6 +257,23 @@ $leaves: (
 
   100% {
     transform: rotate(0);
+  }
+}
+
+@media screen and (min-width: $breakpoint-small) {
+  .task-banner-layout {
+    width: 95%;
+  }
+
+  .new-task-btn {
+    display: flex;
+  }
+
+  .messageBox {
+    height: 100%;
+    svg {
+      width: 500px;
+    }
   }
 }
 </style>

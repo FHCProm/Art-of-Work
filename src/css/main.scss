@@ -1,27 +1,45 @@
-
 :root {
-    --primary-light: #8abdff;
-    --primary: #6d5dfc;
-    --primary-dark: #5b0eeb;
-  
-    --white: rgb(44, 201, 188);
-    --greyLight-1: #e4ebf5;
-    --greyLight-2: rgb(8, 116, 107);
-    --greyLight-3: #bec8e4;
-    --greyDark: #9baacf;
-  }
-  
-  $shadow: .3rem .3rem .6rem var(--greyLight-2), 
-  -.2rem -.2rem .5rem var(--white);
+  //neutral-color
+  --gray-100: #f3f4f6;
+  --gray-300: #d1d5db;
+  --gray-500: #6b7280;
+  --gray-700: #374151;
+  --gray-900: #111827;
 
-  $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2), 
-inset -.2rem -.2rem .5rem var(--white);
+  //primary-color
+  --yellow-100: #fef9c3;
+  --yellow-300: #fde047;
+  --yellow-500: #eab308;
+  --yellow-700: #a16207;
+  --yellow-900: #713f12;
 
-.colorPrimary{
-    background-color: #bec0d9;
+  //accent-colors
+  --teal-100: #ccfbf1;
+  --teal-300: #5eead4;
+  --teal-500: #14b8a6;
+  --teal-700: #0f766e;
+  --teal-900: #134e4a;
+
+  --orange-100: #ffedd5;
+  --orange-100: #fdba74;
+  --orange-100: #f97316;
+  --orange-100: #c2410c;
+  --orange-100: #7c2d12;
 }
 
-@mixin transition-ease($duration) {
-    transition: all $duration ease-in;
+$breakpoint-small: 640px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 1024px;
 
+$shadow: 0.3rem 0.3rem 0.6rem var(--gray-700),
+  -0.2rem -0.2rem 0.5rem var(--gray-100);
+
+$inner-shadow: inset 0.2rem 0.2rem 0.5rem var(--gray-700),
+  inset -0.2rem -0.2rem 0.5rem var(--gray-100);
+
+$container-shadow: 0.3rem 0.3rem 0.6rem var(--gray-700),
+  -0.2rem -0.2rem 0.5rem var(--gray-100);
+
+@mixin transition-ease($duration) {
+  transition: all $duration ease-in;
 }

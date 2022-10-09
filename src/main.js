@@ -1,5 +1,5 @@
 import { createApp } from "vue";
-import App from "./App.vue";
+import App from "@/App.vue";
 import { initializeApp } from "firebase/app";
 import firebaseConfig from "@/config/firebase";
 import { getFirestore } from "firebase/firestore";
