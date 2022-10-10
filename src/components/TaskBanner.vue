@@ -116,7 +116,7 @@
 </template>
 
 <script setup>
-import ButtonChevronText from "@/components/buttons/ButtonChevronText.vue";
+import ButtonChevronText from "@/components/buttons/dashboard/ButtonChevronText.vue";
 import TaskList from "@/components/TaskList.vue";
 import RectangleButton from "@/components/buttons/RectangleButton.vue";
 import DashboardDialogs from "@/components/dialogs/DashboardDialogs.vue";

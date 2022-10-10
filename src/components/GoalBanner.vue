@@ -7,25 +7,24 @@
         Breaking
       </div>
       <div class="goal-set-btn">
-        <rounded-button
-          :goalBannerWithGoalSet="true"
+        <primary-button
+          class="grow mt-4"
           text="completed"
-          class="grow"
-        ></rounded-button>
-        <rounded-button
-          :goalBannerWithGoalSet="true"
+          borderRadius="1rem"
+          padding="0.25rem 0.5rem 0.25rem 0.5rem"
+        ></primary-button>
+
+        <warning-button
+          class="grow mt-4"
           text="set aside"
-          class="grow"
-        ></rounded-button>
+          borderRadius="1rem"
+          padding="0.25rem 0.5rem 0.25rem 0.5rem"
+        ></warning-button>
       </div>
     </div>
     <div v-if="!goalSet">
       <div class="goal-not-set-btn">
-        <rounded-button
-          text="set a goal"
-          :containSVG="true"
-          :goalBannerWithGoalNotSet="true"
-        ></rounded-button>
+        <goal-create-button></goal-create-button>
       </div>
     </div>
     <div class="achievement-label mt-5">Achievements</div>
@@ -40,12 +39,13 @@
 </template>
 
 <script setup>
-import RoundedButton from "@/components/buttons/RoundedButton.vue";
 import RowGoal from "@/components/RowGoal.vue";
-import RectangleButton from "@/components/buttons/RectangleButton.vue";
+import PrimaryButton from "@/components/buttons/dashboard/PrimaryButton.vue";
+import WarningButton from "@/components/buttons/dashboard/WarningButton.vue";
+import GoalCreateButton from "@/components/buttons/dashboard/GoalCreateButton.vue";
 import { ref } from "vue";
 
-const goalSet = ref(true);
+const goalSet = ref(false);
 const goalHistory = ref({
   123: {
     title: "Learn Reactivity",
@@ -84,7 +84,8 @@ const goalHistory = ref({
 .banner {
   width: 100%;
   height: stretch;
-  // border: 1px solid white;
+  color: var(--gray-900);
+
   box-shadow: $container-shadow;
   display: flex;
   flex-direction: column;
@@ -115,7 +116,7 @@ const goalHistory = ref({
 .current-goal {
   border-radius: 1rem;
   padding: 0.5rem;
-  color: white;
+
   border: 2px dashed white;
   margin-left: 1rem;
   margin-right: 1rem;
@@ -143,7 +144,7 @@ const goalHistory = ref({
   width: 100%;
 
   background: rgba(255, 255, 255, 0.4);
-  color: white;
+
   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
     7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
 }
@@ -167,7 +168,7 @@ const goalHistory = ref({
     flex-basis: unset;
     border-radius: 1rem;
     padding: 0.5rem;
-    color: white;
+
     border: 2px dashed white;
     margin-left: 1rem;
     margin-right: 1rem;

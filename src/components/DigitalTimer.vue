@@ -1,7 +1,11 @@
 <template>
   <div class="digital-timer-container">
     <Transition name="fadeIn" mode="out-in">
-      <div v-if="!nextSection && timerStarted" class="time-btn-container">
+      <!--this slide allow users to see the timer and pause the timer-->
+      <div
+        v-if="timerStarted && (!nextSection || mediumScreenOrAbove)"
+        class="first-slide dtc-level-1"
+      >
         <div class="grid-container sm:mt-4">
           <p class="digital-timer-word">00</p>
           <p class="digital-timer-colon">:</p>
@@ -15,9 +19,9 @@
           <p class="digital-timer-label">second</p>
         </div>
         <div class="digital-timer-btn">
-          <rounded-button :digitalTimerPause="true"></rounded-button>
+          <PlayPauseButton></PlayPauseButton>
         </div>
-        <div class="digital-timer-next-section" @click="toggleSection()">
+        <div class="next-slide" @click="toggleSection()">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -33,11 +37,12 @@
         </div>
       </div>
 
-      <div v-else class="selection-creation-container">
-        <div
-          class="selection-creation-container-section"
-          @click="toggleSectionBtn()"
-        >
+      <!-- this part allows users to go to goal or add new task -->
+      <div
+        v-else-if="nextSection && timerStarted && !mediumScreenOrAbove"
+        class="second-slide dtc-level-1"
+      >
+        <div class="second-slide-switch-section" @click="toggleSectionBtn()">
           <svg
             v-if="nextSectionName == 'Go to Goal'"
             class="w-5 h-5"
@@ -114,7 +119,7 @@
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="currentColor"
-          class="w-6 h-6 selection-creation-container-back"
+          class="w-6 h-6 second-slide-arrow"
         >
           <path
             fill-rule="evenodd"
@@ -124,29 +129,27 @@
         </svg>
       </div>
     </Transition>
-
-    <!-- <div v-if="!timerStarted" class="timer-task-creator">
-      <rectangle-button
-        :digitalTimer2="true"
-        :containSVG="false"
-        label="Create New Task"
-      ></rectangle-button>
-    </div> -->
+    <div v-if="!timerStarted" class="createTask dtc-level-1">
+      <svg-button :digitalTimerAddTask="true"></svg-button>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
-import { computed, onMounted } from "vue";
-import RectangleButton from "./buttons/RectangleButton.vue";
-import RoundedButton from "./buttons/RoundedButton.vue";
 import SvgButton from "./buttons/SvgButton.vue";
+import PlayPauseButton from "./buttons/dashboard/PlayPauseButton.vue";
+import { computed } from "vue";
+
+const props = defineProps({
+  mediumScreenOrAbove: {
+    type: Boolean,
+  },
+});
 
 const timerStarted = ref(true);
 const nextSection = ref(false);
 let currentSectionName = ref("Go to Task");
-// let nextSectionName =
-//   currentSectionName.value == "Go to Task" ? "Go to Goal" : "Go to Task";
 
 const nextSectionName = computed(() => {
   return currentSectionName.value == "Go to Task" ? "Go to Goal" : "Go to Task";
@@ -165,8 +168,6 @@ function toggleSectionBtn() {
     currentSectionName.value == "Go to Task" ? "Go to Goal" : "Go to Task";
   emit("VisibleSectionUpdate", currentSectionName.value);
 }
-
-onMounted(() => {});
 </script>
 
 <style scoped lang="scss">
@@ -180,7 +181,7 @@ onMounted(() => {});
   box-shadow: $container-shadow;
 }
 
-.time-btn-container {
+.first-slide {
   display: grid;
   grid-template-columns: 70% 20% 10%;
   height: 100%;
@@ -260,20 +261,19 @@ onMounted(() => {});
   align-items: center;
   justify-items: center;
 }
-.digital-timer-next-section {
+.next-slide {
   //align-self: flex-end;
 }
 
-.selection-creation-container {
+.second-slide {
   display: grid;
   grid-template-columns: 45% 45% 10%;
   align-items: center;
   justify-items: center;
 
   height: 100%;
-  &-back {
-  }
-  &-section {
+
+  &-switch-section {
     display: flex;
   }
 
@@ -296,6 +296,13 @@ onMounted(() => {});
   transform: translateX(-20px);
 }
 
+.createTask {
+  height: 100%;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
 @media screen and (min-width: $breakpoint-small) {
   .digital-timer-container {
     width: 95%;
@@ -315,7 +322,7 @@ onMounted(() => {});
     align-items: center;
     justify-items: center;
   }
-  .time-btn-container {
+  .first-slide {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -366,16 +373,17 @@ onMounted(() => {});
   .digital-timer-btn {
     flex-basis: 50%;
   }
-  .digital-timer-next-section {
+  .next-slide {
     display: none;
   }
 
-  .selection-creation-container {
+  .second-slide {
     grid-template-columns: 1fr;
-    &-back {
+
+    &-arrow {
       display: none;
     }
-    &-section {
+    &-switch-section {
       display: none;
     }
   }

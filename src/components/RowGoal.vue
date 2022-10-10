@@ -21,14 +21,13 @@ const props = defineProps({
 });
 </script>
 
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .row-goal {
   font-size: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  color: white;
 
   &:hover {
     background: rgba(255, 255, 255, 0.3);

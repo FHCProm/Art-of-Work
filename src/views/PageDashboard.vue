@@ -3,6 +3,7 @@
     <digital-timer
       class="digital-timer z-10"
       @VisibleSectionUpdate="changeSection"
+      :mediumScreenOrAbove="mediumScreenOrAbove"
     ></digital-timer>
 
     <goal-banner

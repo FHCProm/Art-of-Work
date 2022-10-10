@@ -17,8 +17,6 @@
 
     <div>Add New Task</div>
   </div>
-
-  <div v-else></div>
 </template>
 
 <script setup>
@@ -41,6 +39,6 @@ const classes = computed(() => ({
 <style scoped lang="scss">
 .digital-clock-add-task {
   display: flex;
-  color: rgba(234, 179, 8, 1);
+  color: var(--gray-700);
 }
 </style>
