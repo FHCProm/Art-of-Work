@@ -113,7 +113,11 @@
 
           {{ nextSectionName }}
         </div>
-        <svg-button :digitalTimerAddTask="true"></svg-button>
+        <task-create-button
+          btnBorderRadius="1rem"
+          btnPadding="0.3rem 0.5rem"
+        ></task-create-button>
+        <!-- <svg-button :digitalTimerAddTask="true"></svg-button> -->
         <svg
           @click="toggleSection()"
           xmlns="http://www.w3.org/2000/svg"
@@ -139,6 +143,7 @@
 import { ref } from "vue";
 import SvgButton from "./buttons/SvgButton.vue";
 import PlayPauseButton from "./buttons/dashboard/PlayPauseButton.vue";
+import TaskCreateButton from "@/components/buttons/dashboard/TaskCreateButton.vue";
 import { computed } from "vue";
 
 const props = defineProps({

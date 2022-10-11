@@ -19,7 +19,7 @@
     height: 1rem;
     align-self: center;
     justify-self: center;
-    background-color: rgba(234, 179, 8, 1);
+    background-color: var(--yellow-500);
   }
 }
 </style>

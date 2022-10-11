@@ -7,18 +7,24 @@
         Breaking
       </div>
       <div class="goal-set-btn">
-        <primary-button
+        <!-- <primary-button
           class="grow mt-4"
           text="completed"
-          borderRadius="1rem"
-          padding="0.25rem 0.5rem 0.25rem 0.5rem"
-        ></primary-button>
+          btnBorderRadius="0.5rem"
+          btnPadding="0.25rem 0.5rem 0.25rem 0.5rem"
+        ></primary-button> -->
+        <secondary-button
+          class="grow mt-4"
+          text="completed"
+          btnBorderRadius="0.5rem"
+          btnPadding="0.25rem 0.5rem 0.25rem 0.5rem"
+        ></secondary-button>
 
         <warning-button
           class="grow mt-4"
           text="set aside"
-          borderRadius="1rem"
-          padding="0.25rem 0.5rem 0.25rem 0.5rem"
+          btnBorderRadius="0.5rem"
+          btnPadding="0.25rem 0.5rem 0.25rem 0.5rem"
         ></warning-button>
       </div>
     </div>
@@ -41,11 +47,12 @@
 <script setup>
 import RowGoal from "@/components/RowGoal.vue";
 import PrimaryButton from "@/components/buttons/dashboard/PrimaryButton.vue";
+import SecondaryButton from "@/components/buttons/dashboard/SecondaryButton.vue";
 import WarningButton from "@/components/buttons/dashboard/WarningButton.vue";
 import GoalCreateButton from "@/components/buttons/dashboard/GoalCreateButton.vue";
 import { ref } from "vue";
 
-const goalSet = ref(false);
+const goalSet = ref(true);
 const goalHistory = ref({
   123: {
     title: "Learn Reactivity",

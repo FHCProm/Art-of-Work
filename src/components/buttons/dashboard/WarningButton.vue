@@ -9,26 +9,31 @@ const props = defineProps({
   text: {
     type: String,
   },
-  borderRadius: {
+  btnBorder: {
     type: String,
   },
-  padding: {
+  btnBorderRadius: {
+    type: String,
+  },
+  btnPadding: {
     type: String,
   },
 });
 
 const style = computed(() => ({
-  borderRadius: props.borderRadius,
-  padding: props.padding,
+  borderRadius: props.btnBorderRadius,
+  padding: props.btnPadding,
+  border: props.btnBorder,
 }));
 </script>
 
 <style lang="scss" scoped>
 .warning-btn {
-  border: 1px solid var(--red-700);
-  background: var(--red-100);
+  background: var(--red-300);
+  color: var(--red-900);
   &:hover {
-    background: var(--red-300);
+    background: var(--red-500);
+    color: var(--red-100);
   }
 }
 </style>

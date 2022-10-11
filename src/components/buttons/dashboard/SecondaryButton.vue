@@ -1,5 +1,5 @@
 <template>
-  <button class="primary-btn" :style="style">{{ text }}</button>
+  <button class="secondary-btn" :style="style">{{ text }}</button>
 </template>
 
 <script setup>
@@ -28,13 +28,13 @@ const style = computed(() => ({
 </script>
 
 <style lang="scss" scoped>
-.primary-btn {
-  background: var(--yellow-300);
-  color: var(--gray-900);
+.secondary-btn {
+  color: var(--teal-900);
+  background: var(--teal-300);
 
   &:hover {
-    background: var(--yellow-700);
-    color: var(--yellow-100);
+    background: var(--teal-700);
+    color: var(--teal-100);
   }
 }
 </style>

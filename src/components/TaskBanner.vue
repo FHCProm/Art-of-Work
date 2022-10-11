@@ -8,15 +8,14 @@
           style="justify-self: end"
         ></ButtonChevronText>
       </div>
-      <rectangle-button
-        :taskBanner="true"
-        width="95%"
-        :containSVG="true"
-        padding="1.5rem 0px"
-        label="create new task"
-        class="mx-auto mt-4 new-task-btn"
+      <task-create-button
+        v-if="mediumScreenOrAbove"
+        class="flex justify-center mx-auto mt-4"
+        btnPadding="0.3rem 0"
+        btnWidth="95%"
         @respond="openDialog"
-      ></rectangle-button>
+      ></task-create-button>
+
       <task-list></task-list>
     </div>
 
@@ -118,9 +117,16 @@
 <script setup>
 import ButtonChevronText from "@/components/buttons/dashboard/ButtonChevronText.vue";
 import TaskList from "@/components/TaskList.vue";
-import RectangleButton from "@/components/buttons/RectangleButton.vue";
+
 import DashboardDialogs from "@/components/dialogs/DashboardDialogs.vue";
+import TaskCreateButton from "@/components/buttons/dashboard/TaskCreateButton.vue";
 import { ref } from "vue";
+
+const props = defineProps({
+  mediumScreenOrAbove: {
+    type: Boolean,
+  },
+});
 
 const taskIsSet = ref(true);
 const modal = ref(null);
