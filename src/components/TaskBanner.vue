@@ -2,18 +2,18 @@
   <div class="task-banner-layout">
     <div v-if="taskIsSet" class="w-full h-full">
       <div class="taskNavigation">
-        <ButtonChevronText direction="left"></ButtonChevronText>
-        <ButtonChevronText
+        <chevron-button direction="left"></chevron-button>
+        <chevron-button
           direction="right"
           style="justify-self: end"
-        ></ButtonChevronText>
+        ></chevron-button>
       </div>
       <task-create-button
         v-if="mediumScreenOrAbove"
         class="flex justify-center mx-auto mt-4"
-        btnPadding="0.3rem 0"
-        btnWidth="95%"
-        @respond="openDialog"
+        btn-padding="0.3rem 0"
+        btn-width="95%"
+        @click="openDialog"
       ></task-create-button>
 
       <task-list></task-list>
@@ -110,14 +110,13 @@
       </div>
     </div>
 
-    <dashboard-dialogs :taskDialog="true" ref="modal"></dashboard-dialogs>
+    <dashboard-dialogs :goalDialog="true" ref="modal"></dashboard-dialogs>
   </div>
 </template>
 
 <script setup>
-import ButtonChevronText from "@/components/buttons/dashboard/ButtonChevronText.vue";
+import ChevronButton from "@/components/buttons/dashboard/ChevronButton.vue";
 import TaskList from "@/components/TaskList.vue";
-
 import DashboardDialogs from "@/components/dialogs/DashboardDialogs.vue";
 import TaskCreateButton from "@/components/buttons/dashboard/TaskCreateButton.vue";
 import { ref } from "vue";
@@ -168,7 +167,6 @@ $leaves: (
   // border: 1px solid white;
   box-shadow: $container-shadow;
   width: 100%;
-  height: 97%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -269,6 +267,7 @@ $leaves: (
 @media screen and (min-width: $breakpoint-small) {
   .task-banner-layout {
     width: 95%;
+    height: 100%;
   }
 
   .new-task-btn {

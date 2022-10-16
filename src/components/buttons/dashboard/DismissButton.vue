@@ -1,5 +1,5 @@
 <template>
-  <button class="primary-btn" :style="style">{{ text }}</button>
+  <div class="dismiss-btn" :style="style">{{ text }}</div>
 </template>
 
 <script setup>
@@ -28,14 +28,11 @@ const style = computed(() => ({
 </script>
 
 <style lang="scss" scoped>
-.primary-btn {
-  background: var(--yellow-300);
-  color: var(--gray-900);
-  box-shadow: 5px 5px 5px 0px var(--yellow-900);
+.dismiss-btn {
+  color: gray;
 
   &:hover {
-    background: var(--yellow-700);
-    color: var(--yellow-100);
+    color: black;
   }
 }
 </style>

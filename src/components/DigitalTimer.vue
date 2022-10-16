@@ -141,7 +141,6 @@
 
 <script setup>
 import { ref } from "vue";
-import SvgButton from "./buttons/SvgButton.vue";
 import PlayPauseButton from "./buttons/dashboard/PlayPauseButton.vue";
 import TaskCreateButton from "@/components/buttons/dashboard/TaskCreateButton.vue";
 import { computed } from "vue";

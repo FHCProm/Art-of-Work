@@ -101,6 +101,7 @@ function updatedashboardWidth() {
 
 @media screen and (min-width: $breakpoint-small) {
   .page-layout {
+    height: 770px;
     grid-template-columns: 30% 70%;
     grid-template-rows: 30% 70%;
     // 25% 75%;

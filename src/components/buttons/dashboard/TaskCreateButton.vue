@@ -1,5 +1,5 @@
 <template>
-  <div @click="isClicked()" class="create-task-btn" :style="style">
+  <div class="create-task-btn" :style="style">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -42,11 +42,10 @@ const style = computed(() => ({
   width: props.btnWidth,
 }));
 
-const emit = defineEmits(["respond"]);
-
-function isClicked() {
-  emit("respond");
-}
+// const emit = defineEmits(["btn-click"]);
+// function isClicked() {
+//   emit("btn-click");
+// }
 </script>
 
 <style lang="scss" scoped>
@@ -55,6 +54,7 @@ function isClicked() {
   align-items: center;
   background: var(--yellow-300);
   color: var(--yellow-900);
+  cursor: pointer;
   &:hover {
     color: var(--yellow-100);
     background: var(--yellow-700);

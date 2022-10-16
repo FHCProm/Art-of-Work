@@ -7,12 +7,6 @@
         Breaking
       </div>
       <div class="goal-set-btn">
-        <!-- <primary-button
-          class="grow mt-4"
-          text="completed"
-          btnBorderRadius="0.5rem"
-          btnPadding="0.25rem 0.5rem 0.25rem 0.5rem"
-        ></primary-button> -->
         <secondary-button
           class="grow mt-4"
           text="completed"

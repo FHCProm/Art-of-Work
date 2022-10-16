@@ -23,17 +23,17 @@
             <textarea class="task-input" rows="3"></textarea>
           </div>
           <div class="task-dialog-btn">
-            <rectangle-button
-              label="cancel"
-              :cancel="true"
+            <dismiss-button
+              text="cancel"
+              btn-padding="0.3rem 3rem"
               @click="setIsOpen(false)"
-            ></rectangle-button>
+            ></dismiss-button>
 
-            <rectangle-button
-              label="Add"
-              :modal="true"
+            <primary-button
+              text="Add"
+              btn-padding="0.3rem 3rem"
               @click="setIsOpen(false)"
-            ></rectangle-button>
+            ></primary-button>
           </div>
         </DialogDescription>
 
@@ -60,19 +60,18 @@
             <div>...for now</div>
             <input class="goal-input" type="text" placeholder="goal" />
           </div>
-          <div class="task-dialog-btn">
-            <rectangle-button
-              class="text-xs"
-              label="cancel"
-              :cancel="true"
+          <div class="goal-dialog-btn">
+            <dismiss-button
+              text="cancel"
+              btn-padding="0.3rem 2rem"
               @click="setIsOpen(false)"
-            ></rectangle-button>
+            ></dismiss-button>
 
-            <rectangle-button
-              label="Confirm"
-              :modal="true"
+            <primary-button
+              text="Confirm"
+              btn-padding="0.3rem 2rem"
               @click="setIsOpen(false)"
-            ></rectangle-button>
+            ></primary-button>
           </div>
         </DialogDescription>
 
@@ -83,8 +82,9 @@
 </template>
 
 <script setup>
-import RectangleButton from "@/components/buttons/RectangleButton.vue";
-import { onUnmounted, ref, computed } from "vue";
+import PrimaryButton from "@/components/buttons/dashboard/PrimaryButton.vue";
+import DismissButton from "@/components/buttons/dashboard/DismissButton.vue";
+import { ref, computed } from "vue";
 import {
   Dialog,
   DialogPanel,
@@ -181,6 +181,7 @@ defineExpose({
   &-image {
     grid-column: 1/2;
     min-width: 100%;
+    min-height: 10rem;
     height: 100%;
     background: url("../../assets/Modals/goal.png");
     background-repeat: no-repeat;
@@ -194,14 +195,13 @@ defineExpose({
   }
 
   &-btn {
-    width: 70%;
-    float: right;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    float: right;
+    grid-template-columns: 120px 120px;
     align-items: center;
-    justify-items: center;
-    padding: 1rem;
-    column-gap: 1rem;
+    justify-items: end;
+    padding: 1rem 0px;
+    column-gap: 0.5rem;
   }
 }
 
