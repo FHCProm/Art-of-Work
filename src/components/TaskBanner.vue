@@ -111,7 +111,7 @@
       </div>
     </div>
 
-    <dashboard-dialogs :taskDialog="true" ref="modal"></dashboard-dialogs>
+    <dashboard-dialogs :goalDialog="true" ref="modal"></dashboard-dialogs>
   </div>
 </template>
 
@@ -168,6 +168,7 @@ $leaves: (
   align-items: center;
   justify-items: center;
   overflow-y: scroll;
+  background: var(--gray-200);
 }
 .taskNavigation {
   display: grid;
@@ -187,7 +188,7 @@ $leaves: (
   display: grid;
   align-items: center;
   justify-items: center;
-  color: white;
+
   font-size: 1rem;
   text-align: center;
   svg {

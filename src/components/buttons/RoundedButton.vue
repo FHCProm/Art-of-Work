@@ -95,7 +95,6 @@ const classes = computed(() => ({
 
 <style scoped lang="scss">
 .banner-btn1 {
-  color: white;
   border-radius: 1rem;
   margin-top: 1rem;
   border: 1px solid white;
@@ -109,15 +108,17 @@ const classes = computed(() => ({
 
 .banner-btn-goal-not-set {
   display: flex;
-  border: 2px dashed white;
+  border: 2px solid var(--gray-500);
   padding: 1rem;
-  color: white;
+  color: var(--gray-500);
   margin-top: 1rem;
+  background: var(--gray-300);
   border-radius: 1rem;
   align-items: center;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.3);
+    color: var(--gray-700);
+    background: var(--gray-400);
   }
 }
 

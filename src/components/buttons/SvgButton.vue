@@ -41,6 +41,8 @@ const classes = computed(() => ({
 <style scoped lang="scss">
 .digital-clock-add-task {
   display: flex;
-  color: rgba(234, 179, 8, 1);
+  svg {
+    color: var(--yellow-500);
+  }
 }
 </style>
