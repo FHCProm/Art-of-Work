@@ -12,14 +12,13 @@
 export default {};
 </script>
 
-<style>
+<style scoped lang="scss">
 .navbar {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-content: center;
   width: 100%;
   height: 80px;
-  color: var(--gray-900);
 }
 
 .navbar-buttons {
@@ -28,6 +27,10 @@ export default {};
   align-items: center;
   justify-items: center;
   justify-content: end;
+  color: var(--gray-500);
+  & > span:hover {
+    color: var(--gray-900);
+  }
 }
 .title {
   font-size: 2rem;

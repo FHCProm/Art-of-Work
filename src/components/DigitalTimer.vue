@@ -174,9 +174,9 @@ onMounted(() => {});
   width: 100%;
   height: 4rem;
   position: sticky;
-  color: var(--gray-900);
+
   top: 0;
-  background: var(--gray-300);
+  background: var(--gray-200);
   box-shadow: $container-shadow;
 }
 
@@ -260,19 +260,14 @@ onMounted(() => {});
   align-items: center;
   justify-items: center;
 }
-.digital-timer-next-section {
-  //align-self: flex-end;
-}
 
 .selection-creation-container {
   display: grid;
   grid-template-columns: 45% 45% 10%;
   align-items: center;
   justify-items: center;
-
   height: 100%;
-  &-back {
-  }
+
   &-section {
     display: flex;
   }
@@ -301,8 +296,6 @@ onMounted(() => {});
     width: 95%;
     height: 90%;
     position: relative;
-    background: var(--gray-300);
-    // border: 1px solid white;
     box-shadow: $container-shadow;
   }
 

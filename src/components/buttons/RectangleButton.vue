@@ -88,14 +88,8 @@ function isClicked() {
 }
 </script>
 
-
-
-
-
-
 <style lang="scss">
 .custom-button {
-  color: black;
   border-radius: 0;
   background: transparent;
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -178,7 +172,6 @@ function isClicked() {
 
   &:hover {
     border: 1px solid rgb(233, 210, 141);
-    color: black;
     background: rgb(233, 210, 141);
   }
 }
@@ -197,10 +190,9 @@ function isClicked() {
 
 .cancel-btn {
   width: 100%;
-  color: gray;
-
+  color: var(--gray-500);
   &:hover {
-    color: black;
+    color: var(--gray-900);
   }
 }
 

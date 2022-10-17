@@ -134,10 +134,8 @@ export default {
   position: relative;
   display: grid;
   padding: 0.3rem 0.5rem 1rem 0.5rem;
-
   grid-template-columns: 80% 20%;
   margin-top: 1rem;
-  color: white;
   // border: 1px solid rgb(234, 179, 8);
   box-shadow: $container-shadow;
   &-title {
@@ -145,7 +143,7 @@ export default {
     grid-row: 1/2;
     height: 0.3rem;
 
-    background: rgb(234, 88, 12);
+    background: var(--yellow-500);
   }
 
   .time {
