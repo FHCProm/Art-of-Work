@@ -59,8 +59,6 @@
   </div>
 </template>
 
-
-
 <script>
 import TaskRow from "./TaskRow.vue";
 export default {
@@ -96,7 +94,7 @@ export default {
 <style lang="scss">
 .table-background {
   background-image: url(@/assets/TimerView/flipped-diamonds.svg);
-  background-color: rgb(65, 69, 78);
+  background-color: var(--gray-700);
 
   background-size: 20px;
 }

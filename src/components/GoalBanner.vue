@@ -46,7 +46,7 @@ import WarningButton from "@/components/buttons/dashboard/WarningButton.vue";
 import GoalCreateButton from "@/components/buttons/dashboard/GoalCreateButton.vue";
 import { ref } from "vue";
 
-const goalSet = ref(true);
+const goalSet = ref(false);
 const goalHistory = ref({
   123: {
     title: "Learn Reactivity",
@@ -85,8 +85,7 @@ const goalHistory = ref({
 .banner {
   width: 100%;
   height: stretch;
-  color: var(--gray-900);
-
+  background: var(--gray-200);
   box-shadow: $container-shadow;
   display: flex;
   flex-direction: column;
@@ -101,13 +100,8 @@ const goalHistory = ref({
   font-family: Georgia, "Times New Roman", Times, serif;
   width: 100%;
   padding: 0.2rem 0;
-  background: linear-gradient(
-    0deg,
-    rgb(241, 110, 3) 0%,
-    rgb(249, 166, 97) 100%
-  );
-  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
-    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  color: var(--orange-900);
+  background: var(--orange-300);
 }
 
 .goal-content {
@@ -117,8 +111,8 @@ const goalHistory = ref({
 .current-goal {
   border-radius: 1rem;
   padding: 0.5rem;
-
-  border: 2px dashed white;
+  border: 2px solid var(--gray-500);
+  background: var(--gray-300);
   margin-left: 1rem;
   margin-right: 1rem;
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -144,10 +138,7 @@ const goalHistory = ref({
   font-family: Georgia, "Times New Roman", Times, serif;
   width: 100%;
 
-  background: rgba(255, 255, 255, 0.4);
-
-  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
-    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  background: var(--gray-400);
 }
 
 .history-goal-container {
@@ -169,8 +160,6 @@ const goalHistory = ref({
     flex-basis: unset;
     border-radius: 1rem;
     padding: 0.5rem;
-
-    border: 2px dashed white;
     margin-left: 1rem;
     margin-right: 1rem;
     font-family: Georgia, "Times New Roman", Times, serif;

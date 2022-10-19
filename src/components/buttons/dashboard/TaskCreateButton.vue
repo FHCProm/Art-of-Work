@@ -59,5 +59,8 @@ const style = computed(() => ({
     color: var(--yellow-100);
     background: var(--yellow-700);
   }
+  &:hover svg {
+    color: var(--yellow-500);
+  }
 }
 </style>

@@ -16,11 +16,12 @@
 
         <DialogDescription class="task-dialog-content z-20">
           <div class="task-dialog-table-layout">
-            <div class="goal-label">Goal</div>
-            <div>Make a design draf for Art of Breaking</div>
-
-            <div class="task-label">New Task</div>
-            <textarea class="task-input" rows="3"></textarea>
+            <div class="goal-text">Make a design draf for Art of Breaking</div>
+            <textarea
+              class="task-input"
+              rows="3"
+              placeholder="New Task for this Goal"
+            ></textarea>
           </div>
           <div class="task-dialog-btn">
             <dismiss-button
@@ -206,26 +207,17 @@ defineExpose({
 }
 
 .task-dialog-table-layout {
-  display: grid;
-  grid-template-columns: 6rem 1fr;
+  display: flex;
+  flex-direction: column;
   padding: 1rem;
-  gap: 1rem;
 
-  .goal-label {
-    text-align: center;
-    height: 1.5rem;
-    color: white;
-    background: rgb(251, 146, 60);
-  }
-  .task-label {
-    text-align: center;
-    height: 1.5rem;
-    color: white;
-    background: rgb(234, 179, 8);
+  .goal-text {
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   }
 
   .task-input {
     width: 100%;
+    margin-top: 1.5rem;
     padding: 0.5rem;
     min-width: 10rem;
     box-shadow: 2px 2px 8px rgba(black, 0.3);

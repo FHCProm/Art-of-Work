@@ -179,9 +179,9 @@ function toggleSectionBtn() {
   width: 100%;
   height: 4rem;
   position: sticky;
-  color: var(--gray-900);
+
   top: 0;
-  background: var(--gray-300);
+  background: var(--gray-200);
   box-shadow: $container-shadow;
 }
 
@@ -265,16 +265,12 @@ function toggleSectionBtn() {
   align-items: center;
   justify-items: center;
 }
-.next-slide {
-  //align-self: flex-end;
-}
 
 .second-slide {
   display: grid;
   grid-template-columns: 45% 45% 10%;
   align-items: center;
   justify-items: center;
-
   height: 100%;
 
   &-switch-section {
@@ -312,8 +308,6 @@ function toggleSectionBtn() {
     width: 95%;
     height: 90%;
     position: relative;
-    background: var(--gray-300);
-    // border: 1px solid white;
     box-shadow: $container-shadow;
   }
 

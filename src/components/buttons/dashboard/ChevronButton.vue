@@ -63,7 +63,6 @@ export default {
 
 <style lang="scss">
 .wrapper {
-  color: white;
 }
 
 .chevron-box {
@@ -77,13 +76,13 @@ export default {
   }
 
   &:active .chevron {
-    fill: white;
+    fill: var(--gray-900);
   }
 
   .chevron {
     transition: all 0.2s ease;
     fill: transparent;
-    stroke: white;
+    stroke: var(--gray-900);
     stroke-width: 1;
   }
 }

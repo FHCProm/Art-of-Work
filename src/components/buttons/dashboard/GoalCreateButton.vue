@@ -64,9 +64,11 @@
 <style lang="scss" scoped>
 .create-goal-btn {
   display: flex;
-  border: 2px dashed var(--yellow-900);
-  padding: 0.7rem;
+  border: 2px solid var(--gray-500);
+  padding: 1rem;
+  color: var(--gray-500);
   margin-top: 1rem;
+  background: var(--gray-300);
   border-radius: 1rem;
   align-items: center;
 

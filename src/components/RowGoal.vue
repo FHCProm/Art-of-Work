@@ -30,7 +30,7 @@ const props = defineProps({
   padding-bottom: 0.5rem;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: var(--gray-300);
   }
 }
 </style>
