@@ -10,7 +10,7 @@
       </div>
       <task-create-button
         v-if="mediumScreenOrAbove"
-        class="flex justify-center mx-auto mt-4"
+        class="flex justify-center mx-auto mt-4 mb-4"
         btn-padding="0.3rem 0"
         btn-width="95%"
         @click="openDialog"
@@ -110,7 +110,7 @@
       </div>
     </div>
 
-    <dashboard-dialogs :goalDialog="true" ref="modal"></dashboard-dialogs>
+    <dashboard-dialogs :taskDialog="true" ref="modal"></dashboard-dialogs>
   </div>
 </template>
 

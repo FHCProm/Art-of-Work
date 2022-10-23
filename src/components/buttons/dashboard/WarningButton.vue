@@ -29,11 +29,8 @@ const style = computed(() => ({
 
 <style lang="scss" scoped>
 .warning-btn {
+  @include button-shadow("red");
   background: var(--red-300);
   color: var(--red-900);
-  &:hover {
-    background: var(--red-500);
-    color: var(--red-100);
-  }
 }
 </style>

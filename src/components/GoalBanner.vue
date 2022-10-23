@@ -40,7 +40,7 @@
 
 <script setup>
 import RowGoal from "@/components/RowGoal.vue";
-import PrimaryButton from "@/components/buttons/dashboard/PrimaryButton.vue";
+
 import SecondaryButton from "@/components/buttons/dashboard/SecondaryButton.vue";
 import WarningButton from "@/components/buttons/dashboard/WarningButton.vue";
 import GoalCreateButton from "@/components/buttons/dashboard/GoalCreateButton.vue";
@@ -78,13 +78,33 @@ const goalHistory = ref({
     startedAt: 1662547612,
     duration: 7200,
   },
+  995: {
+    title: "Learn Responsive Design",
+    startedAt: 1662547612,
+    duration: 7200,
+  },
+  456: {
+    title: "Learn PHP",
+    startedAt: 1662547612,
+    duration: 7200,
+  },
+  789: {
+    title: "Learn Laravel",
+    startedAt: 1662547612,
+    duration: 7200,
+  },
+  698: {
+    title: "Learn Advanced CSS",
+    startedAt: 1662547612,
+    duration: 7200,
+  },
 });
 </script>
 
 <style scoped lang="scss">
 .banner {
   width: 100%;
-  height: stretch;
+  height: 535px;
   background: var(--gray-200);
   box-shadow: $container-shadow;
   display: flex;
@@ -142,7 +162,7 @@ const goalHistory = ref({
 }
 
 .history-goal-container {
-  height: 270px;
+  height: 100%;
   overflow-y: scroll;
 }
 

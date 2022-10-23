@@ -63,17 +63,13 @@
 
 <style lang="scss" scoped>
 .create-goal-btn {
+  @include button-shadow("gray");
   display: flex;
-  border: 2px solid var(--gray-500);
   padding: 1rem;
-  color: var(--gray-500);
+  color: var(--gray-800);
   margin-top: 1rem;
   background: var(--gray-300);
   border-radius: 1rem;
   align-items: center;
-
-  &:hover {
-    background: var(--yellow-100);
-  }
 }
 </style>
