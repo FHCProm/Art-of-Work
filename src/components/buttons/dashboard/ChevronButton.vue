@@ -63,7 +63,7 @@ export default {
 
 <style lang="scss">
 .chevron-box {
-  @include button-shadow("gray");
+  @include button-shadow(--gray-700);
   padding: 0.5rem;
   border-radius: 0.3rem;
   margin: 0 0.5rem;

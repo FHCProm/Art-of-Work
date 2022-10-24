@@ -30,11 +30,14 @@
               @click="setIsOpen(false)"
             ></dismiss-button>
 
-            <primary-button
+            <custom-button
               text="Add"
               btn-padding="0.3rem 3rem"
+              btn-text-color="var(--yellow-900)"
+              btn-background-color="var(--yellow-500)"
+              btn-shadow-color="var(--yellow-700)"
               @click="setIsOpen(false)"
-            ></primary-button>
+            ></custom-button>
           </div>
         </DialogDescription>
 
@@ -68,11 +71,14 @@
               @click="setIsOpen(false)"
             ></dismiss-button>
 
-            <primary-button
+            <custom-button
               text="Confirm"
               btn-padding="0.3rem 2rem"
+              btn-text-color="var(--yellow-900)"
+              btn-background-color="var(--yellow-500)"
+              btn-shadow-color="var(--yellow-700)"
               @click="setIsOpen(false)"
-            ></primary-button>
+            ></custom-button>
           </div>
         </DialogDescription>
 
@@ -83,7 +89,8 @@
 </template>
 
 <script setup>
-import PrimaryButton from "@/components/buttons/dashboard/PrimaryButton.vue";
+import CustomButton from "@/components/buttons/dashboard/CustomButton.vue";
+
 import DismissButton from "@/components/buttons/dashboard/DismissButton.vue";
 import { ref, computed } from "vue";
 import {

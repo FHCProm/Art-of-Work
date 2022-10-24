@@ -7,19 +7,32 @@
         Breaking
       </div>
       <div class="goal-set-btn">
-        <secondary-button
-          class="grow mt-4"
+        <custom-button
+          class="grow mt-4 z-20"
           text="completed"
           btnBorderRadius="0.5rem"
           btnPadding="0.25rem 0.5rem 0.25rem 0.5rem"
-        ></secondary-button>
+          btnTextColor="var(--gray-900)"
+          btnBackgroundColor="var(--gray-300)"
+          btnShadowColor="var(--gray-700)"
+        ></custom-button>
 
+        <custom-button
+          class="grow mt-4 z-10"
+          text="set aside"
+          btnBorderRadius="0.5rem"
+          btnPadding="0.25rem 0.5rem 0.25rem 0.5rem"
+          btnTextColor="var(--gray-900)"
+          btnBackgroundColor="var(--gray-300)"
+          btnShadowColor="var(--gray-700)"
+        ></custom-button>
+        <!-- 
         <warning-button
           class="grow mt-4"
           text="set aside"
           btnBorderRadius="0.5rem"
           btnPadding="0.25rem 0.5rem 0.25rem 0.5rem"
-        ></warning-button>
+        ></warning-button> -->
       </div>
     </div>
     <div v-if="!goalSet">
@@ -40,13 +53,11 @@
 
 <script setup>
 import RowGoal from "@/components/RowGoal.vue";
-
-import SecondaryButton from "@/components/buttons/dashboard/SecondaryButton.vue";
-import WarningButton from "@/components/buttons/dashboard/WarningButton.vue";
+import CustomButton from "@/components/buttons/dashboard/CustomButton.vue";
 import GoalCreateButton from "@/components/buttons/dashboard/GoalCreateButton.vue";
 import { ref } from "vue";
 
-const goalSet = ref(false);
+const goalSet = ref(true);
 const goalHistory = ref({
   123: {
     title: "Learn Reactivity",

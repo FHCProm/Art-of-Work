@@ -59,11 +59,13 @@ $container-shadow: 0.1rem 0.1rem 0.3rem var(--gray-400),
 }
 
 @mixin button-shadow($color) {
-  box-shadow: 0.1rem 0.1rem 0.3rem var(--#{$color}-700),
+  //shadow is either custom color
+  //or --color-700 of global variable
+  box-shadow: 0.1rem 0.1rem 0.3rem var($color),
     -0.2rem -0.2rem 0.5rem var(--white);
 
   &:active {
-    box-shadow: inset 0.1rem 0.1rem 0.3rem var(--#{$color}-700),
+    box-shadow: inset 0.1rem 0.1rem 0.3rem var($color),
       inset -0.1rem -0.1rem 0.3rem var(--white);
   }
 }

@@ -63,7 +63,7 @@
 
 <style lang="scss" scoped>
 .create-goal-btn {
-  @include button-shadow("gray");
+  @include button-shadow(--gray-700);
   display: flex;
   padding: 1rem;
   color: var(--gray-800);

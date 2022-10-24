@@ -12,6 +12,7 @@
         v-if="mediumScreenOrAbove"
         class="flex justify-center mx-auto mt-4 mb-4"
         btn-padding="0.3rem 0"
+        btn-border-radius="0.5rem"
         btn-width="95%"
         @click="openDialog"
       ></task-create-button>
