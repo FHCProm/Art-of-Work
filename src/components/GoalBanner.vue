@@ -4,13 +4,12 @@
     <div v-if="goalSet" class="goal-content">
       <div class="current-goal mt-4">
         Make a design draf for Art of Breaking Make a design draf for Art of
-        Breaking
+        Breaking Make a design draf for
       </div>
       <div class="goal-set-btn">
         <custom-button
           class="grow mt-4 z-20"
           text="completed"
-          btnBorderRadius="0.5rem"
           btnPadding="0.25rem 0.5rem 0.25rem 0.5rem"
           btnTextColor="var(--gray-900)"
           btnBackgroundColor="var(--gray-300)"
@@ -20,19 +19,11 @@
         <custom-button
           class="grow mt-4 z-10"
           text="set aside"
-          btnBorderRadius="0.5rem"
           btnPadding="0.25rem 0.5rem 0.25rem 0.5rem"
           btnTextColor="var(--gray-900)"
           btnBackgroundColor="var(--gray-300)"
           btnShadowColor="var(--gray-700)"
         ></custom-button>
-        <!-- 
-        <warning-button
-          class="grow mt-4"
-          text="set aside"
-          btnBorderRadius="0.5rem"
-          btnPadding="0.25rem 0.5rem 0.25rem 0.5rem"
-        ></warning-button> -->
       </div>
     </div>
     <div v-if="!goalSet">
@@ -115,7 +106,7 @@ const goalHistory = ref({
 <style scoped lang="scss">
 .banner {
   width: 100%;
-  height: 535px;
+
   background: var(--gray-200);
   box-shadow: $container-shadow;
   display: flex;
@@ -173,7 +164,7 @@ const goalHistory = ref({
 }
 
 .history-goal-container {
-  height: 100%;
+  height: 300px;
   overflow-y: scroll;
 }
 

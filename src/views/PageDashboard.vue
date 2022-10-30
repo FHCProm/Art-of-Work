@@ -101,10 +101,9 @@ function updatedashboardWidth() {
 
 @media screen and (min-width: $breakpoint-small) {
   .page-layout {
-    height: 770px;
     grid-template-columns: 30% 70%;
-    grid-template-rows: 30% 70%;
-    // 25% 75%;
+    grid-template-rows: 230px 1fr;
+
     .digital-timer {
       grid-column: 1/2;
       grid-row: 1/2;
@@ -131,7 +130,7 @@ function updatedashboardWidth() {
 @media screen and (min-width: $breakpoint-medium) {
   .page-layout {
     grid-template-columns: 25% 75%;
-    grid-template-rows: 30% 70%;
+    grid-template-rows: 230px 1fr;
   }
 }
 </style>

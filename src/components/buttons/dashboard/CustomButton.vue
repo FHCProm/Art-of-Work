@@ -30,7 +30,7 @@ const props = defineProps({
 });
 
 const style = computed(() => ({
-  borderRadius: props.btnBorderRadius,
+  borderRadius: props.btnBorderRadius ?? "0.5rem",
   padding: props.btnPadding,
   border: props.btnBorder,
   "--color": props.btnTextColor,

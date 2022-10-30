@@ -51,14 +51,6 @@ export default {
           taskDescription:
             "Create a sample data for art of breaking Create a sample data for art of breaking Create a sample data for art of breaking  art of breaking Create a sample data for art of breaking art of breaking Create a sample data for art of breaking",
         },
-        {
-          id: 555999,
-          timeStarted: 1662200000,
-          duration: 3333,
-          goal: "Figure out the rough plan for art of breaking firebase database",
-          taskDescription:
-            "Create a sample data for art of breaking Create a sample data for art of breaking Create a sample data for art of breaking  art of breaking Create a sample data for art of breaking art of breaking Create a sample data for art of breaking",
-        },
       ],
     };
   },
