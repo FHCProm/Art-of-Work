@@ -1,7 +1,7 @@
 <template>
-  <div v-if="containSVG" :class="classes">
+  <div class="create-goal-btn">
     <svg
-      class="w-10 h-10"
+      class="w-5 h-5"
       viewBox="0 0 85.714058 112.21128"
       version="1.1"
       id="svg5"
@@ -55,86 +55,21 @@
         </g>
       </g>
     </svg>
-    <div class="">{{ text }}</div>
+    <div class="">set a goal</div>
   </div>
-
-  <div v-else-if="digitalTimerPause" :class="classes">
-    <div class="digital-timer-pause-square"></div>
-  </div>
-
-  <button v-else :class="classes">{{ text }}</button>
 </template>
 
-<script setup>
-import { computed } from "vue";
+<script setup></script>
 
-const props = defineProps({
-  text: {
-    type: String,
-  },
-  goalBannerWithGoalSet: {
-    type: Boolean,
-  },
-  goalBannerWithGoalNotSet: {
-    type: Boolean,
-  },
-  digitalTimerPause: {
-    type: Boolean,
-  },
-  containSVG: {
-    type: Boolean,
-  },
-});
-
-const classes = computed(() => ({
-  "banner-btn1": props.goalBannerWithGoalSet,
-  "banner-btn-goal-not-set": props.goalBannerWithGoalNotSet,
-  "digital-timer-pause": props.digitalTimerPause,
-}));
-</script>
-
-<style scoped lang="scss">
-.banner-btn1 {
-  border-radius: 1rem;
-  margin-top: 1rem;
-  border: 1px solid white;
-  background: transparent;
-  padding: 0.25rem 0.5rem 0.25rem 0.5rem;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.3);
-  }
-}
-
-.banner-btn-goal-not-set {
+<style lang="scss" scoped>
+.create-goal-btn {
+  @include button-shadow(--gray-700);
   display: flex;
-  border: 2px solid var(--gray-500);
   padding: 1rem;
-  color: var(--gray-500);
+  color: var(--gray-800);
   margin-top: 1rem;
   background: var(--gray-300);
   border-radius: 1rem;
   align-items: center;
-
-  &:hover {
-    color: var(--gray-700);
-    background: var(--gray-400);
-  }
-}
-
-.digital-timer-pause {
-  width: 3rem;
-  height: 3rem;
-  display: grid;
-  border-radius: 100%;
-  box-shadow: $shadow;
-
-  &-square {
-    width: 1rem;
-    height: 1rem;
-    align-self: center;
-    justify-self: center;
-    background-color: rgba(234, 179, 8, 1);
-  }
 }
 </style>

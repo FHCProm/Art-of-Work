@@ -4,28 +4,31 @@
     <div v-if="goalSet" class="goal-content">
       <div class="current-goal mt-4">
         Make a design draf for Art of Breaking Make a design draf for Art of
-        Breaking
+        Breaking Make a design draf for
       </div>
       <div class="goal-set-btn">
-        <rounded-button
-          :goalBannerWithGoalSet="true"
+        <custom-button
+          class="grow mt-4 z-20"
           text="completed"
-          class="grow"
-        ></rounded-button>
-        <rounded-button
-          :goalBannerWithGoalSet="true"
+          btnPadding="0.25rem 0.5rem 0.25rem 0.5rem"
+          btnTextColor="var(--gray-900)"
+          btnBackgroundColor="var(--gray-300)"
+          btnShadowColor="var(--gray-700)"
+        ></custom-button>
+
+        <custom-button
+          class="grow mt-4 z-10"
           text="set aside"
-          class="grow"
-        ></rounded-button>
+          btnPadding="0.25rem 0.5rem 0.25rem 0.5rem"
+          btnTextColor="var(--gray-900)"
+          btnBackgroundColor="var(--gray-300)"
+          btnShadowColor="var(--gray-700)"
+        ></custom-button>
       </div>
     </div>
     <div v-if="!goalSet">
       <div class="goal-not-set-btn">
-        <rounded-button
-          text="set a goal"
-          :containSVG="true"
-          :goalBannerWithGoalNotSet="true"
-        ></rounded-button>
+        <goal-create-button></goal-create-button>
       </div>
     </div>
     <div class="achievement-label mt-5">Achievements</div>
@@ -40,9 +43,9 @@
 </template>
 
 <script setup>
-import RoundedButton from "@/components/buttons/RoundedButton.vue";
 import RowGoal from "@/components/RowGoal.vue";
-import RectangleButton from "@/components/buttons/RectangleButton.vue";
+import CustomButton from "@/components/buttons/dashboard/CustomButton.vue";
+import GoalCreateButton from "@/components/buttons/dashboard/GoalCreateButton.vue";
 import { ref } from "vue";
 
 const goalSet = ref(true);
@@ -77,13 +80,33 @@ const goalHistory = ref({
     startedAt: 1662547612,
     duration: 7200,
   },
+  995: {
+    title: "Learn Responsive Design",
+    startedAt: 1662547612,
+    duration: 7200,
+  },
+  456: {
+    title: "Learn PHP",
+    startedAt: 1662547612,
+    duration: 7200,
+  },
+  789: {
+    title: "Learn Laravel",
+    startedAt: 1662547612,
+    duration: 7200,
+  },
+  698: {
+    title: "Learn Advanced CSS",
+    startedAt: 1662547612,
+    duration: 7200,
+  },
 });
 </script>
 
 <style scoped lang="scss">
 .banner {
   width: 100%;
-  height: stretch;
+
   background: var(--gray-200);
   box-shadow: $container-shadow;
   display: flex;
@@ -141,7 +164,7 @@ const goalHistory = ref({
 }
 
 .history-goal-container {
-  height: 270px;
+  height: 300px;
   overflow-y: scroll;
 }
 

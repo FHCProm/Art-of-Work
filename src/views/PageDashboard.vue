@@ -3,6 +3,7 @@
     <digital-timer
       class="digital-timer z-10"
       @VisibleSectionUpdate="changeSection"
+      :mediumScreenOrAbove="mediumScreenOrAbove"
     ></digital-timer>
 
     <goal-banner
@@ -11,6 +12,7 @@
     ></goal-banner>
 
     <task-banner
+      :mediumScreenOrAbove="mediumScreenOrAbove"
       v-if="visibleSection == 'taskBanner' || mediumScreenOrAbove"
       class="task-banner animatePartialLayout"
     ></task-banner>
@@ -99,8 +101,8 @@ function updatedashboardWidth() {
 
 @media screen and (min-width: $breakpoint-small) {
   .page-layout {
-    grid-template-columns: 25% 75%;
-    grid-template-rows: 30% 70%;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 230px 1fr;
 
     .digital-timer {
       grid-column: 1/2;
@@ -122,6 +124,13 @@ function updatedashboardWidth() {
 
   .animatePartialLayout {
     animation: unset;
+  }
+}
+
+@media screen and (min-width: $breakpoint-medium) {
+  .page-layout {
+    grid-template-columns: 25% 75%;
+    grid-template-rows: 230px 1fr;
   }
 }
 </style>

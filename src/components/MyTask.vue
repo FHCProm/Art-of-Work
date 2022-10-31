@@ -1,6 +1,6 @@
 <template>
   <div class="task" @mouseover="hover = true" @mouseleave="hover = false">
-    <div class="task-title uppercase">
+    <div class="task-title">
       <!-- {{ task.goal }} -->
     </div>
 
@@ -45,13 +45,14 @@
       </div>
     </div>
     <div class="details">
-      <div class="details-label">
+      <div class="details-label" @click="toggleDetails">
         <div>details</div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
-          class="w-5 h-5"
+          class="w-5 h-5 details-svg"
+          ref="detailArrow"
         >
           <path
             fill-rule="evenodd"
@@ -60,7 +61,7 @@
           />
         </svg>
       </div>
-      <div class="details-content">
+      <div v-if="isExpanded" class="details-content">
         <p>Task Duration</p>
         <p>{{ formattedDuration }}</p>
         <p>Goal</p>
@@ -70,62 +71,67 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { computed, ref } from "vue";
 import moment from "moment";
-export default {
-  props: {
-    task: {
-      type: Object,
-    },
-  },
-  data() {
-    return {};
-  },
-  mounted() {},
-  methods: {
-    StringPluralDeterminer(term, number) {
-      let output = number > 1 ? `${term}s` : term;
-      return output;
-    },
-  },
 
-  computed: {
-    formattedDaysAgo() {
-      let momentObject = moment.unix(this.task.timeStarted);
-      return momentObject.fromNow(false);
-      //return `since ${momentObject.format("D/M/YYYY h:mm a")}`;
-    },
-    formattedDuration() {
-      let duration = this.task.duration;
-      let day = parseInt(duration / 86400);
-      let hour = parseInt(duration / 3600);
-      let minute = parseInt(duration / 60);
-
-      if (day != 0) {
-        let hourPassed = parseInt((duration - 86400 * day) / 3600);
-        return `${day}${this.StringPluralDeterminer(
-          "day",
-          day
-        )} ${hourPassed}${this.StringPluralDeterminer("hour", hourPassed)}`;
-      }
-      if (hour != 0) {
-        let minutesPassed = parseInt((duration - 3600 * hour) / 60);
-
-        return `${hour}${this.StringPluralDeterminer(
-          "hour",
-          hour
-        )} ${minutesPassed}${this.StringPluralDeterminer("minute", minute)}`;
-      }
-      if (minute != 0) {
-        return `${minute}${this.StringPluralDeterminer("minute", minute)}`;
-      }
-      if (duration != 0) {
-        return `${duration}${this.StringPluralDeterminer("second", duration)}`;
-      }
-      return "none";
-    },
+const isExpanded = ref(false);
+const detailArrow = ref(null);
+const props = defineProps({
+  task: {
+    type: Object,
   },
-};
+});
+
+function stringPluralDeterminer(term, number) {
+  let output = number > 1 ? `${term}s` : term;
+  return output;
+}
+
+function toggleDetails() {
+  isExpanded.value = !isExpanded.value;
+  if (isExpanded.value) {
+    detailArrow.value.classList.add("rotated");
+  }
+  if (!isExpanded.value) {
+    detailArrow.value.classList.remove("rotated");
+  }
+}
+
+const formattedDaysAgo = computed(() => {
+  let momentObject = moment.unix(props.task.timeStarted);
+  return momentObject.fromNow(false);
+});
+
+const formattedDuration = computed(() => {
+  let duration = props.task.duration;
+  let day = parseInt(duration / 86400);
+  let hour = parseInt(duration / 3600);
+  let minute = parseInt(duration / 60);
+
+  if (day != 0) {
+    let hourPassed = parseInt((duration - 86400 * day) / 3600);
+    return `${day}${stringPluralDeterminer(
+      "day",
+      day
+    )} ${hourPassed}${stringPluralDeterminer("hour", hourPassed)}`;
+  }
+  if (hour != 0) {
+    let minutesPassed = parseInt((duration - 3600 * hour) / 60);
+
+    return `${hour}${stringPluralDeterminer(
+      "hour",
+      hour
+    )} ${minutesPassed}${stringPluralDeterminer("minute", minute)}`;
+  }
+  if (minute != 0) {
+    return `${minute}${stringPluralDeterminer("minute", minute)}`;
+  }
+  if (duration != 0) {
+    return `${duration}${stringPluralDeterminer("second", duration)}`;
+  }
+  return "none";
+});
 </script>
 
 <style lang="scss" scoped>
@@ -187,9 +193,6 @@ export default {
     box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2),
       inset -0.2rem -0.2rem 0.5rem var(--greyLight-2);
   }
-  svg {
-    transform: rotate(90deg);
-  }
 }
 
 .play-button {
@@ -212,5 +215,9 @@ export default {
       stroke-opacity: 1;
     }
   }
+}
+
+.rotated {
+  transform: rotate(90deg);
 }
 </style>

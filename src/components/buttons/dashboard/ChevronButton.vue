@@ -62,19 +62,12 @@ export default {
 </script>
 
 <style lang="scss">
-.wrapper {
-}
-
 .chevron-box {
+  @include button-shadow(--gray-700);
   padding: 0.5rem;
-  box-shadow: $shadow;
   border-radius: 0.3rem;
   margin: 0 0.5rem;
-
-  &:active {
-    box-shadow: $inner-shadow;
-  }
-
+  background: var(--gray-300);
   &:active .chevron {
     fill: var(--gray-900);
   }
@@ -83,7 +76,7 @@ export default {
     transition: all 0.2s ease;
     fill: transparent;
     stroke: var(--gray-900);
-    stroke-width: 1;
+    stroke-width: 2px;
   }
 }
 </style>
