@@ -176,7 +176,7 @@ const props = defineProps({
   },
 });
 
-const taskIsSet = ref(false);
+const taskIsSet = ref(true);
 const modal = ref(null);
 function openDialog() {
   modal.value.isOpen = true;
@@ -226,6 +226,7 @@ $leaves: (
   background: var(--gray-200);
 }
 .task-navigation {
+  @include font-label;
   display: grid;
   width: 95%;
   padding-top: 0.5rem;

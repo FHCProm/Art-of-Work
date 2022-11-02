@@ -23,6 +23,7 @@ const props = defineProps({
 
 <style scoped lang="scss">
 .row-goal {
+  @include font-label;
   font-size: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
