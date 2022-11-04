@@ -1,6 +1,6 @@
 <template>
   <div class="banner">
-    <div class="goal-label mt-5">Atomic Goals</div>
+    <div class="goal-label mt-5">Current Atomic Goals</div>
     <div v-if="goalSet" class="goal-content">
       <div class="current-goal mt-4">
         Make a design draf for Art of Breaking Make a design draf for Art of
@@ -49,64 +49,32 @@ import GoalCreateButton from "@/components/buttons/dashboard/GoalCreateButton.vu
 import { ref } from "vue";
 
 const goalSet = ref(true);
-const goalHistory = ref({
-  123: {
-    title: "Learn Reactivity",
-    startedAt: 1662547612,
-    duration: 7200,
-  },
-  455: {
-    title: "Improve the responsiveness of Art of Breaking",
-    startedAt: 1662547612,
-    duration: 7200,
-  },
-  666: {
-    title: "Learn Responsive Design",
-    startedAt: 1662547612,
-    duration: 7200,
-  },
-  777: {
-    title: "Learn PHP",
-    startedAt: 1662547612,
-    duration: 7200,
-  },
-  888: {
-    title: "Learn Laravel",
-    startedAt: 1662547612,
-    duration: 7200,
-  },
-  999: {
-    title: "Learn Advanced CSS",
-    startedAt: 1662547612,
-    duration: 7200,
-  },
-  995: {
-    title: "Learn Responsive Design",
-    startedAt: 1662547612,
-    duration: 7200,
-  },
-  456: {
-    title: "Learn PHP",
-    startedAt: 1662547612,
-    duration: 7200,
-  },
-  789: {
-    title: "Learn Laravel",
-    startedAt: 1662547612,
-    duration: 7200,
-  },
-  698: {
-    title: "Learn Advanced CSS",
-    startedAt: 1662547612,
-    duration: 7200,
-  },
-});
+const goalHistory = ref(fetchLatest3HistoryGoals());
+function fetchLatest3HistoryGoals() {
+  return {
+    123: {
+      title: "Learn Reactivity",
+      startedAt: 1662547612,
+      durationInUnix: 10800,
+    },
+    698: {
+      title: "Learn Advanced CSS",
+      startedAt: 1662547612,
+      durationInUnix: 7250,
+    },
+    999: {
+      title: "Learn how to standardize font design",
+      startedAt: 1662547612,
+      durationInUnix: 60570,
+    },
+  };
+}
 </script>
 
 <style scoped lang="scss">
 .banner {
   width: 100%;
-
+  padding: 0 0.5rem;
   background: var(--gray-200);
   box-shadow: $container-shadow;
   display: flex;
@@ -116,14 +84,9 @@ const goalHistory = ref({
 }
 
 .goal-label {
-  display: grid;
-  align-content: center;
-  justify-content: center;
   font-family: Georgia, "Times New Roman", Times, serif;
   width: 100%;
   padding: 0.2rem 0;
-  color: var(--orange-900);
-  background: var(--orange-300);
 }
 
 .goal-content {
@@ -131,20 +94,13 @@ const goalHistory = ref({
   margin: 0 auto;
 }
 .current-goal {
-  border-radius: 1rem;
-  padding: 0.5rem;
-  border: 2px solid var(--gray-500);
-  background: var(--gray-300);
-  margin-left: 1rem;
-  margin-right: 1rem;
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .goal-set-btn {
   display: flex;
   flex-direction: row;
-  width: 90%;
-  margin: 0 auto;
+
   flex-wrap: wrap;
 }
 
@@ -155,17 +111,12 @@ const goalHistory = ref({
 }
 
 .achievement-label {
-  text-align: center;
   padding: 0.2rem 0;
   font-family: Georgia, "Times New Roman", Times, serif;
   width: 100%;
-
-  background: var(--gray-400);
 }
 
 .history-goal-container {
-  height: 300px;
-  overflow-y: scroll;
 }
 
 @media screen and (min-width: $breakpoint-small) {
@@ -180,20 +131,8 @@ const goalHistory = ref({
   }
   .current-goal {
     flex-basis: unset;
-    border-radius: 1rem;
-    padding: 0.5rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    font-family: Georgia, "Times New Roman", Times, serif;
-  }
 
-  .goal-set-btn {
-    flex-basis: unset;
-    display: flex;
-    flex-direction: row;
-    width: 90%;
-    margin: 0 auto;
-    flex-wrap: wrap;
+    font-family: Georgia, "Times New Roman", Times, serif;
   }
 }
 </style>

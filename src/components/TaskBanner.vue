@@ -176,7 +176,7 @@ const props = defineProps({
   },
 });
 
-const taskIsSet = ref(false);
+const taskIsSet = ref(true);
 const modal = ref(null);
 function openDialog() {
   modal.value.isOpen = true;
