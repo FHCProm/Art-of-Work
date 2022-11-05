@@ -82,14 +82,13 @@ onMounted(() => {
 <style scoped lang="scss">
 .row-goal {
   font-size: 1rem;
-
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 
   &-duration {
   }
   &:hover {
-    background: var(--gray-300);
+    background: var(--gray-200);
   }
 }
 </style>
