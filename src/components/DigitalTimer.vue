@@ -382,7 +382,7 @@ const props = defineProps({
   },
 });
 
-const timerStarted = ref(false);
+const timerStarted = ref(true);
 const nextSection = ref(false);
 let currentSectionName = ref("Go to Task");
 

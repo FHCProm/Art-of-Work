@@ -11,6 +11,11 @@
       class="goal-banner animatePartialLayout"
     ></goal-banner>
 
+    <previous-goals
+      v-if="mediumScreenOrAbove"
+      class="previous-goals"
+    ></previous-goals>
+
     <task-banner
       :mediumScreenOrAbove="mediumScreenOrAbove"
       v-if="visibleSection == 'taskBanner' || mediumScreenOrAbove"
@@ -23,6 +28,7 @@
 import DigitalTimer from "@/components/DigitalTimer.vue";
 import GoalBanner from "@/components/GoalBanner.vue";
 import TaskBanner from "@/components/TaskBanner.vue";
+import PreviousGoals from "@/components/PreviousGoals.vue";
 
 import { ref } from "vue";
 import { onMounted } from "vue";
@@ -68,9 +74,14 @@ function updatedashboardWidth() {
     grid-row: 2/3;
   }
 
-  .task-banner {
+  .previous-goals {
     grid-column: 1/2;
     grid-row: 3/4;
+  }
+
+  .task-banner {
+    grid-column: 1/2;
+    grid-row: 2/3;
   }
 }
 
@@ -102,8 +113,7 @@ function updatedashboardWidth() {
 @media screen and (min-width: $breakpoint-small) {
   .page-layout {
     grid-template-columns: 30% 70%;
-    grid-template-rows: 230px 1fr;
-
+    grid-template-rows: min-content min-content 1fr;
     .digital-timer {
       grid-column: 1/2;
       grid-row: 1/2;
@@ -115,10 +125,15 @@ function updatedashboardWidth() {
       grid-column: 1/2;
       grid-row: 2/3;
     }
+    .previous-goals {
+      align-self: flex-start;
+      grid-column: 1/2;
+      grid-row: 3/4;
+    }
     .task-banner {
       align-self: flex-start;
       grid-column: 2/3;
-      grid-row: 1/3;
+      grid-row: 1/4;
     }
   }
 
@@ -130,7 +145,6 @@ function updatedashboardWidth() {
 @media screen and (min-width: $breakpoint-medium) {
   .page-layout {
     grid-template-columns: 25% 75%;
-    grid-template-rows: 230px 1fr;
   }
 }
 </style>
