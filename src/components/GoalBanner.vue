@@ -6,24 +6,20 @@
         Make a design draf for Art of Breaking Make a design draf for Art of
         Breaking Make a design draf for
       </div>
-      <div class="goal-set-btn">
-        <custom-button
-          class="grow mt-4 z-20"
-          text="completed"
-          btnPadding="0.25rem 0.5rem 0.25rem 0.5rem"
-          btnTextColor="var(--gray-900)"
-          btnBackgroundColor="var(--gray-300)"
-          btnShadowColor="var(--gray-700)"
-        ></custom-button>
-
-        <custom-button
-          class="grow mt-4 z-10"
-          text="set aside"
-          btnPadding="0.25rem 0.5rem 0.25rem 0.5rem"
-          btnTextColor="var(--gray-900)"
-          btnBackgroundColor="var(--gray-300)"
-          btnShadowColor="var(--gray-700)"
-        ></custom-button>
+      <div class="option">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          class="w-5 h-5"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        Change
       </div>
     </div>
     <div v-if="!goalSet">
@@ -31,52 +27,21 @@
         <goal-create-button></goal-create-button>
       </div>
     </div>
-    <div class="achievement-label mt-5">Achievements</div>
-    <div class="history-goal-container">
-      <row-goal
-        v-for="history in goalHistory"
-        :key="history.title"
-        v-bind="history"
-      ></row-goal>
-    </div>
   </div>
 </template>
 
 <script setup>
-import RowGoal from "@/components/RowGoal.vue";
-import CustomButton from "@/components/buttons/dashboard/CustomButton.vue";
 import GoalCreateButton from "@/components/buttons/dashboard/GoalCreateButton.vue";
 import { ref } from "vue";
 
 const goalSet = ref(true);
-const goalHistory = ref(fetchLatest3HistoryGoals());
-function fetchLatest3HistoryGoals() {
-  return {
-    123: {
-      title: "Learn Reactivity",
-      startedAt: 1662547612,
-      durationInUnix: 10800,
-    },
-    698: {
-      title: "Learn Advanced CSS",
-      startedAt: 1662547612,
-      durationInUnix: 7250,
-    },
-    999: {
-      title: "Learn how to standardize font design",
-      startedAt: 1662547612,
-      durationInUnix: 60570,
-    },
-  };
-}
 </script>
 
 <style scoped lang="scss">
 .banner {
   width: 100%;
   padding: 0 0.5rem;
-  background: var(--gray-200);
-  box-shadow: $container-shadow;
+
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -106,35 +71,24 @@ function fetchLatest3HistoryGoals() {
   margin-right: 1rem;
 }
 
-.goal-set-btn {
-  @include font-headline;
-  display: flex;
-  flex-direction: row;
-
-  flex-wrap: wrap;
-}
-
 .goal-not-set-btn {
   display: grid;
   align-content: center;
   justify-content: center;
 }
 
-.achievement-label {
-  @include font-headline;
-  text-align: center;
-  padding: 0.2rem 0;
-  width: 100%;
-}
-
-.history-goal-container {
+.option {
+  display: grid;
+  grid-template-columns: min-content min-content;
+  justify-content: flex-end;
+  align-items: center;
+  color: var(--yellow-500);
 }
 
 @media screen and (min-width: $breakpoint-small) {
   .banner {
-    width: 95%;
+    border-bottom: 1.5px solid var(--gray-300);
   }
-
   .goal-content {
     max-width: 300px;
     margin: 0 auto;
