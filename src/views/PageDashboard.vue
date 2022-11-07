@@ -1,5 +1,5 @@
 <template>
-  <div class="page-layout pt-4" ref="refDashboard">
+  <div class="page-layout" ref="refDashboard">
     <digital-timer
       class="digital-timer z-10"
       @VisibleSectionUpdate="changeSection"
@@ -58,6 +58,8 @@ function updatedashboardWidth() {
 
 <style scoped lang="scss">
 .page-layout {
+  max-width: 80rem;
+  margin: auto;
   grid-template-columns: 1fr;
   grid-template-rows: 5rem 1fr;
   display: grid;

@@ -1,5 +1,9 @@
 <template>
-  <div class="digital-timer-container relative">
+  <line-layout-container
+    :tablet-border-bottom="true"
+    :mobile-border-bottom="true"
+    class="digital-timer-container relative"
+  >
     <div v-if="mediumScreenOrAbove" class="absolute w-full h-full">
       <div v-if="timerStarted" class="absolute w-full h-full">
         <div class="grid-container sm:mt-6">
@@ -366,7 +370,7 @@
         </svg>
       </div>
     </Transition> -->
-  </div>
+  </line-layout-container>
 </template>
 
 <script setup>
@@ -374,6 +378,7 @@ import { ref } from "vue";
 import PlayPauseButton from "./buttons/dashboard/PlayPauseButton.vue";
 import TaskCreateButton from "@/components/buttons/dashboard/TaskCreateButton.vue";
 import SleepingFish from "@/components/SvgComponents/SleepingFish.vue";
+import LineLayoutContainer from "@/components/LineLayoutContainer.vue";
 import { computed } from "vue";
 
 const props = defineProps({
@@ -411,8 +416,6 @@ function toggleSectionBtn() {
   height: 4rem;
   position: sticky;
   top: 0;
-  background: var(--gray-200);
-  box-shadow: $container-shadow;
 }
 
 .first-slide {
@@ -535,10 +538,8 @@ function toggleSectionBtn() {
 
 @media screen and (min-width: $breakpoint-small) {
   .digital-timer-container {
-    width: 95%;
     height: 200px;
     position: relative;
-    box-shadow: $container-shadow;
   }
 
   .grid-container {
