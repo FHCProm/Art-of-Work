@@ -51,6 +51,7 @@ const style = computed(() => ({
 <style lang="scss" scoped>
 .create-task-btn {
   @include button-shadow(--yellow-700);
+  @include font-headline;
   display: flex;
   align-items: center;
   background: var(--yellow-500);

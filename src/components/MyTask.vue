@@ -1,13 +1,9 @@
 <template>
   <div class="task" @mouseover="hover = true" @mouseleave="hover = false">
-    <div class="task-title">
-      <!-- {{ task.goal }} -->
-    </div>
-
     <div class="time">
       {{ formattedDaysAgo }}
     </div>
-    <div class="description font-bold">
+    <div class="description">
       {{ task.taskDescription }}
     </div>
     <div class="buttons">
@@ -153,12 +149,13 @@ const formattedDuration = computed(() => {
   }
 
   .time {
-    font-size: 0.7rem;
+    @include font-label;
     grid-column: 1/3;
     grid-row: 2/3;
   }
   .description {
     @include transition-ease(0.5s);
+    @include font-headline;
     position: relative;
     grid-column: 1/2;
     grid-row: 3/4;
@@ -177,7 +174,7 @@ const formattedDuration = computed(() => {
 }
 
 .details {
-  font-size: 0.7rem;
+  @include font-label;
   padding-top: 0.2rem;
   grid-column: 1/3;
   grid-row: 4/5;
@@ -187,6 +184,7 @@ const formattedDuration = computed(() => {
   }
 
   &-content {
+    @include font-body;
     width: 100%;
     display: grid;
     grid-template-columns: 30% 70%;

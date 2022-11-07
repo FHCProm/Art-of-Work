@@ -3,7 +3,7 @@
     <div class="absolute inset-0 rounded-xl -z-10 table-background"></div>
     <div v-if="tasks" class="table w-full">
       <div class="table-header-group">
-        <div class="table-row font-bold">
+        <div class="table-row">
           <div class="table-cell text-left px-2">Date</div>
           <div class="table-cell text-left">Task</div>
           <div class="table-cell text-left">Duration</div>

@@ -226,6 +226,7 @@ $leaves: (
   background: var(--gray-200);
 }
 .task-navigation {
+  @include font-label;
   display: grid;
   width: 95%;
   padding-top: 0.5rem;

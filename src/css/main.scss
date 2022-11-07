@@ -2,7 +2,6 @@
   //neutral-color
 
   --white: #ffffff;
-
   --gray-100: #f3f4f6;
   --gray-200: #e5e7eb;
   --gray-300: #d1d5db;
@@ -53,6 +52,33 @@ $inner-shadow: inset 0.2rem 0.2rem 0.5rem var(--gray-400),
 
 $container-shadow: 0.1rem 0.1rem 0.3rem var(--gray-400),
   -0.1rem -0.1rem 0.3rem var(--white);
+
+@mixin font-title {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+  font-family: Lato;
+}
+
+@mixin font-headline {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  font-family: Lato;
+}
+@mixin font-label {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  font-family: Lato;
+}
+
+@mixin font-body {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  font-family: Lato;
+}
 
 @mixin transition-ease($duration) {
   transition: all $duration ease-in;
