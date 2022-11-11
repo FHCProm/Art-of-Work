@@ -49,10 +49,7 @@ const goalSet = ref(true);
 }
 
 .goal-label {
-  @include font-title;
-  display: grid;
-  align-content: center;
-  justify-content: center;
+  font-family: Georgia, "Times New Roman", Times, serif;
   width: 100%;
   padding: 0.2rem 0;
 }
@@ -62,13 +59,7 @@ const goalSet = ref(true);
   margin: 0 auto;
 }
 .current-goal {
-  @include font-body;
-  border-radius: 1rem;
-  padding: 0.5rem;
-  border: 2px solid var(--gray-500);
-  background: var(--gray-300);
-  margin-left: 1rem;
-  margin-right: 1rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .goal-not-set-btn {
