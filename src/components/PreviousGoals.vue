@@ -39,8 +39,8 @@ function fetchLatest3HistoryGoals() {
 
 <style lang="scss" scoped>
 .achievement-label {
+  @include font-title;
   padding: 0.2rem 0;
-  font-family: Georgia, "Times New Roman", Times, serif;
   width: 100%;
 }
 
