@@ -72,7 +72,7 @@ onMounted(() => {
     }
   }
   if (secondUnitValue == 0) {
-    duration.value = `${firstUnitValue}${firstUnit}`;
+    duration.value = `${firstUnitValue} ${firstUnit}`;
   } else {
     duration.value = `${firstUnitValue} ${firstUnit} ${secondUnitValue} ${secondUnit}`;
   }
@@ -81,12 +81,15 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .row-goal {
-  @include font-label;
   font-size: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 
   &-duration {
+    @include font-label;
+  }
+  &-title {
+    @include font-headline;
   }
   &:hover {
     background: var(--gray-200);

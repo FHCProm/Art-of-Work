@@ -22,9 +22,12 @@
         Change
       </div>
     </div>
-    <div v-if="!goalSet">
-      <div class="goal-not-set-btn">
-        <goal-create-button></goal-create-button>
+    <div v-if="!goalSet" class="goal-not-set-content">
+      <div>
+        <div class="goal-not-set-content-text">You dont have a goal yet</div>
+        <div class="goal-not-set-content-btn">
+          <goal-create-button></goal-create-button>
+        </div>
       </div>
     </div>
   </line-layout-container>
@@ -41,6 +44,8 @@ const goalSet = ref(true);
 <style scoped lang="scss">
 .banner {
   width: 100%;
+  height: 100%;
+  min-height: 200px;
   padding: 0 0.5rem;
   border: unset;
   display: flex;
@@ -49,23 +54,28 @@ const goalSet = ref(true);
 }
 
 .goal-label {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  @include font-title;
   width: 100%;
   padding: 0.2rem 0;
 }
 
 .goal-content {
-  max-width: 300px;
-  margin: 0 auto;
-}
-.current-goal {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  @include font-body;
+
+  display: grid;
 }
 
-.goal-not-set-btn {
+.goal-not-set-content {
   display: grid;
-  align-content: center;
-  justify-content: center;
+  align-items: center;
+  height: 100%;
+  &-text {
+    @include font-body;
+  }
+  &-btn {
+    float: right;
+    color: var(--yellow-500);
+  }
 }
 
 .option {
@@ -83,7 +93,6 @@ const goalSet = ref(true);
   .goal-content {
     max-width: 300px;
     margin: 0 auto;
-    display: block;
   }
   .current-goal {
     flex-basis: unset;
