@@ -1,13 +1,13 @@
 <template>
   <line-layout-container :tablet-border-left="true" class="task-banner-layout">
     <div v-if="taskIsSet" class="w-full h-full">
-      <div class="task-navigation">
+      <!-- <div class="task-navigation">
         <chevron-button direction="left"></chevron-button>
         <chevron-button
           direction="right"
           style="justify-self: end"
         ></chevron-button>
-      </div>
+      </div> -->
       <task-create-button
         v-if="mediumScreenOrAbove"
         class="flex justify-center mx-auto mt-4 mb-4"
