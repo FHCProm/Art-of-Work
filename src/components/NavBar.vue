@@ -1,15 +1,19 @@
 <template>
-  <header class="navbar">
+  <line-layout-container
+    :tablet-border-bottom="true"
+    :mobile-border-bottom="true"
+    class="navbar"
+  >
     <span class="title pl-4">Art of Breaking</span>
     <div class="navbar-buttons">
       <span class="">Login</span>
       <span class="">Register</span>
     </div>
-  </header>
+  </line-layout-container>
 </template>
 
-<script>
-export default {};
+<script setup>
+import LineLayoutContainer from "@/components/LineLayoutContainer.vue";
 </script>
 
 <style scoped lang="scss">

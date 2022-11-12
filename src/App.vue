@@ -35,10 +35,7 @@ export default {
 
 html {
   font-size: 12px;
-  max-width: 80rem;
 
-  margin: 0 auto;
-  background: var(--gray-100);
   color: var(--gray-700);
 }
 

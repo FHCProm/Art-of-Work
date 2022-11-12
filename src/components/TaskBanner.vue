@@ -1,5 +1,5 @@
 <template>
-  <div class="task-banner-layout">
+  <line-layout-container :tablet-border-left="true" class="task-banner-layout">
     <div v-if="taskIsSet" class="w-full h-full">
       <div class="task-navigation">
         <chevron-button direction="left"></chevron-button>
@@ -160,7 +160,7 @@
     </div>
 
     <dashboard-dialogs :taskDialog="true" ref="modal"></dashboard-dialogs>
-  </div>
+  </line-layout-container>
 </template>
 
 <script setup>
@@ -168,6 +168,7 @@ import ChevronButton from "@/components/buttons/dashboard/ChevronButton.vue";
 import TaskList from "@/components/TaskList.vue";
 import DashboardDialogs from "@/components/dialogs/DashboardDialogs.vue";
 import TaskCreateButton from "@/components/buttons/dashboard/TaskCreateButton.vue";
+import LineLayoutContainer from "@/components/LineLayoutContainer.vue";
 import { ref } from "vue";
 
 const props = defineProps({
@@ -214,7 +215,6 @@ $leaves: (
 .task-banner-layout {
   position: relative;
   // border: 1px solid white;
-  box-shadow: $container-shadow;
   width: 100%;
   min-height: 300px;
   margin-bottom: 1rem;
@@ -223,12 +223,11 @@ $leaves: (
   align-items: center;
   justify-items: center;
   overflow-y: scroll;
-  background: var(--gray-200);
 }
 .task-navigation {
   @include font-label;
   display: grid;
-  width: 95%;
+
   padding-top: 0.5rem;
   margin: 0 auto 0 auto;
   grid-template-columns: 1fr 1fr;
@@ -322,7 +321,6 @@ $leaves: (
 
 @media screen and (min-width: $breakpoint-small) {
   .task-banner-layout {
-    width: 95%;
     min-height: 700px;
   }
 

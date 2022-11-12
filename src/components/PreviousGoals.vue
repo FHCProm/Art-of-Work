@@ -1,5 +1,5 @@
 <template>
-  <div class="previous-goals">
+  <line-layout-container :tablet-border-bottom="true" class="previous-goals">
     <div class="achievement-label mt-5">Achievements</div>
     <div class="history-goal-container">
       <row-goal
@@ -8,11 +8,12 @@
         v-bind="history"
       ></row-goal>
     </div>
-  </div>
+  </line-layout-container>
 </template>
 
 <script setup>
 import RowGoal from "@/components/RowGoal.vue";
+import LineLayoutContainer from "@/components/LineLayoutContainer.vue";
 import { ref } from "vue";
 const goalHistory = ref(fetchLatest3HistoryGoals());
 function fetchLatest3HistoryGoals() {
@@ -45,6 +46,5 @@ function fetchLatest3HistoryGoals() {
 
 .previous-goals {
   width: 100%;
-  border-bottom: 1.5px solid var(--gray-300);
 }
 </style>

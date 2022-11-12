@@ -1,5 +1,5 @@
 <template>
-  <div class="banner">
+  <line-layout-container :tablet-border-bottom="true" class="banner">
     <div class="goal-label mt-5">Current Atomic Goals</div>
     <div v-if="goalSet" class="goal-content">
       <div class="current-goal mt-4">
@@ -27,11 +27,12 @@
         <goal-create-button></goal-create-button>
       </div>
     </div>
-  </div>
+  </line-layout-container>
 </template>
 
 <script setup>
 import GoalCreateButton from "@/components/buttons/dashboard/GoalCreateButton.vue";
+import LineLayoutContainer from "@/components/LineLayoutContainer.vue";
 import { ref } from "vue";
 
 const goalSet = ref(true);
@@ -41,11 +42,10 @@ const goalSet = ref(true);
 .banner {
   width: 100%;
   padding: 0 0.5rem;
-
+  border: unset;
   display: flex;
   flex-direction: column;
   align-content: center;
-  margin-bottom: 1rem;
 }
 
 .goal-label {
