@@ -26,11 +26,13 @@ import LineLayoutContainer from "@/components/LineLayoutContainer.vue";
 }
 
 .navbar-buttons {
+  @include font-headline;
   display: grid;
   grid-template-columns: 100px 100px;
   align-items: center;
   justify-items: center;
   justify-content: end;
+
   color: var(--gray-500);
   & > span:hover {
     color: var(--gray-900);

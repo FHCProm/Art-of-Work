@@ -225,6 +225,7 @@ $leaves: (
   overflow-y: scroll;
 }
 .task-navigation {
+  @include font-label;
   display: grid;
 
   padding-top: 0.5rem;
