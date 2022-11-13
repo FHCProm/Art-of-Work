@@ -1,5 +1,5 @@
 <template>
-  <line-layout-container
+  <line-container
     :tablet-border-bottom="true"
     :mobile-border-bottom="true"
     class="digital-timer-container relative"
@@ -236,7 +236,7 @@
         </div>
       </div>
     </div>
-  </line-layout-container>
+  </line-container>
 </template>
 
 <script setup>
@@ -244,7 +244,7 @@ import { ref } from "vue";
 import PlayPauseButton from "./buttons/dashboard/PlayPauseButton.vue";
 import TaskCreateButton from "@/components/buttons/dashboard/TaskCreateButton.vue";
 import SleepingFish from "@/components/SvgComponents/SleepingFish.vue";
-import LineLayoutContainer from "@/components/LineLayoutContainer.vue";
+import LineContainer from "@/components/LineContainer.vue";
 import { computed } from "vue";
 
 const props = defineProps({

@@ -1,5 +1,5 @@
 <template>
-  <line-layout-container :tablet-border-left="true" class="task-banner-layout">
+  <line-container :tablet-border-left="true" class="task-banner">
     <div v-if="taskIsSet" class="w-full h-full">
       <!-- <div class="task-navigation">
         <chevron-button direction="left"></chevron-button>
@@ -160,7 +160,7 @@
     </div>
 
     <dashboard-dialogs :taskDialog="true" ref="modal"></dashboard-dialogs>
-  </line-layout-container>
+  </line-container>
 </template>
 
 <script setup>
@@ -168,7 +168,7 @@ import ChevronButton from "@/components/buttons/dashboard/ChevronButton.vue";
 import TaskList from "@/components/TaskList.vue";
 import DashboardDialogs from "@/components/dialogs/DashboardDialogs.vue";
 import TaskCreateButton from "@/components/buttons/dashboard/TaskCreateButton.vue";
-import LineLayoutContainer from "@/components/LineLayoutContainer.vue";
+import LineContainer from "@/components/LineContainer.vue";
 import { ref } from "vue";
 
 const props = defineProps({

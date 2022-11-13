@@ -1,12 +1,12 @@
 <template>
-  <line-layout-container :tablet-border-bottom="true" class="banner">
+  <line-container :tablet-border-bottom="true" class="banner">
     <div class="goal-label mt-5">Current Atomic Goals</div>
     <div v-if="goalSet" class="goal-content">
       <div class="current-goal mt-4">
         Make a design draf for Art of Breaking Make a design draf for Art of
         Breaking Make a design draf for
       </div>
-      <div class="option">
+      <router-link to="/goalList" class="option">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
@@ -20,7 +20,7 @@
           />
         </svg>
         Change
-      </div>
+      </router-link>
     </div>
     <div v-if="!goalSet" class="goal-not-set-content">
       <div>
@@ -30,12 +30,12 @@
         </div>
       </div>
     </div>
-  </line-layout-container>
+  </line-container>
 </template>
 
 <script setup>
 import GoalCreateButton from "@/components/buttons/dashboard/GoalCreateButton.vue";
-import LineLayoutContainer from "@/components/LineLayoutContainer.vue";
+import LineContainer from "@/components/LineContainer.vue";
 import { ref } from "vue";
 
 const goalSet = ref(true);

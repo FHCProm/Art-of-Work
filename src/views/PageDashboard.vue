@@ -1,5 +1,5 @@
 <template>
-  <div class="page-layout" ref="refDashboard">
+  <layout3070 class="dashboard-layout" ref="refDashboard">
     <digital-timer
       class="digital-timer z-10"
       @VisibleSectionUpdate="changeSection"
@@ -21,7 +21,7 @@
       v-if="visibleSection == 'taskBanner' || mediumScreenOrAbove"
       class="task-banner animatePartialLayout"
     ></task-banner>
-  </div>
+  </layout3070>
 </template>
 
 <script setup>
@@ -29,6 +29,7 @@ import DigitalTimer from "@/components/DigitalTimer.vue";
 import GoalBanner from "@/components/GoalBanner.vue";
 import TaskBanner from "@/components/TaskBanner.vue";
 import PreviousGoals from "@/components/PreviousGoals.vue";
+import Layout3070 from "@/components/Layout3070.vue";
 
 import { ref } from "vue";
 import { onMounted } from "vue";
@@ -57,34 +58,24 @@ function updatedashboardWidth() {
 </script>
 
 <style scoped lang="scss">
-.page-layout {
-  max-width: 80rem;
-  margin: auto;
-  grid-template-columns: 1fr;
-  grid-template-rows: 5rem 1fr;
-  display: grid;
-  justify-items: center;
-  align-items: center;
+.digital-timer {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
 
-  .digital-timer {
-    grid-column: 1/2;
-    grid-row: 1/2;
-  }
+.goal-banner {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
 
-  .goal-banner {
-    grid-column: 1/2;
-    grid-row: 2/3;
-  }
+.previous-goals {
+  grid-column: 1/2;
+  grid-row: 3/4;
+}
 
-  .previous-goals {
-    grid-column: 1/2;
-    grid-row: 3/4;
-  }
-
-  .task-banner {
-    grid-column: 1/2;
-    grid-row: 2/3;
-  }
+.task-banner {
+  grid-column: 1/2;
+  grid-row: 2/3;
 }
 
 // .fadeUp-enter-active,
@@ -98,9 +89,9 @@ function updatedashboardWidth() {
 
 //   transform: translateY(20px) scale(0.7);
 // }
-.animatePartialLayout {
-  animation: fadeUp 0.5s linear forwards;
-}
+
+//animation: fadeUp 0.5s linear forwards;
+
 @keyframes fadeUp {
   0% {
     opacity: 0;
@@ -113,30 +104,30 @@ function updatedashboardWidth() {
 }
 
 @media screen and (min-width: $breakpoint-small) {
-  .page-layout {
-    grid-template-columns: 30% 70%;
+  .dashboard-layout {
     grid-template-rows: min-content min-content 1fr;
-    .digital-timer {
-      grid-column: 1/2;
-      grid-row: 1/2;
-      align-self: flex-start;
-    }
-    .goal-banner {
-      align-self: flex-start;
-      justify-self: center;
-      grid-column: 1/2;
-      grid-row: 2/3;
-    }
-    .previous-goals {
-      align-self: flex-start;
-      grid-column: 1/2;
-      grid-row: 3/4;
-    }
-    .task-banner {
-      align-self: flex-start;
-      grid-column: 2/3;
-      grid-row: 1/4;
-    }
+  }
+
+  .digital-timer {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    align-self: flex-start;
+  }
+  .goal-banner {
+    align-self: flex-start;
+    justify-self: center;
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+  .previous-goals {
+    align-self: flex-start;
+    grid-column: 1/2;
+    grid-row: 3/4;
+  }
+  .task-banner {
+    align-self: flex-start;
+    grid-column: 2/3;
+    grid-row: 1/4;
   }
 
   .animatePartialLayout {
@@ -145,8 +136,5 @@ function updatedashboardWidth() {
 }
 
 @media screen and (min-width: $breakpoint-medium) {
-  .page-layout {
-    grid-template-columns: 25% 75%;
-  }
 }
 </style>

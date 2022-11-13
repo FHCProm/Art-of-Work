@@ -1,5 +1,5 @@
 <template>
-  <line-layout-container
+  <line-container
     :tablet-border-bottom="true"
     :mobile-border-bottom="true"
     class="navbar"
@@ -9,11 +9,11 @@
       <span class="">Login</span>
       <span class="">Register</span>
     </div>
-  </line-layout-container>
+  </line-container>
 </template>
 
 <script setup>
-import LineLayoutContainer from "@/components/LineLayoutContainer.vue";
+import LineContainer from "@/components/LineContainer.vue";
 </script>
 
 <style scoped lang="scss">
