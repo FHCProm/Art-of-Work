@@ -89,7 +89,7 @@
 </template>
 
 <script setup>
-import CustomButton from "@/components/buttons/dashboard/CustomButton.vue";
+import CustomButton from "@/components/buttons/CustomButton.vue";
 
 import DismissButton from "@/components/buttons/dashboard/DismissButton.vue";
 import { ref, computed } from "vue";
