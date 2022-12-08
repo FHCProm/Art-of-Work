@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import RowGoal from "@/components/RowGoal.vue";
+import RowGoal from "@/components/pages/dashboard/RowGoal.vue";
 import LineContainer from "@/components/LineContainer.vue";
 import { ref } from "vue";
 const goalHistory = ref(fetchLatest3HistoryGoals());

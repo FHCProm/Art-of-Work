@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import MyTask from "@/components/MyTask.vue";
+import MyTask from "@/components/pages/dashboard/MyTask.vue";
 export default {
   components: {
     MyTask,

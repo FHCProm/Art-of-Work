@@ -19,7 +19,7 @@
     </div>
     <div class="current-goal">current goal</div>
     <div class="goal-list">
-      <div class="input_decorator">
+      <div class="search_container">
         <input
           class="search_input"
           type="text"
@@ -42,6 +42,9 @@
           </svg>
         </div>
       </div>
+      <div class="goal-list-containers">
+        <row-goal v-for="goal in goals" :goal="goal" :key="goal.id"></row-goal>
+      </div>
     </div>
   </layout3070>
 </template>
@@ -49,6 +52,23 @@
 <script setup>
 import Layout3070 from "@/components/Layout3070.vue";
 import CustomButton from "@/components/buttons/CustomButton.vue";
+import RowGoal from "@/components/pages/goalList/RowGoal.vue";
+import { ref } from "vue";
+
+const goals = ref([
+  {
+    id: 232344324,
+    date: 1639283173,
+    tag: "worklife",
+    title: "improve art of breaking design",
+  },
+  {
+    id: 24434434,
+    date: 163918000,
+    tag: "Health",
+    title: "Food that can give me more energy for everyday work",
+  },
+]);
 </script>
 
 <style lang="scss" scoped>
@@ -72,6 +92,7 @@ import CustomButton from "@/components/buttons/CustomButton.vue";
 }
 
 .current-goal {
+  display: none;
   grid-column: 1/2;
   grid-row: 2/3;
   width: 100%;
@@ -87,15 +108,15 @@ import CustomButton from "@/components/buttons/CustomButton.vue";
   width: 100%;
 }
 
-.input_decorator {
+.search_container {
   display: flex;
-
   width: 95%;
   border-radius: var(--input-border-radius);
   box-sizing: border-box;
   border: 1px solid var(--gray-500);
   .search_input {
-    flex-grow: 2;
+    @include font-body;
+    flex: 1;
     padding: 1rem;
     border-radius: inherit;
     outline: none;
@@ -106,9 +127,9 @@ import CustomButton from "@/components/buttons/CustomButton.vue";
   }
   .search_svg {
     border-radius: inherit;
-    box-sizing: content-box;
-    padding: 0 2rem;
     width: 2rem;
+    padding: 0 1rem;
+    box-sizing: content-box;
   }
 
   svg {
@@ -119,6 +140,39 @@ import CustomButton from "@/components/buttons/CustomButton.vue";
 
 .search_input:focus ~ .search_svg {
   background: var(--gray-200);
+}
+
+.goal-list-containers {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.goal-list-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+.date {
+  width: 70px;
+  box-sizing: content-box;
+}
+.goal-detail {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.tag-title-wrapper {
+  flex: 1;
+}
+
+.tag {
+  border: 1px solid black;
+  padding: 0 1rem;
+  width: min-content;
+  border-radius: var(--button-border-radius);
 }
 
 @media screen and (min-width: $breakpoint-small) {

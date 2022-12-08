@@ -165,7 +165,7 @@
 
 <script setup>
 import ChevronButton from "@/components/buttons/dashboard/ChevronButton.vue";
-import TaskList from "@/components/TaskList.vue";
+import TaskList from "@/components/pages/dashboard/TaskList.vue";
 import DashboardDialogs from "@/components/dialogs/DashboardDialogs.vue";
 import TaskCreateButton from "@/components/buttons/dashboard/TaskCreateButton.vue";
 import LineContainer from "@/components/LineContainer.vue";

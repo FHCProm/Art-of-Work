@@ -2,18 +2,7 @@
   <div class="relative flex flex-col items-center justify-center w-full h-full">
     <timer-display :time="seconds" class="mt-2"></timer-display>
     <div
-      class="
-        absolute
-        w-full
-        timer
-        opacity-20
-        text-center
-        -z-50
-        whitespace-nowrap
-        overflow-hidden
-        text-4xl
-        lg:text-8xl
-      "
+      class="absolute w-full timer opacity-20 text-center -z-50 whitespace-nowrap overflow-hidden text-4xl lg:text-8xl"
     >
       {{ editedBackgroundText }}
     </div>
@@ -29,7 +18,7 @@
 <script>
 import TimerDisplay from "@/components/TimerDisplay.vue";
 import TaskCreator from "@/components/legacy/TaskCreator.vue";
-import TaskList from "@/components/TaskList.vue";
+import TaskList from "@/components/dashboard/TaskList.vue";
 export default {
   components: {
     TimerDisplay,

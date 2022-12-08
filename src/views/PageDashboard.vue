@@ -25,10 +25,10 @@
 </template>
 
 <script setup>
-import DigitalTimer from "@/components/DigitalTimer.vue";
-import GoalBanner from "@/components/GoalBanner.vue";
-import TaskBanner from "@/components/TaskBanner.vue";
-import PreviousGoals from "@/components/PreviousGoals.vue";
+import DigitalTimer from "@/components/pages/dashboard/DigitalTimer.vue";
+import GoalBanner from "@/components/pages/dashboard/GoalBanner.vue";
+import TaskBanner from "@/components/pages/dashboard/TaskBanner.vue";
+import PreviousGoals from "@/components/pages/dashboard/PreviousGoals.vue";
 import Layout3070 from "@/components/Layout3070.vue";
 
 import { ref } from "vue";

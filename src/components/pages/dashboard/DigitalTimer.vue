@@ -241,9 +241,9 @@
 
 <script setup>
 import { ref } from "vue";
-import PlayPauseButton from "./buttons/dashboard/PlayPauseButton.vue";
+import PlayPauseButton from "@/components/buttons/dashboard/PlayPauseButton.vue";
 import TaskCreateButton from "@/components/buttons/dashboard/TaskCreateButton.vue";
-import SleepingFish from "@/components/SvgComponents/SleepingFish.vue";
+import SleepingFish from "@/components/svgComponents/SleepingFish.vue";
 import LineContainer from "@/components/LineContainer.vue";
 import { computed } from "vue";
 
