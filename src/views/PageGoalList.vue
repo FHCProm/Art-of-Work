@@ -1,8 +1,30 @@
 <template>
   <layout3070 class="goal-list-layout">
-    <div class="goal-definition">
-      <div class="goal-question">What is a goal?</div>
-      <div class="mt-4 goal-answer">
+    <line-container
+      :tablet-border-bottom="true"
+      :mobile-border-bottom="true"
+      class="goal-definition relative"
+    >
+      <div class="goal-question">
+        <div>Goal</div>
+        <div class="px-2" @click="showDefinition = !showDefinition">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
+            />
+          </svg>
+        </div>
+      </div>
+      <div v-if="showDefinition" class="mt-4 goal-answer">
         A goal can be anything. It can be your problem, homework, job ,etc.
         Anything that you want to remind yourself of can be a goal.
       </div>
@@ -10,15 +32,15 @@
         <custom-button
           class="mt-2 goal-create"
           text="new goal"
-          btn-padding="0.3rem 3rem"
+          btn-padding="0.3rem 1rem"
           btn-text-color="var(--orange-900)"
           btn-background-color="var(--orange-500)"
           btn-shadow-color="var(--orange-700)"
         ></custom-button>
       </div>
-    </div>
+    </line-container>
     <div class="current-goal">current goal</div>
-    <div class="goal-list">
+    <line-container class="goal-list" :tablet-border-left="true">
       <div class="search_container">
         <input
           class="search_input"
@@ -45,7 +67,7 @@
       <div class="goal-list-containers">
         <row-goal v-for="goal in goals" :goal="goal" :key="goal.id"></row-goal>
       </div>
-    </div>
+    </line-container>
   </layout3070>
 </template>
 
@@ -53,25 +75,51 @@
 import Layout3070 from "@/components/Layout3070.vue";
 import CustomButton from "@/components/buttons/CustomButton.vue";
 import RowGoal from "@/components/pages/goalList/RowGoal.vue";
+import LineContainer from "@/components/LineContainer.vue";
 import { ref } from "vue";
 
 const goals = ref([
   {
     id: 232344324,
     date: 1639283173,
-    tag: "worklife",
+    tags: ["worklife", "art"],
     title: "improve art of breaking design",
   },
   {
     id: 24434434,
     date: 163918000,
-    tag: "Health",
+    tags: ["health"],
     title: "Food that can give me more energy for everyday work",
   },
+  {
+    id: 24434345,
+    date: 163918000,
+    tags: ["sit"],
+    title:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, fuga?",
+  },
+  {
+    id: 2443342,
+    date: 163918000,
+    tags: ["dolor"],
+    title:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, expedita.",
+  },
+  {
+    id: 24434343,
+    date: 163918000,
+    tags: ["ipsum"],
+    title:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, quaerat!",
+  },
 ]);
+
+const showDefinition = ref(false);
 </script>
 
 <style lang="scss" scoped>
+.goal-list-layout {
+}
 .goal-definition {
   grid-column: 1/2;
   grid-row: 1/2;
@@ -80,7 +128,8 @@ const goals = ref([
 
 .goal-question {
   @include font-title;
-  display: none;
+  display: flex;
+  flex-direction: row;
 }
 .goal-answer {
   @include font-body;
@@ -100,6 +149,7 @@ const goals = ref([
 }
 
 .goal-list {
+  padding: 1rem 0 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -182,14 +232,14 @@ const goals = ref([
   .goal-definition {
     grid-column: 1/2;
     grid-row: 1/2;
-    height: 200px;
+    padding: 1rem 0 1rem 0;
+
     align-self: flex-start;
     display: flex;
     flex-direction: column;
   }
 
   .goal-question {
-    display: unset;
   }
   .goal-answer {
     display: unset;
