@@ -1,10 +1,6 @@
 <template>
   <layout3070 class="goal-list-layout">
-    <line-container
-      :tablet-border-bottom="true"
-      :mobile-border-bottom="true"
-      class="goal-definition relative"
-    >
+    <line-container class="goal-definition relative">
       <div class="goal-question">
         <div>Goal</div>
         <div class="px-2" @click="showDefinition = !showDefinition">
@@ -38,15 +34,9 @@
           btn-shadow-color="var(--orange-700)"
         ></custom-button>
       </div>
-    </line-container>
-    <div class="current-goal">current goal</div>
-    <line-container class="goal-list" :tablet-border-left="true">
+
       <div class="search_container">
-        <input
-          class="search_input"
-          type="text"
-          placeholder="the goal that you want to"
-        />
+        <input class="search_input" type="text" placeholder="Which goal?" />
         <div class="search_svg">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +44,6 @@
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="w-6 h-6"
           >
             <path
               stroke-linecap="round"
@@ -64,6 +53,30 @@
           </svg>
         </div>
       </div>
+      <div class="utilityBtns">
+        <button class="rearrangeBtn">
+          <div class="centerBox">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z"
+              />
+            </svg>
+            <div>rearrange</div>
+          </div>
+        </button>
+      </div>
+    </line-container>
+    <div class="current-goal">current goal</div>
+    <line-container class="goal-list" :tablet-border-left="true">
       <div class="goal-list-containers">
         <row-goal v-for="goal in goals" :goal="goal" :key="goal.id"></row-goal>
       </div>
@@ -124,12 +137,16 @@ const showDefinition = ref(false);
   grid-column: 1/2;
   grid-row: 1/2;
   width: 100%;
+  padding: 1rem;
 }
 
 .goal-question {
   @include font-title;
   display: flex;
   flex-direction: row;
+  svg {
+    display: none;
+  }
 }
 .goal-answer {
   @include font-body;
@@ -159,27 +176,47 @@ const showDefinition = ref(false);
 }
 
 .search_container {
-  display: flex;
-  width: 95%;
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
   border-radius: var(--input-border-radius);
   box-sizing: border-box;
-  border: 1px solid var(--gray-500);
+
+  border: 1px solid var(--gray-300);
+
+  &:hover {
+    border: 1px solid var(--teal-700);
+  }
+
   .search_input {
     @include font-body;
-    flex: 1;
-    padding: 1rem;
+    padding: 0.7rem;
+    width: 100%;
     border-radius: inherit;
     outline: none;
-    &:focus,
-    &:focus ~ .search_svg {
-      background: var(--gray-100);
-    }
+    background: none;
+
+    // &:focus,
+    // &:focus ~ .search_svg {
+    //   background: var(--gray-100);
+    // }
   }
+
   .search_svg {
     border-radius: inherit;
     width: 2rem;
-    padding: 0 1rem;
-    box-sizing: content-box;
+
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+    &:hover {
+      color: var(--teal-700);
+    }
+    //box-sizing: content-box;
   }
 
   svg {
@@ -188,8 +225,8 @@ const showDefinition = ref(false);
   }
 }
 
-.search_input:focus ~ .search_svg {
-  background: var(--gray-200);
+.rearrangeBtn {
+  display: none;
 }
 
 .goal-list-containers {
@@ -232,7 +269,7 @@ const showDefinition = ref(false);
   .goal-definition {
     grid-column: 1/2;
     grid-row: 1/2;
-    padding: 1rem 0 1rem 0;
+    padding: 1rem;
 
     align-self: flex-start;
     display: flex;
@@ -240,6 +277,9 @@ const showDefinition = ref(false);
   }
 
   .goal-question {
+    svg {
+      display: unset;
+    }
   }
   .goal-answer {
     display: unset;
@@ -261,8 +301,34 @@ const showDefinition = ref(false);
   .goal-list {
     grid-column: 2/3;
     grid-row: 1/3;
-    height: 700px;
+    min-height: 90vh;
     align-self: flex-start;
+  }
+
+  .utilityBtns {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 100px 100px;
+    column-gap: 1rem;
+    row-gap: 1rem;
+  }
+
+  .rearrangeBtn {
+    display: unset;
+    width: 100px;
+    height: 90px;
+    border-radius: var(--button-border-radius);
+    border: 0.5px solid var(--gray-300);
+
+    &:focus {
+      border: 0.5px solid var(--teal-700);
+    }
+  }
+  .centerBox {
+    display: flex;
+    align-items: center;
+
+    flex-direction: column;
   }
 }
 </style>

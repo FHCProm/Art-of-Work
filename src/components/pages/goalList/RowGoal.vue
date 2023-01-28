@@ -53,7 +53,7 @@ const goalTime = moment.unix(props.goal.date).format("h:mm a");
   align-items: center;
 }
 .date-container {
-  width: 200px;
+  width: 80px;
   display: flex;
   flex-direction: column;
 }
@@ -80,8 +80,25 @@ const goalTime = moment.unix(props.goal.date).format("h:mm a");
 }
 
 .goal-options {
+  color: var(--gray-500);
   &:hover {
-    color: black;
+    color: var(--gray-900);
+  }
+}
+
+@media screen and (min-width: $breakpoint-small) {
+  .date-container {
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: $breakpoint-large) {
+  .date-container {
+    width: 160px;
+    display: flex;
+    flex-direction: column;
   }
 }
 </style>
