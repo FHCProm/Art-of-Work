@@ -1,6 +1,6 @@
 <template>
   <line-container :tablet-border-bottom="true" class="banner">
-    <div class="goal-label mt-5">Current Atomic Goals</div>
+    <div class="goal-label mt-5">Current Atomic Goal</div>
     <div v-if="goalSet" class="goal-content">
       <div class="current-goal mt-4">
         Make a design draf for Art of Breaking Make a design draf for Art of
