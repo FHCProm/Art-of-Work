@@ -6,8 +6,8 @@
           <div class="words-first-part">
             <h3 class="first-part-word">Task</h3>
             <div class="first-part-timer">
-              <div class="timer-min">1 min</div>
-              <div class="timer-second">20 s</div>
+              <div class="timer-min">0 min</div>
+              <div class="timer-second">0 s</div>
             </div>
           </div>
 
@@ -19,30 +19,49 @@
           </div>
         </div>
         <div class="first-section-play">
-          <div class="play-circle">
-            <div class="play-button">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"
-                />
-              </svg>
-            </div>
-          </div>
+          <button class="play-circle" @click="taskIsRunning = !taskIsRunning">
+            <svg
+              v-if="taskIsRunning"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1"
+              stroke="currentColor"
+              class="play-button"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"
+              />
+            </svg>
+            <svg
+              v-if="!taskIsRunning"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="pause-button"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 5.25v13.5m-7.5-13.5v13.5"
+              />
+            </svg>
+          </button>
         </div>
       </div>
     </section>
   </main>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+
+let taskIsRunning = ref(false);
+</script>
 
 <style scoped lang="scss">
 @media screen and (min-width: $breakpoint-small) {
@@ -143,9 +162,26 @@
     width: 250px;
     height: 250px;
     border-radius: 100%;
+    cursor: pointer;
     position: relative;
-    border: 5px solid var(--teal-500);
+    border: 5px solid var(--teal-200);
+    box-shadow: inset 1.5rem 1.5rem 3rem var(--teal-200),
+      inset -0.2rem -0.2rem 0.5rem var(--teal-200);
+    &:active {
+      box-shadow: inset 1.5rem 1.5rem 3rem var(--teal-300),
+        inset -0.2rem -0.2rem 0.5rem var(--teal-300);
+      border: 5px solid var(--teal-300);
+    }
   }
+
+  // .play-button {
+  //   position: absolute;
+  //   left: 56px;
+  //   top: 47px;
+  //   width: 150px;
+  //   height: 150px;
+  //   color: var(--teal-400);
+  // }
 
   .play-button {
     position: absolute;
@@ -153,7 +189,15 @@
     top: 47px;
     width: 150px;
     height: 150px;
-    color: var(--teal-700);
+    color: var(--teal-400);
+  }
+  .pause-button {
+    position: absolute;
+    left: 46px;
+    top: 51px;
+    width: 150px;
+    height: 150px;
+    color: var(--teal-400);
   }
 }
 </style>
