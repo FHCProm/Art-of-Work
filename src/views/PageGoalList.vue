@@ -95,18 +95,21 @@ const goals = ref([
   {
     id: 232344324,
     date: 1639283173,
+    totalHourInvested: 223455,
     tags: ["worklife", "art"],
     title: "improve art of breaking design",
   },
   {
     id: 24434434,
     date: 163918000,
+    totalHourInvested: 435665,
     tags: ["health"],
     title: "Food that can give me more energy for everyday work",
   },
   {
     id: 24434345,
     date: 163918000,
+    totalHourInvested: 65768678,
     tags: ["sit"],
     title:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, fuga?",
@@ -114,6 +117,7 @@ const goals = ref([
   {
     id: 2443342,
     date: 163918000,
+    totalHourInvested: 22345,
     tags: ["dolor"],
     title:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, expedita.",
@@ -121,6 +125,7 @@ const goals = ref([
   {
     id: 24434343,
     date: 163918000,
+    totalHourInvested: 55667,
     tags: ["ipsum"],
     title:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, quaerat!",

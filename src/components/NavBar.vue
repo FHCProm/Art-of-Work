@@ -4,9 +4,13 @@
     :mobile-border-bottom="true"
     class="navbar"
   >
-    <span class="title pl-4">Art of Breaking</span>
+    <router-link to="/">
+      <span class="title pl-4">Art of Breaking</span>
+    </router-link>
     <div class="navbar-buttons">
-      <span class="">Login</span>
+      <router-link to="/dashboard">
+        <span class="">Login</span>
+      </router-link>
       <span class="">Register</span>
     </div>
   </line-container>

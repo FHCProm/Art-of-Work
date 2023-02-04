@@ -53,6 +53,7 @@ const goalTime = moment.unix(props.goal.date).format("h:mm a");
   align-items: center;
 }
 .date-container {
+  @include font-label;
   width: 80px;
   display: flex;
   flex-direction: column;
@@ -67,6 +68,7 @@ const goalTime = moment.unix(props.goal.date).format("h:mm a");
 }
 
 .tag-title-wrapper {
+  @include font-body;
   flex: 1;
 }
 
@@ -77,6 +79,10 @@ const goalTime = moment.unix(props.goal.date).format("h:mm a");
 .tag {
   padding: 0 0.5rem 0 0;
   width: min-content;
+}
+
+.goal-title {
+  @include font-headline;
 }
 
 .goal-options {
