@@ -29,9 +29,9 @@
           class="mt-2 goal-create"
           text="new goal"
           btn-padding="0.3rem 1rem"
-          btn-text-color="var(--orange-900)"
-          btn-background-color="var(--orange-500)"
-          btn-shadow-color="var(--orange-700)"
+          btn-text-color="var(--yellow-900)"
+          btn-background-color="var(--yellow-500)"
+          btn-shadow-color="var(--yellow-700)"
         ></custom-button>
       </div>
 
