@@ -12,7 +12,7 @@
           </div>
 
           <h1 class="words-second-part">
-            <span>Write down your goals and tasks to love it</span>
+            <span>Time Tracker for Projects</span>
           </h1>
           <div class="words-third-part">
             <button class="third-part-button">Get Started</button>

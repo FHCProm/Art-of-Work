@@ -1,5 +1,5 @@
 <template>
-  <header class="navbar-wrapper">
+  <header class="navbar-wrapper" :style="styles">
     <line-container
       :tablet-border-bottom="true"
       :mobile-border-bottom="true"
@@ -22,7 +22,7 @@
         <div class="navbar_button">My Account</div>
       </div>
 
-      <div class="mobile-menu-toggle" @click="menuVisible = !menuVisible">
+      <div class="mobile-menu-toggle" @click="menuClicked">
         <div class="menu-toggle-container">
           <div color="text" class="menu-toggle" :class="classes"></div>
         </div>
@@ -54,16 +54,30 @@ import { ref, computed } from "vue";
 
 let userIsLogin = ref(false);
 let menuVisible = ref(false);
+let menuPositionCSS = ref("unset");
 const classes = computed(() => ({
   "menu-toggle-rotate": menuVisible.value,
+}));
+
+function menuClicked() {
+  menuVisible.value = !menuVisible.value;
+  if (menuPositionCSS.value == "unset") {
+    menuPositionCSS.value = "fixed";
+  } else {
+    menuPositionCSS.value = "unset";
+  }
+}
+
+const styles = computed(() => ({
+  position: menuPositionCSS.value,
 }));
 </script>
 
 <style scoped lang="scss">
 .navbar-wrapper {
-  position: fixed;
-  width: 100%;
   top: 0px;
+  width: 100%;
+  position: block;
   background: rgb(255, 255, 255);
   z-index: 2;
   box-shadow: rgb(255 255 255) 0px -1px 0px 1px;
@@ -160,7 +174,7 @@ const classes = computed(() => ({
   height: calc(100vh - 58px);
   overflow-y: scroll;
   background: rgb(255, 255, 255);
-  z-index: -1;
+  z-index: -2;
 }
 
 .nav-dropdown-link {
@@ -189,6 +203,9 @@ const classes = computed(() => ({
 }
 
 @media screen and (min-width: $breakpoint-small) {
+  .navbar-wrapper {
+    position: static;
+  }
   .navbar-buttons {
     @include font-headline;
     justify-self: end;
