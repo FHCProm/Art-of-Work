@@ -28,22 +28,35 @@
         </div>
       </div>
     </line-container>
+
+    <!--here is for mobile menu-->
     <div v-if="menuVisible" class="mobile-menu">
-      <a class="nav-dropdown-link">
-        <div class="dropdown-link-layout">
-          <p class="dropdown-link-text">Goals</p>
-        </div>
-      </a>
-      <a class="nav-dropdown-link">
-        <div class="dropdown-link-layout">
-          <p class="dropdown-link-text">Tasks</p>
-        </div>
-      </a>
-      <a class="nav-dropdown-link">
-        <div class="dropdown-link-layout">
-          <p class="dropdown-link-text">My Account</p>
-        </div>
-      </a>
+      <div v-if="userIsLogin">
+        <a class="nav-dropdown-link">
+          <div class="dropdown-link-layout">
+            <p class="dropdown-link-text">Goals</p>
+          </div>
+        </a>
+        <a class="nav-dropdown-link">
+          <div class="dropdown-link-layout">
+            <p class="dropdown-link-text">Tasks</p>
+          </div>
+        </a>
+        <a class="nav-dropdown-link">
+          <div class="dropdown-link-layout">
+            <p class="dropdown-link-text">My Account</p>
+          </div>
+        </a>
+      </div>
+
+      <div v-else class="mobile-menu-buttons-wrapper">
+        <button class="get-started-container">
+          <div class="get-started-word">Get Started</div>
+        </button>
+        <button class="log-in-container">
+          <div class="log-in-word">Log in</div>
+        </button>
+      </div>
     </div>
   </header>
 </template>
@@ -200,6 +213,51 @@ const styles = computed(() => ({
   100% {
     translate: 0 0px;
   }
+}
+
+.mobile-menu-buttons-wrapper {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+}
+
+.get-started-container {
+  @include font-headline;
+  padding: 20px;
+  width: 100%;
+  position: relative;
+  margin: 0px;
+  border-radius: 4px;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  line-height: 14px;
+  border: 1px solid var(--yellow-500);
+  background-color: var(--yellow-500);
+}
+
+.get-started-word {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  pointer-events: none;
+}
+
+.log-in-container {
+  @include font-headline;
+  margin-top: 10px;
+  background: rgb(255, 255, 255);
+  color: var(--yellow-500);
+  border-width: 2px;
+  padding: 20px;
+  width: 100%;
+  border: 1px solid var(--yellow-500);
+  position: relative;
+}
+
+.log-in-word {
 }
 
 @media screen and (min-width: $breakpoint-small) {

@@ -123,6 +123,7 @@ let taskIsRunning = ref(false);
   }
 
   .words-second-part {
+    display: flex;
     min-width: 480px;
     max-width: 500px;
     font-size: 62px;
