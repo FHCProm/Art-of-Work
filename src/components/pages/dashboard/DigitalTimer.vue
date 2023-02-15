@@ -279,9 +279,10 @@ function toggleSectionBtn() {
 <style scoped lang="scss">
 .digital-timer-container {
   width: 100%;
-  height: 4rem;
+  height: 60px;
   position: sticky;
-  top: 0;
+  top: 0px;
+  z-index: 1;
 }
 
 .first-slide {

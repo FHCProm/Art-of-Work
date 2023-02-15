@@ -12,7 +12,7 @@
           </div>
 
           <h1 class="words-second-part">
-            <span>Write down your goals and tasks to love it</span>
+            <span>Time Tracker for Projects</span>
           </h1>
           <div class="words-third-part">
             <button class="third-part-button">Get Started</button>
@@ -123,6 +123,7 @@ let taskIsRunning = ref(false);
   }
 
   .words-second-part {
+    display: flex;
     min-width: 480px;
     max-width: 500px;
     font-size: 62px;
@@ -137,7 +138,7 @@ let taskIsRunning = ref(false);
   }
 
   .third-part-button {
-    background: var(--teal-500);
+    background: var(--yellow-500);
     font-size: 1.5rem;
     padding: 1rem 2rem;
     color: var(--gray-100);
@@ -146,7 +147,7 @@ let taskIsRunning = ref(false);
 
     &:focus {
       box-shadow: var(--gray-100) 0px 0px 0px 2px,
-        var(--teal-500) 0px 0px 0px 4px;
+        var(--yellow-500) 0px 0px 0px 4px;
     }
   }
 
@@ -164,13 +165,13 @@ let taskIsRunning = ref(false);
     border-radius: 100%;
     cursor: pointer;
     position: relative;
-    border: 5px solid var(--teal-200);
-    box-shadow: inset 1.5rem 1.5rem 3rem var(--teal-200),
-      inset -0.2rem -0.2rem 0.5rem var(--teal-200);
+    border: 5px solid var(--yellow-200);
+    box-shadow: inset 1.5rem 1.5rem 3rem var(--yellow-200),
+      inset -0.2rem -0.2rem 0.5rem var(--yellow-200);
     &:active {
-      box-shadow: inset 1.5rem 1.5rem 3rem var(--teal-300),
-        inset -0.2rem -0.2rem 0.5rem var(--teal-300);
-      border: 5px solid var(--teal-300);
+      box-shadow: inset 1.5rem 1.5rem 3rem var(--yellow-300),
+        inset -0.2rem -0.2rem 0.5rem var(--yellow-300);
+      border: 5px solid var(--yellow-300);
     }
   }
 
@@ -180,7 +181,7 @@ let taskIsRunning = ref(false);
   //   top: 47px;
   //   width: 150px;
   //   height: 150px;
-  //   color: var(--teal-400);
+  //   color: var(--yellow-400);
   // }
 
   .play-button {
@@ -189,7 +190,7 @@ let taskIsRunning = ref(false);
     top: 47px;
     width: 150px;
     height: 150px;
-    color: var(--teal-400);
+    color: var(--yellow-400);
   }
   .pause-button {
     position: absolute;
@@ -197,7 +198,7 @@ let taskIsRunning = ref(false);
     top: 51px;
     width: 150px;
     height: 150px;
-    color: var(--teal-400);
+    color: var(--yellow-400);
   }
 }
 </style>
