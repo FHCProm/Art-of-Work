@@ -224,15 +224,13 @@ const styles = computed(() => ({
 
 .get-started-container {
   @include font-headline;
-  padding: 20px;
+  padding: 10px;
   width: 100%;
   position: relative;
   margin: 0px;
   border-radius: 4px;
-  font-weight: 500;
   color: rgb(255, 255, 255);
   cursor: pointer;
-  line-height: 14px;
   border: 1px solid var(--yellow-500);
   background-color: var(--yellow-500);
 }
@@ -250,14 +248,18 @@ const styles = computed(() => ({
   margin-top: 10px;
   background: rgb(255, 255, 255);
   color: var(--yellow-500);
-  border-width: 2px;
-  padding: 20px;
+  padding: 10px;
   width: 100%;
   border: 1px solid var(--yellow-500);
   position: relative;
 }
 
 .log-in-word {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  pointer-events: none;
 }
 
 @media screen and (min-width: $breakpoint-small) {
