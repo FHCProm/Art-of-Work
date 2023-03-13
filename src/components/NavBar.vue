@@ -9,7 +9,7 @@
         <span class="title pl-4">Art of Breaking</span>
       </router-link>
       <div v-if="!userIsLogin" class="navbar-buttons">
-        <router-link to="/dashboard" class="navbar_button">
+        <router-link to="/login" class="navbar_button">
           <span>Login</span>
         </router-link>
         <span class="navbar_button">Register</span>
