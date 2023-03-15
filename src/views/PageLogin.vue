@@ -1,6 +1,6 @@
 <template>
   <div class="layout-1">
-    <form>
+    <form @submit.prevent="validateLogin">
       <div class="title">Sign in to Art of Breaking</div>
       <div class="email-container">
         <label class="email-label">Email</label>
@@ -10,18 +10,25 @@
           name="email"
           type="email"
           placeholder="Your email address"
-          required
+          v-model="emailValue"
+          :class="{ 'error-input': emailInputError }"
         />
+        <div v-if="emailInputError" class="error-description">
+          {{ emailErrorStatement }}
+        </div>
       </div>
 
       <div class="password-container">
         <label for="Password" class="password-label">Password</label>
-        <div class="password-layout1">
+        <div
+          class="password-layout1"
+          :class="{ 'error-input': passwordInputError }"
+        >
           <input
             class="password-input"
             id="Password"
             :type="passwordType"
-            value=""
+            v-model="passwordValue"
           />
           <div
             class="password-icon"
@@ -64,6 +71,9 @@
             </svg>
           </div>
         </div>
+        <div v-if="passwordInputError" class="error-description">
+          please enter a valid password
+        </div>
       </div>
       <div class="forget-password-container">forget password?</div>
       <button class="login-form-submit" type="submit">submit</button>
@@ -72,7 +82,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 
 const passwordVisible = ref(false);
 const passwordType = computed(() => {
@@ -83,6 +93,47 @@ const passwordType = computed(() => {
     answer = "password";
   }
   return answer;
+});
+
+const emailValue = ref("");
+const passwordValue = ref("");
+const emailInputError = ref(false);
+const passwordInputError = ref(false);
+const emailErrorStatement = ref("");
+const userDataFetchFromServer = ref({
+  username: "ali@gmail.com",
+  password: "abc",
+});
+
+function validateLogin() {
+  if (emailValue.value == "") {
+    emailErrorStatement.value = "please enter your email";
+    emailInputError.value = true;
+    return;
+  }
+
+  if (emailValue.value != userDataFetchFromServer.value.username) {
+    emailErrorStatement.value = "username incorrect";
+    emailInputError.value = true;
+    return;
+  }
+
+  if (userDataFetchFromServer.value.password != passwordValue.value) {
+    passwordInputError.value = true;
+    return;
+  }
+  console.log("successfully login");
+}
+
+watch(emailValue, (newValue) => {
+  if (newValue != "") {
+    emailInputError.value = false;
+  }
+});
+watch(passwordValue, (newValue) => {
+  if (newValue) {
+    passwordInputError.value = false;
+  }
 });
 </script>
 
@@ -182,7 +233,17 @@ const passwordType = computed(() => {
   margin-top: 24px;
 }
 
-::-ms-reveal {
-  display: none;
+.error-description {
+  color: var(--red-700);
+  font: 14px;
+}
+
+.error-input {
+  border: 1px solid var(--red-700);
+
+  &:focus {
+    outline: none;
+    border: 1px solid var(--red-900);
+  }
 }
 </style>

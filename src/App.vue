@@ -42,6 +42,9 @@ html {
 *::-webkit-scrollbar {
   display: none;
 }
+::-ms-reveal {
+  display: none;
+}
 
 @font-face {
   font-family: OCR_A_Extended;
