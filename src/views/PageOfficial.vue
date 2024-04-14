@@ -4,12 +4,12 @@
       <div class="first-section-content">
         <div class="first-section-words">
           <h1 class="words-first-part">
-            <span>Time Tracker for Projects</span>
+            <span>Transform Work. Track Time. Achieve Goals</span>
           </h1>
           <div class="words-second-part">
             <h3 class="second-part-word">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore,
-              delectus!
+              Transform your work experience with Project Time Tracker, the
+              ultimate solution for better time management and project success.
             </h3>
           </div>
           <div class="words-third-part">
@@ -18,7 +18,9 @@
         </div>
         <div class="first-section-image-container">
           <div>
-            <div class="first-section-image"></div>
+            <div class="first-section-image">
+              <img src="../assets/officialPage/hero-section-image.svg" />
+            </div>
           </div>
         </div>
       </div>
@@ -41,7 +43,11 @@
                   </div>
                 </td>
                 <td class="details-layout">
-                  <div class="detail-column">Lorem ipsum dolor sit.</div>
+                  <div class="detail-column">
+                    Doing project planning for the new marketing campaign. I
+                    created a timeline, defined the scope, and identified the
+                    resources we'll need
+                  </div>
                   <div class="time-column">1 hour 5 minutes</div>
                 </td>
               </tr>
@@ -59,7 +65,10 @@
                 </td>
                 <td class="details-layout">
                   <div class="detail-column">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing.
+                    communicated with stakeholders this week to provide updates
+                    on project progress. I also responded to team member
+                    inquiries and coordinated with the design team on visual
+                    assets
                   </div>
                   <div class="time-column">2 hour 25 minutes</div>
                 </td>
@@ -77,7 +86,10 @@
                   </div>
                 </td>
                 <td class="details-layout">
-                  <div class="detail-column">Lorem, ipsum dolor.</div>
+                  <div class="detail-column">
+                    I've been experimenting with some new color palettes for the
+                    branding project.
+                  </div>
                   <div class="time-column">15 minutes</div>
                 </td>
               </tr>
@@ -94,7 +106,10 @@
                   </div>
                 </td>
                 <td class="details-layout">
-                  <div class="detail-column">Lorem ipsum dolor sit.</div>
+                  <div class="detail-column">
+                    I had to deal with a few difficult customers, but I remained
+                    professional and courteous throughout the interaction
+                  </div>
                   <div class="time-column">1 hour 5 minutes</div>
                 </td>
               </tr>
@@ -112,7 +127,8 @@
                 </td>
                 <td class="details-layout">
                   <div class="detail-column">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing.
+                    Installed a Billy bookcase for a client, following all
+                    assembly instructions and securing the bookcase to the wall
                   </div>
                   <div class="time-column">2 hour 25 minutes</div>
                 </td>
@@ -130,7 +146,10 @@
                   </div>
                 </td>
                 <td class="details-layout">
-                  <div class="detail-column">Lorem, ipsum dolor.</div>
+                  <div class="detail-column">
+                    Consulted with a client on their technology needs and
+                    provided recommendations for hardware and software upgrades
+                  </div>
                   <div class="time-column">15 minutes</div>
                 </td>
               </tr>
@@ -239,7 +258,6 @@ let taskIsRunning = ref(false);
 
 .first-section {
   overflow: hidden;
-  max-width: 1142px;
   padding-left: 56px;
   padding-right: 56px;
   display: flex;
@@ -247,12 +265,16 @@ let taskIsRunning = ref(false);
   width: 100%;
   margin: 0px auto;
   padding: 24px;
+  background: url(../assets/officialPage/hero_background.svg);
+  background-size: cover;
 }
 
 .first-section-content {
   display: flex;
   align-items: center;
   flex-direction: row;
+  max-width: 80%;
+  margin: auto;
 }
 .first-section-words {
   flex: 1 1 0%;
@@ -272,6 +294,7 @@ let taskIsRunning = ref(false);
 
 .second-part-word {
   font-size: 1.5rem;
+  max-width: 600px;
 }
 
 .words-first-part {
@@ -291,7 +314,7 @@ let taskIsRunning = ref(false);
 .third-part-button {
   background: var(--yellow-500);
   font-size: 1.5rem;
-  padding: 1rem 2rem;
+  padding: 0.7rem 2rem;
   color: var(--gray-100);
   cursor: pointer;
   border-radius: var(--button-border-radius);
@@ -307,15 +330,12 @@ let taskIsRunning = ref(false);
 }
 
 .first-section-image {
-  position: absolute;
-  background-position-x: 70%;
-  width: 100%;
-  height: 100%;
-  background-image: url(../assets/officialPage/hero-section-img.jpg);
 }
 
 .second-section {
   position: relative;
+  padding-top: 100px;
+  padding-bottom: 111px;
 }
 .second-section-layout {
   flex-direction: column;
@@ -538,13 +558,6 @@ let taskIsRunning = ref(false);
     padding-top: 100px;
     padding-bottom: 111px;
   }
-  .first-section-image-container {
-    display: unset;
-    position: relative;
-    width: 600px;
-    height: 500px;
-    overflow: hidden;
-  }
 
   .words-first-part {
     font-size: 62px;
@@ -583,6 +596,25 @@ let taskIsRunning = ref(false);
 
   .third-section-right-card-layout-2:hover {
     box-shadow: rgb(0 0 0 / 12%) 0px 8px 24px;
+  }
+}
+
+@media screen and (min-width: $breakpoint-medium) {
+  .image-column {
+    padding: 27px 24px 27px 24px;
+  }
+
+  .first-section-image-container {
+    display: flex;
+    position: relative;
+    width: 600px;
+    height: 600px;
+    overflow: hidden;
+    align-items: center;
+  }
+
+  .time-column[data-v-d7bf080e] {
+    padding-left: 1rem;
   }
 }
 </style>
