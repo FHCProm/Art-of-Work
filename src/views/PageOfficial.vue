@@ -4,7 +4,7 @@
       <div class="first-section-content">
         <div class="first-section-words">
           <h1 class="words-first-part">
-            <span>Transform Work. Track Time. Achieve Goals</span>
+            <span>Collaborate. Transform Work. Track Time.</span>
           </h1>
           <div class="words-second-part">
             <h3 class="second-part-word">
@@ -27,6 +27,7 @@
     </section>
     <section class="second-section">
       <div class="second-section-layout">
+        <p class="second-layout-title">Collaboration is easy.</p>
         <div class="second-section-content">
           <table class="table-layout">
             <tbody class="table-body">
@@ -166,11 +167,12 @@
             <div class="third-section-cards">
               <div class="third-section-left-card">
                 <div class="third-section-left-card-first-line">
-                  Lorem ipsum dolor sit amet consectetur adipisicing.
+                  Try Art of Breaking for free
                 </div>
                 <div class="third-section-left-card-second-line">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Soluta praesentium aspernatur sunt, amet illum fugit.
+                  Collaboration can help improve communication and coordination
+                  among team members, reduce duplication of effort, and increase
+                  productivity.
                 </div>
                 <div>
                   <button class="third-section-left-card-button">
@@ -184,53 +186,70 @@
 
             <div class="third-section-cards">
               <div class="third-section-right-card">
+                <p class="third-section-right-card-title">
+                  Unleash your business's true potential effortlessly
+                </p>
                 <div class="third-section-right-card-layout">
                   <div class="third-section-right-card-layout-2">
                     <div class="third-section-right-card-layout-image-section">
                       <img
                         class="dcBlBt"
-                        src="@/assets/officialPage/section3-1.png"
+                        src="@/assets/officialPage/time.png"
                       />
-                      <span class="hCTbnf">Lorem, ipsum.</span>
+                      <div class="hCTbnf">Save time</div>
                     </div>
                     <div class="bmCMRG">
-                      <div class="eEfpch">Lorem, ipsum dolor.</div>
+                      <div class="eEfpch">
+                        Streamline processes, reduce the need for manual
+                        tracking. All in one app
+                      </div>
                     </div>
                   </div>
                   <div class="third-section-right-card-layout-2">
                     <div class="third-section-right-card-layout-image-section">
                       <img
                         class="dcBlBt"
-                        src="@/assets/officialPage/section3-1.png"
+                        src="@/assets/officialPage/centralization.png"
                       />
-                      <span class="hCTbnf">Lorem, ipsum.</span>
+                      <div class="hCTbnf">Data centralization</div>
                     </div>
                     <div class="bmCMRG">
-                      <div class="eEfpch">Lorem, ipsum dolor.</div>
+                      <div class="eEfpch">
+                        centralized platform for teams to manage project data,
+                        such as task lists, schedules, time tracking data, and
+                        team communication.
+                      </div>
                     </div>
                   </div>
                   <div class="third-section-right-card-layout-2">
                     <div class="third-section-right-card-layout-image-section">
                       <img
                         class="dcBlBt"
-                        src="@/assets/officialPage/section3-1.png"
+                        src="@/assets/officialPage/coins.png"
                       />
-                      <span class="hCTbnf">Lorem, ipsum.</span>
+                      <div class="hCTbnf">Save Cost</div>
                     </div>
                     <div class="bmCMRG">
-                      <div class="eEfpch">Lorem, ipsum dolor.</div>
+                      <div class="eEfpch">
+                        helps managers keep track of resources and prevent scope
+                        creep, which can help keep project costs from
+                        skyrocketing
+                      </div>
                     </div>
                   </div>
                   <div class="third-section-right-card-layout-2">
                     <div class="third-section-right-card-layout-image-section">
                       <img
                         class="dcBlBt"
-                        src="@/assets/officialPage/section3-1.png"
+                        src="@/assets/officialPage/positive-vote.png"
                       />
-                      <span class="hCTbnf">Lorem, ipsum.</span>
+                      <div class="hCTbnf">Better project outcomes</div>
                     </div>
                     <div class="bmCMRG">
-                      <div class="eEfpch">Lorem, ipsum dolor.</div>
+                      <div class="eEfpch">
+                        projects are completed on time, within budget, and to
+                        the satisfaction of all stakeholders
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -344,6 +363,12 @@ let taskIsRunning = ref(false);
   margin: auto;
 }
 
+.second-layout-title {
+  font-size: 2rem;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
 .second-section-content {
   width: 100%;
   margin-top: -1px;
@@ -415,6 +440,9 @@ let taskIsRunning = ref(false);
   color: var(--teal-800);
 }
 
+.third-section {
+  background: rgb(250, 238, 194);
+}
 .third-section-layout {
   display: flex;
   flex-shrink: 0;
@@ -509,17 +537,21 @@ let taskIsRunning = ref(false);
   flex-direction: column;
 }
 
+.third-section-right-card-title {
+  font-size: 1.3rem;
+  padding-bottom: 1rem;
+}
+
 .third-section-right-card-layout-2 {
   padding: 16px;
-  border: 1px solid var(--gray-300);
   border-radius: 0px;
-  margin-bottom: 0px;
+  margin-bottom: 10px;
   margin-top: -1px;
   display: flex;
   width: 100%;
-  white-space: nowrap;
   cursor: pointer;
   opacity: 0.9;
+  box-shadow: rgb(0 0 0 / 12%) 0px 8px 24px;
 }
 
 .third-section-right-card-layout-image-section {
@@ -531,25 +563,24 @@ let taskIsRunning = ref(false);
 .dcBlBt {
   height: 38px;
   width: 38px;
-  margin-right: 15px;
 }
 .hCTbnf {
-  width: min-content;
   white-space: normal;
   line-height: 1.3;
   color: rgb(var(--gray100));
   font-size: 18px;
-
   display: block;
-  margin: 0px;
+  width: 200px;
+  padding: 0 5px 0 5px;
 }
 .bmCMRG {
-  margin-left: auto;
   justify-content: start;
   display: flex;
+  width: 100%;
   align-items: center;
 }
 .eEfpch {
+  width: 100%;
   margin-left: auto;
 }
 
@@ -566,7 +597,7 @@ let taskIsRunning = ref(false);
 
   .details-layout {
     flex-direction: row;
-    height: 65px;
+    height: 100px;
     align-items: center;
   }
 
@@ -588,14 +619,6 @@ let taskIsRunning = ref(false);
   .third-section-left-card {
     align-items: unset;
     text-align: unset;
-  }
-
-  .third-section-right-card-layout-2 {
-    border: none;
-  }
-
-  .third-section-right-card-layout-2:hover {
-    box-shadow: rgb(0 0 0 / 12%) 0px 8px 24px;
   }
 }
 
