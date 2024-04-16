@@ -6,7 +6,7 @@
       class="navbar"
     >
       <router-link to="/">
-        <span class="title pl-4">Art of Breaking</span>
+        <span class="title pl-4">Art of Work</span>
       </router-link>
       <div v-if="!userIsLogin" class="navbar-buttons">
         <router-link to="/dashboard" class="navbar_button">

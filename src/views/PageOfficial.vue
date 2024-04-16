@@ -167,7 +167,7 @@
             <div class="third-section-cards">
               <div class="third-section-left-card">
                 <div class="third-section-left-card-first-line">
-                  Try Art of Breaking for free
+                  Try Art of Work for free
                 </div>
                 <div class="third-section-left-card-second-line">
                   Collaboration can help improve communication and coordination

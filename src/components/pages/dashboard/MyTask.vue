@@ -69,7 +69,7 @@
         <div class="details-content-goal">
           <p class="details-content-goal-label">Goal</p>
           <p class="details-content-goal-value">
-            part of figuring the design of art of breaking
+            part of figuring the design of Art of Work
           </p>
         </div>
       </div>

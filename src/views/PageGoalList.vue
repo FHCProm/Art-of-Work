@@ -97,7 +97,7 @@ const goals = ref([
     date: 1639283173,
     totalHourInvested: 223455,
     tags: ["worklife", "art"],
-    title: "improve art of breaking design",
+    title: "improve art of work design",
   },
   {
     id: 24434434,

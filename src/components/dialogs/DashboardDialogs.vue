@@ -16,7 +16,7 @@
 
         <DialogDescription class="task-dialog-content z-20">
           <div class="task-dialog-table-layout">
-            <div class="goal-text">Make a design draf for Art of Breaking</div>
+            <div class="goal-text">Make a design draf for Art of Work</div>
             <textarea
               class="task-input"
               rows="3"
