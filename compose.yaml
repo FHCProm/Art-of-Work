@@ -13,7 +13,7 @@ services:
         - path: ./package.json
           action: rebuild
         - path: ./
-          target: ./
+          target: /app
           action: sync
 
  
