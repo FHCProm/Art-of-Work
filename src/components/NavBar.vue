@@ -8,18 +8,37 @@
       <router-link to="/">
         <span class="title pl-4">Art of Work</span>
       </router-link>
-      <div v-if="!userIsLogin" class="navbar-buttons">
-        <router-link to="/dashboard" class="navbar_button">
-          <span>Login</span>
-        </router-link>
-        <span class="navbar_button">Register</span>
+
+      <div class="navbar-buttons">
+        <div class="navbar_button">
+          <div class="navbar_button_text">About us</div>
+        </div>
+        <div class="navbar_button">
+          <div class="navbar_button_text">Mission</div>
+        </div>
       </div>
 
-      <div v-if="userIsLogin" class="navbar-buttons">
-        <div class="navbar_button">Goals</div>
+      <div v-if="!userIsLogin" class="account_buttons">
+        <span class="account_button"
+          ><div class="account_buttons_text">Login</div></span
+        >
 
-        <div class="navbar_button">Tasks</div>
-        <div class="navbar_button">My Account</div>
+        <span class="account_button"
+          ><div class="account_buttons_text">Register</div></span
+        >
+      </div>
+
+      <div v-else class="account_buttons">
+        <div
+          class="svg_container"
+          @click="accountToolTipVisibility = !accountToolTipVisibility"
+        >
+          <img class="account_svg" src="@/assets/officialPage/avatar.svg" />
+          <div class="account_name">Chin Guo Ren</div>
+          <AccountTooltip
+            :visibility="accountToolTipVisibility"
+          ></AccountTooltip>
+        </div>
       </div>
 
       <div class="mobile-menu-toggle" @click="menuClicked">
@@ -31,31 +50,9 @@
 
     <!--here is for mobile menu-->
     <div v-if="menuVisible" class="mobile-menu">
-      <div v-if="userIsLogin">
-        <a class="nav-dropdown-link">
-          <div class="dropdown-link-layout">
-            <p class="dropdown-link-text">Goals</p>
-          </div>
-        </a>
-        <a class="nav-dropdown-link">
-          <div class="dropdown-link-layout">
-            <p class="dropdown-link-text">Tasks</p>
-          </div>
-        </a>
-        <a class="nav-dropdown-link">
-          <div class="dropdown-link-layout">
-            <p class="dropdown-link-text">My Account</p>
-          </div>
-        </a>
-      </div>
-
-      <div v-else class="mobile-menu-buttons-wrapper">
-        <button class="get-started-container">
-          <div class="get-started-word">Get Started</div>
-        </button>
-        <button class="log-in-container">
-          <div class="log-in-word">Log in</div>
-        </button>
+      <div class="mobile-menu-buttons-wrapper">
+        <div class="mobile-menu-selection" @click="menuClicked">About Us</div>
+        <div class="mobile-menu-selection" @click="menuClicked">Mission</div>
       </div>
     </div>
   </header>
@@ -63,11 +60,13 @@
 
 <script setup>
 import LineContainer from "@/components/LineContainer.vue";
+import AccountTooltip from "@/components/tooltip/AccountTooltip.vue";
 import { ref, computed } from "vue";
 
-let userIsLogin = ref(false);
+let userIsLogin = ref(true);
 let menuVisible = ref(false);
 let menuPositionCSS = ref("unset");
+const accountToolTipVisibility = ref(false);
 const classes = computed(() => ({
   "menu-toggle-rotate": menuVisible.value,
 }));
@@ -97,7 +96,8 @@ const styles = computed(() => ({
 }
 .navbar {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 50px 50px;
+  align-items: center;
   align-content: center;
   width: 100%;
   height: 60px;
@@ -107,17 +107,31 @@ const styles = computed(() => ({
   display: none;
 }
 
+.svg_container {
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+
+.account_svg {
+  width: 100%;
+  height: 30px;
+}
+.account_name {
+  display: none;
+}
+
 .title {
   font-size: 2rem;
   font-family: "Dancing Script", cursive;
 }
 
 .mobile-menu-toggle {
-  justify-self: end;
-  padding: 1rem 2rem;
+  width: 100%;
 }
 
 .menu-toggle-container {
+  margin: auto;
   position: relative;
   width: 18px;
   height: 17px;
@@ -218,8 +232,17 @@ const styles = computed(() => ({
 .mobile-menu-buttons-wrapper {
   padding: 20px 24px;
   display: flex;
+  align-items: center;
   flex-direction: column;
   overflow: visible;
+}
+
+.mobile-menu-selection {
+  @include font-headline;
+  padding: 20px;
+  width: 100%;
+  border-bottom: 1px solid var(--gray-500);
+  text-align: center;
 }
 
 .get-started-container {
@@ -263,21 +286,71 @@ const styles = computed(() => ({
 }
 
 @media screen and (min-width: $breakpoint-small) {
+  .navbar {
+    display: grid;
+    grid-template-columns: 200px 1fr 150px;
+    align-content: center;
+    width: 100%;
+    height: 60px;
+  }
   .navbar-wrapper {
     position: static;
   }
   .navbar-buttons {
     @include font-headline;
-    justify-self: end;
     display: flex;
-    align-items: center;
+    height: 100%;
     color: var(--gray-500);
   }
 
   .navbar_button {
+    position: relative;
     width: 100px;
     &:hover {
       color: var(--yellow-900);
+    }
+  }
+  .navbar_button_text {
+    position: absolute;
+    top: 16px;
+  }
+
+  .account_buttons {
+    @include font-headline;
+    justify-self: end;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    color: var(--gray-500);
+  }
+
+  .account_button {
+    position: relative;
+    width: 70px;
+    &:hover {
+      color: var(--gray-900);
+    }
+  }
+
+  .account_buttons_text {
+    position: absolute;
+    top: 16px;
+  }
+
+  .account_svg {
+    position: absolute;
+    width: 30px;
+    top: 11px;
+    height: 30px;
+  }
+
+  .account_name {
+    display: unset;
+    position: absolute;
+    top: 15px;
+    left: 37px;
+    &:hover {
+      color: var(--gray-900);
     }
   }
 

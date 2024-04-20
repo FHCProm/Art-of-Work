@@ -13,7 +13,9 @@
             </h3>
           </div>
           <div class="words-third-part">
-            <button class="third-part-button">Get Started</button>
+            <router-link to="/dashboard" class="navbar_button">
+              <button class="third-part-button">Get Started</button>
+            </router-link>
           </div>
         </div>
         <div class="first-section-image-container">
